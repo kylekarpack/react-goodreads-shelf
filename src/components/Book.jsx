@@ -8,10 +8,10 @@ class Book extends React.Component {
 
 	render() {
 		return (
-			"book"
+			<div>book</div>
 		)
 	}
-	
+
 }
 
 export default Book;
