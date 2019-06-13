@@ -5,7 +5,8 @@ import Book from "./Book";
 
 const shelfStyle = {
 	display: "grid",
-	gridTemplateColumns: "repeat(auto-fit, minmax(50px, 1fr))",
+	gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+	gridColumnGap: "1vw"
 };
 
 class GoodreadsBookshelf extends React.Component {
@@ -39,7 +40,7 @@ class GoodreadsBookshelf extends React.Component {
 			<div style={shelfStyle}>
 				{
 					this.state.books.map(book => {
-						return <Book key={book.id} data={book} />
+						return <Book key={book.id} book={book.book} />
 					})
 				}
 			</div>
