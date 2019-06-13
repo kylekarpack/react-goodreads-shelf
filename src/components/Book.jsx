@@ -13,7 +13,7 @@ class Book extends React.Component {
 	render() {
 		return (
 			<div>
-				<img style={bookStyle} src={this.props.data.book.image_url._text} />
+				<img style={bookStyle} src={this.props.data.book.image_url} />
 			</div>
 		)
 	}
