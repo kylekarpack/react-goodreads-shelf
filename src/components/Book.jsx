@@ -1,5 +1,9 @@
 import React from "react";
 
+const bookStyle = {
+	maxWidth: "100%"
+}
+
 class Book extends React.Component {
 	
 	constructor(props) {
@@ -8,7 +12,9 @@ class Book extends React.Component {
 
 	render() {
 		return (
-			<div>book</div>
+			<div>
+				<img style={bookStyle} src={this.props.data.book.image_url._text} />
+			</div>
 		)
 	}
 
