@@ -1,17 +1,5 @@
 class Xml2JsUtils {
 
-	// static options = {
-	// 	compact: true,
-	// 	trim: true,
-	// 	ignoreDeclaration: true,
-	// 	ignoreInstruction: true,
-	// 	ignoreAttributes: true,
-	// 	ignoreComment: true,
-	// 	ignoreCdata: true,
-	// 	ignoreDoctype: true,
-	// 	textFn: Xml2JsUtils.removeJsonTextAttribute
-	// };
-
 	static nativeType(value) {
 		let nValue = Number(value);
 		if (!isNaN(nValue)) {
@@ -26,23 +14,9 @@ class Xml2JsUtils {
 		return value;
 	};
 
-	static removeJsonTextAttribute(value, parentElement) {
-		try {
-			const keyNo = Object.keys(parentElement._parent).length,
-				keyName = Object.keys(parentElement._parent)[keyNo - 1];
-			parentElement._parent[keyName] = Xml2JsUtils.nativeType(value);
-		} catch (e) { }
-	};
-
 	static parse(xml) {
 		const parsed = new DOMParser().parseFromString(xml, "text/xml");
 		return Xml2JsUtils.xmlToJson(parsed);
-	}
-
-	static camelCase(str) {
-		return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-			return index == 0 ? word.toLowerCase() : word.toUpperCase();
-		}).replace(/\s+/g, '');
 	}
 
 	static xmlToJson(xml) {
@@ -50,7 +24,7 @@ class Xml2JsUtils {
 		// Create the return object
 		let obj = {};
 
-		if (xml.nodeType == 1) { // element
+		if (xml.nodeType === 1) { // element
 			// do attributes
 			if (xml.attributes.length > 0) {
 				obj["@attributes"] = {};
@@ -59,7 +33,7 @@ class Xml2JsUtils {
 					obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
 				}
 			}
-		} else if (xml.nodeType == 3) { // text
+		} else if (xml.nodeType === 3) { // text
 			obj = xml.nodeValue;
 		}
 
