@@ -8,7 +8,8 @@ const shelfStyle = (minWidth) => ({
 	alignItems: "center",
 	gridTemplateColumns: `repeat(auto-fit, minmax(${minWidth}px, 1fr))`,
 	gridColumnGap: "1vw",
-	margin: "1vw"
+	margin: "1vw",
+	textAlign: "center",
 });
 
 class GoodreadsBookshelf extends React.Component {
@@ -44,7 +45,6 @@ class GoodreadsBookshelf extends React.Component {
 				loaded: true
 			});
 	
-			console.warn("Got books", books);
 		} catch (e) {
 
 			console.error(e);
@@ -62,11 +62,9 @@ class GoodreadsBookshelf extends React.Component {
 		return (
 			<div>
 				<div style={shelfStyle(this.state.options.width)}>
-					{
-						this.state.books.map(book => {
-							return <Book key={book.id} book={book.book} options={this.state.options} />
-						})
-					}
+					{this.state.books.map(book => {
+						return <Book key={book.id} book={book.book} options={this.state.options} />
+					})}
 				</div>
 				{ this.state.loaded ? "" : <Loader /> }
 				{ this.state.error ? <div>Sorry, we couldn't load books right now</div> : "" }
