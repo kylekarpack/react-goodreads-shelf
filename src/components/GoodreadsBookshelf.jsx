@@ -31,6 +31,8 @@ class GoodreadsBookshelf extends React.Component {
 		const url = new URL(`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/${this.props.userId}`);
 		url.searchParams.set("key", this.props.apiKey);
 		url.searchParams.set("per_page", this.props.limit || 10);
+		url.searchParams.set("shelf", this.props.shelf || "read");
+		url.searchParams.set("sort", this.props.sort || "date_read");
 		url.searchParams.set("v", 2);
 
 		try {
