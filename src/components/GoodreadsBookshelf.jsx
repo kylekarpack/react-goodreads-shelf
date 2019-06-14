@@ -1,21 +1,25 @@
 import React from "react";
-import { xml2js } from "xml-js";
 import Xml2JsUtils from "../util/xml2js-utils";
 import Book from "./Book";
 import Loader from "./Loader";
 
-const shelfStyle = {
+const shelfStyle = (minWidth) => ({
 	display: "grid",
-	gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+	alignItems: "center",
+	gridTemplateColumns: `repeat(auto-fit, minmax(${minWidth}px, 1fr))`,
 	gridColumnGap: "1vw",
 	margin: "1vw"
-};
+});
 
 class GoodreadsBookshelf extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { books: [], loaded: false };
+		this.state = { 
+			books: [], 
+			loaded: false,
+			options: props.options || { width: 100 }
+		};
 
 		this.getBooks();
 	}
@@ -28,34 +32,46 @@ class GoodreadsBookshelf extends React.Component {
 		url.searchParams.set("per_page", this.props.limit || 10);
 		url.searchParams.set("v", 2);
 
-		const response = await fetch(url);
-		const xmlText = await response.text();
+		try {
+			const response = await fetch(url);
+			const xmlText = await response.text();
+	
+			const json = Xml2JsUtils.parse(xmlText),
+				books = json.GoodreadsResponse.reviews.review; // This is where the list of books is stored
+	
+			this.setState({
+				books: books,
+				loaded: true
+			});
+	
+			console.warn("Got books", books);
+		} catch (e) {
 
-		const json = xml2js(xmlText, Xml2JsUtils.options),
-			books = json.GoodreadsResponse.reviews.review; // This is where the list of books is stored
+			console.error(e);
 
-		this.setState({
-			books: books,
-			loaded: true
-		});
-
-		console.warn("Got books", books);
-
+			// Indicate that we errored
+			this.setState({
+				loaded: true,
+				error: true
+			});
+		}
+		
 	}
-
 
 	render() {
 		return (
 			<div>
-				<div style={shelfStyle}>
+				<div style={shelfStyle(this.state.options.width)}>
 					{
 						this.state.books.map(book => {
-							return <Book key={book.id} book={book.book} />
+							return <Book key={book.id} book={book.book} options={this.state.options} />
 						})
 					}
 				</div>
 				{ this.state.loaded ? "" : <Loader /> }
+				{ this.state.error ? <div>Sorry, we couldn't load books right now</div> : "" }
 			</div>
+			
 			
 		)
 	}
