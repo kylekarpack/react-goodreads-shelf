@@ -35,28 +35,30 @@ class GoodreadsBookshelf extends React.Component {
 		url.searchParams.set("sort", this.props.sort || "date_read");
 		url.searchParams.set("v", 2);
 
-		try {
-			const response = await fetch(url);
-			const xmlText = await response.text();
+		if (typeof window !== "undefined" && window.fetch) {
+			try {
+				const response = await fetch(url);
+				const xmlText = await response.text();
+		
+				const json = Xml2JsUtils.parse(xmlText),
+					books = json.GoodreadsResponse.reviews.review; // This is where the list of books is stored
+		
+				this.setState({
+					books: books,
+					loaded: true
+				});
+		
+			} catch (e) {
 	
-			const json = Xml2JsUtils.parse(xmlText),
-				books = json.GoodreadsResponse.reviews.review; // This is where the list of books is stored
+				console.error(e);
 	
-			this.setState({
-				books: books,
-				loaded: true
-			});
-	
-		} catch (e) {
-
-			console.error(e);
-
-			// Indicate that we errored
-			this.setState({
-				loaded: true,
-				error: true
-			});
-		}
+				// Indicate that we errored
+				this.setState({
+					loaded: true,
+					error: true
+				});
+			}
+		}		
 		
 	}
 
