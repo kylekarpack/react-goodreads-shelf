@@ -21,7 +21,9 @@ class GoodreadsBookshelf extends React.Component {
 			loaded: false,
 			options: props.options || { width: 100 }
 		};
+	}
 
+	componentWillMount() {
 		this.getBooks();
 	}
 
