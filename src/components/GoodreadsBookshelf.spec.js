@@ -6,8 +6,9 @@ import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({adapter: new Adapter()});
 
-test("renders without crashing", () => {
-	const shelf = shallow(<GoodreadsBookshelf />);
+const shelf = shallow(<GoodreadsBookshelf />);
+
+it("renders without crashing", () => {
 	expect(shelf).toBeDefined();
 });
 
