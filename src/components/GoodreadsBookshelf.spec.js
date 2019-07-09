@@ -6,6 +6,7 @@ describe("testing bookshelf", () => {
 
 	beforeEach(() => {
 		fetch.resetMocks();
+		fetch.mockResponseOnce(JSON.stringify({ GoodreadsResponse: { reviews: { review: [] } } }));
 	})
 
 	it("renders without crashing", () => {
@@ -24,7 +25,6 @@ describe("testing bookshelf", () => {
 	});
 	
 	it("gets books", async () => {
-		// fetch.mockResponseOnce(JSON.stringify({ GoodreadsResponse: { reviews: { review: [] } } }));
 
 		// const shelf = shallow(<GoodreadsBookshelf apiKey="test" userId="testUser" limit={15} shelf="read" sort="date_read" />);
 		// const books = await shelf.instance().getBooksJson();

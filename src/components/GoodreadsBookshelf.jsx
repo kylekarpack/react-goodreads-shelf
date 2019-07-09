@@ -45,7 +45,12 @@ class GoodreadsBookshelf extends React.Component {
 			const xmlText = await response.text();
 
 			const json = Xml2JsUtils.parse(xmlText);
-			return json.GoodreadsResponse.reviews.review; // This is where the list of books is stored
+			
+			// This is where the list of books is stored:
+			return (json && json.GoodreadsResponse && 
+				json.GoodreadsResponse.reviews &&
+				json.GoodreadsResponse.reviews.review) || []; 
+
 		} else {
 			throw "Error: fetch is not defined in this environment";
 		}
