@@ -27,8 +27,7 @@ class GoodreadsBookshelf extends React.Component {
 		this.getBooks();
 	}
 
-	async getBooks() {
-
+	getUrl() {
 		// Build a request to the Goodreads API
 		const url = new URL(`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/${this.props.userId}`);
 		url.searchParams.set("key", this.props.apiKey);
@@ -36,31 +35,43 @@ class GoodreadsBookshelf extends React.Component {
 		url.searchParams.set("shelf", this.props.shelf || "read");
 		url.searchParams.set("sort", this.props.sort || "date_read");
 		url.searchParams.set("v", 2);
+		return url;
+	}
 
+	async getBooksJson() {
 		if (typeof window !== "undefined" && window.fetch) {
-			try {
-				const response = await fetch(url);
-				const xmlText = await response.text();
-		
-				const json = Xml2JsUtils.parse(xmlText),
-					books = json.GoodreadsResponse.reviews.review; // This is where the list of books is stored
-		
-				this.setState({
-					books: books,
-					loaded: true
-				});
-		
-			} catch (e) {
+			const url = this.getUrl();
+			const response = await fetch(url);
+			const xmlText = await response.text();
+
+			const json = Xml2JsUtils.parse(xmlText);
+			return json.GoodreadsResponse.reviews.review; // This is where the list of books is stored
+		} else {
+			throw "Error: fetch is not defined in this environment";
+		}
+	}
+
+	async getBooks() {
+
+		try {
+			const books = await this.getBooksJson();
 	
-				console.error(e);
+			this.setState({
+				books: books,
+				loaded: true
+			});
 	
-				// Indicate that we errored
-				this.setState({
-					loaded: true,
-					error: true
-				});
-			}
-		}		
+		} catch (e) {
+
+			console.error(e);
+
+			// Indicate that we errored
+			this.setState({
+				loaded: true,
+				error: true
+			});
+		}
+		
 		
 	}
 
