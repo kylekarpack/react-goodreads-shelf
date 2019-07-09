@@ -5,12 +5,14 @@ class Xml2JsUtils {
 		if (!isNaN(nValue)) {
 			return nValue;
 		}
-		let bValue = value.toLowerCase();
-		if (bValue === "true") {
-			return true;
-		} else if (bValue === "false") {
-			return false;
-		}
+		if (typeof value === "string") {
+			let bValue = value.toLowerCase();
+			if (bValue === "true") {
+				return true;
+			} else if (bValue === "false") {
+				return false;
+			}
+		}		
 		return value;
 	};
 
