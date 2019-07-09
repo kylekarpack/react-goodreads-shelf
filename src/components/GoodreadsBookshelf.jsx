@@ -66,7 +66,7 @@ class GoodreadsBookshelf extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div class="goodreads-shelf">
 				<div style={shelfStyle(this.state.options.width)}>
 					{this.state.books.map(book => {
 						return <Book key={book.id} book={book.book} options={this.state.options} />
