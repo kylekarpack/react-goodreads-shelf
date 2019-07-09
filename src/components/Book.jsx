@@ -35,21 +35,30 @@ class Book extends React.Component {
 	
 	constructor(props) {
 		super(props);
-		this.props.book.description = this.props.book.description.toString().substring(0, 200) + "..."
+		if (this.props.book) {
+			this.props.book.description = this.props.book.description.toString().substring(0, 200) + "..."
+		}
 	}
 
 	render() {
+
+		const { book, options } = this.props;
+
+		if (!book) {
+			return "";
+		}
+ 
 		return (
-			<div style={bookStyle} title={this.props.book.title}>
-				<a href={this.props.book.link} target="_blank">
-					<img style={imageStyle} src={this.props.book.image_url} />
+			<div style={bookStyle} title={book.title}>
+				<a href={book.link} target="_blank">
+					<img style={imageStyle} src={book.image_url} />
 				</a>
 				{
-					this.props.options.details && 
+					options.details && 
 						<div>
-							<small style={authorStyle}>{this.props.book.authors.author.name}</small>
-							<span style={titleStyle}>{this.props.book.title}</span>
-							<p style={descriptionStyle} dangerouslySetInnerHTML={{ __html: this.props.book.description }}></p>
+							<small style={authorStyle}>{book.authors.author.name}</small>
+							<span style={titleStyle}>{book.title}</span>
+							<p style={descriptionStyle} dangerouslySetInnerHTML={{ __html: book.description }}></p>
 						</div>
 				}
 				

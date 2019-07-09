@@ -76,3 +76,5 @@ typings/
 .fusebox/
 
 dist/
+
+__snapshots__/
