@@ -16,8 +16,8 @@ class GoodreadsBookshelf extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { 
-			books: [], 
+		this.state = {
+			books: [],
 			loaded: false,
 			options: props.options || { width: 100 }
 		};
@@ -45,11 +45,11 @@ class GoodreadsBookshelf extends React.Component {
 			const xmlText = await response.text();
 
 			const json = Xml2JsUtils.parse(xmlText);
-			
+
 			// This is where the list of books is stored:
-			return (json && json.GoodreadsResponse && 
+			return (json && json.GoodreadsResponse &&
 				json.GoodreadsResponse.reviews &&
-				json.GoodreadsResponse.reviews.review) || []; 
+				json.GoodreadsResponse.reviews.review) || [];
 
 		} else {
 			throw "Error: fetch is not defined in this environment";
@@ -60,12 +60,12 @@ class GoodreadsBookshelf extends React.Component {
 
 		try {
 			const books = await this.getBooksJson();
-	
+
 			this.setState({
-				books: books,
+				books: Array.isArray(books) ? books : [books],
 				loaded: true
 			});
-	
+
 		} catch (e) {
 
 			console.error(e);
@@ -76,8 +76,8 @@ class GoodreadsBookshelf extends React.Component {
 				error: true
 			});
 		}
-		
-		
+
+
 	}
 
 	render() {
@@ -91,8 +91,8 @@ class GoodreadsBookshelf extends React.Component {
 				{ this.state.loaded ? "" : <Loader /> }
 				{ this.state.error ? <div>Sorry, we couldn't load books right now</div> : "" }
 			</div>
-			
-			
+
+
 		)
 	}
 
