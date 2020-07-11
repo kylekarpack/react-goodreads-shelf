@@ -18,13 +18,11 @@ yarn add react-goodreads-shelf
 import React from "react";
 import { GoodreadsBookshelf } from "react-goodreads-shelf";
 
-function App() {
+export default function App() {
 	return (
 		<GoodreadsBookshelf userId="USER_ID_HERE" apiKey="API_KEY_HERE" />
 	);
 }
-
-export default App;
 ```
 
 ## Customization
