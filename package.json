@@ -27,14 +27,14 @@
 		"react-dom": "^16.8.6",
 		"react-test-renderer": "^16.8.6",
 		"webpack": "^4.34.0",
-		"webpack-cli": "^3.3.5"
+		"webpack-cli": "^3.3.12"
 	},
 	"peerDependencies": {
 		"react": "^16.8.6"
 	},
 	"dependencies": {
-		"@types/jest": "^24.9.1",
-		"@babel/runtime": "^7.9.6"
+		"@babel/runtime": "^7.9.6",
+		"@types/jest": "^24.9.1"
 	},
 	"scripts": {
 		"test": "jest",
