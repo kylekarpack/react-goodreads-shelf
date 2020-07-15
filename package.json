@@ -33,7 +33,7 @@
 		"react": "^16.8.6"
 	},
 	"dependencies": {
-		"@types/jest": "^24.9.1"
+		"@types/jest": "^24.9.1",
 		"@babel/runtime": "^7.9.6"
 	},
 	"scripts": {
