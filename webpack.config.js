@@ -1,5 +1,4 @@
 const path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
 	entry: "./src/index.js",
@@ -34,10 +33,5 @@ module.exports = {
 			amd: "React",
 			root: "React",
 		},
-	},
-	optimization: {
-		minimizer: [new UglifyJsPlugin({
-			cache: true
-		})],
-	},
+	}
 };
