@@ -37,6 +37,10 @@ You can also set some options as supported by the Goodreads API:
 | width | number | Minimum width allowed for each book | 100
 | details | boolean | Whether to show book details like book title, author, and summary | false
 
+## Development
+- `yarn start` to watch changes and build
+- `yarn storybook` to launch storybook for testing
+
 ## ToDo
 
 Short-term plans include adding additional API options and styling
