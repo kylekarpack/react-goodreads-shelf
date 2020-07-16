@@ -1,5 +1,5 @@
 import React from "react";
-import Xml2JsUtils from "../util/xml2js-utils";
+import { Xml } from "../util/xml2js-utils";
 import Book from "./Book";
 import Loader from "./Loader";
 
@@ -43,13 +43,17 @@ class GoodreadsBookshelf extends React.Component {
 			const url = this.getUrl();
 			const response = await fetch(url);
 			const xmlText = await response.text();
-
-			const json = Xml2JsUtils.parse(xmlText);
+			const json = Xml.parseXmlStringToObject(xmlText);
 
 			// This is where the list of books is stored:
-			return (json && json.GoodreadsResponse &&
-				json.GoodreadsResponse.reviews &&
-				json.GoodreadsResponse.reviews.review) || [];
+			const books = json?.GoodreadsResponse?.reviews || [];
+			for (let { book } of books) {
+				if (book?.image_url?.includes("/nophoto/")) {
+					book.image_url = `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg?default=false`;
+				}
+			}
+
+			return books;
 
 		} else {
 			throw "Error: fetch is not defined in this environment";

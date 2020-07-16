@@ -13,6 +13,7 @@
 		"@babel/plugin-transform-react-jsx",
 		"@babel/plugin-syntax-dynamic-import", 
 		"@babel/plugin-transform-modules-commonjs",
+		"@babel/plugin-proposal-optional-chaining",
 		["@babel/plugin-transform-runtime",
 		{
 			"absoluteRuntime": false,
