@@ -22,9 +22,11 @@
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
+    "@types/jest": "^24.9.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-istanbul": "^6.0.0",
+    "babel-preset-minify": "^0.5.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^24.8.0",
@@ -32,6 +34,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.12"
   },
@@ -39,13 +42,12 @@
     "react": "^16.8.6"
   },
   "dependencies": {
-    "@babel/runtime": "^7.9.6",
-    "@types/jest": "^24.9.1"
+    "@babel/runtime": "^7.9.6"
   },
   "scripts": {
     "test": "jest",
     "start": "webpack --watch",
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   }
