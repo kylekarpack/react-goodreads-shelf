@@ -1,44 +1,50 @@
 {
-	"name": "react-goodreads-shelf",
-	"version": "1.0.5",
-	"description": "A React widget for displaying a user's public book shelf",
-	"main": "dist/index.js",
-	"repository": "https://github.com/kylekarpack/react-goodreads-shelf",
-	"author": "Kyle Karpack <kylekarpack@gmail.com>",
-	"license": "MIT",
-	"private": false,
-	"devDependencies": {
-		"@babel/cli": "^7.4.4",
-		"@babel/core": "^7.4.5",
-		"@babel/plugin-proposal-class-properties": "^7.4.4",
-		"@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-		"@babel/plugin-transform-react-jsx": "^7.3.0",
-		"@babel/plugin-transform-regenerator": "^7.4.5",
-		"@babel/plugin-transform-runtime": "^7.4.4",
-		"@babel/preset-env": "^7.5.2",
-		"@babel/preset-react": "^7.0.0",
-		"babel-jest": "^24.8.0",
-		"babel-loader": "^8.0.6",
-		"enzyme": "^3.10.0",
-		"enzyme-adapter-react-16": "^1.14.0",
-		"jest": "^24.8.0",
-		"jest-fetch-mock": "^2.1.2",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6",
-		"react-test-renderer": "^16.8.6",
-		"webpack": "^4.34.0",
-		"webpack-cli": "^3.3.12"
-	},
-	"peerDependencies": {
-		"react": "^16.8.6"
-	},
-	"dependencies": {
-		"@babel/runtime": "^7.9.6",
-		"@types/jest": "^24.9.1"
-	},
-	"scripts": {
-		"test": "jest",
-		"start": "webpack --watch",
-		"build": "webpack"
-	}
+  "name": "react-goodreads-shelf",
+  "version": "1.0.5",
+  "description": "A React widget for displaying a user's public book shelf",
+  "main": "dist/index.js",
+  "repository": "https://github.com/kylekarpack/react-goodreads-shelf",
+  "author": "Kyle Karpack <kylekarpack@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.5.2",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react": "^5.3.19",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.8.0",
+    "jest-fetch-mock": "^2.1.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.9.6",
+    "@types/jest": "^24.9.1"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "webpack --watch",
+    "build": "webpack",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
 }
