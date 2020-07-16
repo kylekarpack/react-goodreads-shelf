@@ -6,7 +6,10 @@
   "repository": "https://github.com/kylekarpack/react-goodreads-shelf",
   "author": "Kyle Karpack <kylekarpack@gmail.com>",
   "license": "MIT",
-  "private": false,
+	"private": false,
+	"files": [
+		"dist/index.js"
+	],
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
