@@ -27,6 +27,12 @@ class GoodreadsBookshelf extends React.Component {
 		this.getBooks();
 	}
 
+	componentDidUpdate(prevProps) {
+		if (prevProps.limit !== this.props.limit) {
+			this.getBooks();
+		}
+	}
+
 	getUrl() {
 		// Build a request to the Goodreads API
 		const url = new URL(`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/${this.props.userId}`);
@@ -62,6 +68,10 @@ class GoodreadsBookshelf extends React.Component {
 
 	async getBooks() {
 
+		this.setState({
+			loaded: false
+		});
+
 		try {
 			const books = await this.getBooksJson();
 
@@ -80,8 +90,6 @@ class GoodreadsBookshelf extends React.Component {
 				error: true
 			});
 		}
-
-
 	}
 
 	render() {
@@ -95,11 +103,8 @@ class GoodreadsBookshelf extends React.Component {
 				{ this.state.loaded ? "" : <Loader /> }
 				{ this.state.error ? <div>Sorry, we couldn't load books right now</div> : "" }
 			</div>
-
-
 		)
 	}
-
 }
 
 export default GoodreadsBookshelf;
