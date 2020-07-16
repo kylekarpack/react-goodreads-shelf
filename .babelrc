@@ -3,9 +3,6 @@
 		"@babel/preset-env"
 	],
 	"env": {
-		"production": {
-			"plugins": ["minify"]
-		},
 		"test": {
 			"plugins": ["istanbul"]
 		}

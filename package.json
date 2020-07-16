@@ -34,7 +34,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
-    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.12"
   },
@@ -46,8 +45,9 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "webpack --watch",
-    "build": "webpack --mode=production",
+    "start": "webpack --config webpack.config.debug.js --watch",
+    "build": "webpack  --mode production",
+    "prepublish": "yarn build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   }
