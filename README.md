@@ -2,6 +2,8 @@
 
 This React component allows you to display a public Goodreads shelf in a React application. It's a lot like the Goodreads JavaScript widget, but allows for more customization, better async loading, and React-like usage.
 
+![Example image](/sample/sample.png)
+
 ## Installation
 
 ```
