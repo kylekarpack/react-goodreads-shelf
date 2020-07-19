@@ -58,6 +58,7 @@ export default (props) => {
 				...state,
 				books: Array.isArray(books) ? books : [books],
 				loaded: true,
+				error: false
 			});
 		} catch (e) {
 			console.error(e);
