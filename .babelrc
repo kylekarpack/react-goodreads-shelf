@@ -19,8 +19,8 @@
 			"absoluteRuntime": false,
 			"corejs": false,
 			"helpers": false,
-			"regenerator": true,
-			"useESModules": false
+			"regenerator": false,
+			"useESModules": true
 		}]
 	]
 }
