@@ -1,23 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Xml } from "../util/xml2js-utils";
-import Book from "./Book";
+import BookList from "./BookList";
 import Loader from "./Loader";
 
-const shelfStyle = (minWidth) => ({
-	display: "grid",
-	alignItems: "center",
-	gridTemplateColumns: `repeat(auto-fit, minmax(${minWidth}px, 1fr))`,
-	gridColumnGap: "1vw",
-	margin: "1vw",
-	textAlign: "center",
-});
-
 export default (props) => {
+	const options = props.options || { width: 100 };
 
 	const [state, setState] = useState({
 		books: [],
 		loaded: false,
-		options: props.options || { width: 100 },
 	});
 
 	const getUrl = () => {
@@ -83,23 +74,16 @@ export default (props) => {
 	// Get books when props are updated
 	useEffect(() => {
 		getBooks();
-	}, [props])
+	}, [props]);
 
 	return (
 		<div className="goodreads-shelf">
-			<div style={shelfStyle(state.options?.width)}>
-				{state.books.map((book) => {
-					return (
-						<Book key={book.id} book={book.book} options={state.options} />
-					);
-				})}
-			</div>
-			{state.loaded ? "" : <Loader />}
-			{state.error ? (
-				<div>Sorry, we couldn't load books right now</div>
+			{state.loaded ? (
+				<BookList books={state.books} options={options} />
 			) : (
-				""
+				<Loader />
 			)}
+			{state.error ? <div>Sorry, we couldn't load books right now</div> : ""}
 		</div>
 	);
 };
