@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Placeholder from "./Placeholder";
 
 const bookStyle = {
@@ -32,48 +32,39 @@ const descriptionStyle = {
 	fontSize: "0.8rem",
 };
 
-class Book extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-		if (this.props.book) {
-			this.props.book.description =
-				this.props.book.description.toString().substring(0, 200) + "...";
-		}
+export default (props) => {
+	const [state, setState] = useState({ error: false });
+	const { book, options } = props;
+
+	if (!book) {
+		return "";
 	}
 
-	render() {
-		const { book, options } = this.props;
+	// Truncate description
+	book.description = book.description?.toString()?.substring(0, 200) + "...";
 
-		if (!book) {
-			return "";
-		}
-
-		return (
-			<div style={bookStyle} title={book.title}>
-				<a href={book.link} target="_blank">
-					{this.state.error ? (
-						<Placeholder />
-					) : (
-						<img
-							style={imageStyle}
-							src={book.image_url}
-							onError={() => this.setState({ error: true })}
-						/>
-					)}
-				</a>
-				{options.details && (
-					<div>
-						<small style={authorStyle}>{book.authors.author.name}</small>
-						<span style={titleStyle}>{book.title}</span>
-						<p
-							style={descriptionStyle}
-							dangerouslySetInnerHTML={{ __html: book.description }}></p>
-					</div>
+	return (
+		<div style={bookStyle} title={book.title}>
+			<a href={book.link} target="_blank">
+				{state.error ? (
+					<Placeholder />
+				) : (
+					<img
+						style={imageStyle}
+						src={book.image_url}
+						onError={() => setState({ error: true })}
+					/>
 				)}
-			</div>
-		);
-	}
-}
-
-export default Book;
+			</a>
+			{options.details && (
+				<div>
+					<small style={authorStyle}>{book.authors.author.name}</small>
+					<span style={titleStyle}>{book.title}</span>
+					<p
+						style={descriptionStyle}
+						dangerouslySetInnerHTML={{ __html: book.description }}></p>
+				</div>
+			)}
+		</div>
+	);
+};
