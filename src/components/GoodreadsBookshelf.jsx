@@ -20,6 +20,8 @@ export default (props) => {
 		url.searchParams.set("per_page", props.limit || 10);
 		url.searchParams.set("shelf", props.shelf || "read");
 		url.searchParams.set("sort", props.sort || "date_read");
+		url.searchParams.set("order", props.order || "d");
+		url.searchParams.set("search[query]", props.search || "");
 		url.searchParams.set("v", 2);
 		return url;
 	};

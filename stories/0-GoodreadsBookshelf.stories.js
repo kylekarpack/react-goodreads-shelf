@@ -58,5 +58,7 @@ export const Story = () => (
 		limit={number("Limit", 20, { min: 1, max: 50 }, "API")}
 		shelf={select("Shelf", shelves, "read", "API")}
 		sort={select("Sort", sorts, "date_read", "API")}
+		order={select("Order", ["a", "d"], "a", "API")}
+		search={text("Search", "", "API")}
 	/>
 );
