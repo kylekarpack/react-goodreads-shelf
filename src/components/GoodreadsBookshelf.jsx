@@ -4,7 +4,6 @@ import BookList from "./BookList";
 import Loader from "./Loader";
 
 export default (props) => {
-	const options = props.options || { width: 100 };
 
 	const [state, setState] = useState({
 		books: [],
@@ -82,7 +81,7 @@ export default (props) => {
 	return (
 		<div className="goodreads-shelf">
 			{state.loaded ? (
-				<BookList books={state.books} options={options} />
+				<BookList books={state.books} bookWidth={props.width} />
 			) : (
 				<Loader />
 			)}

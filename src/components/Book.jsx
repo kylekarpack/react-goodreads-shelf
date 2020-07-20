@@ -3,6 +3,7 @@ import Placeholder from "./Placeholder";
 
 const bookStyle = {
 	textAlign: "left",
+	marginBottom: "1vw"
 };
 
 const imageStyle = {
@@ -32,9 +33,8 @@ const descriptionStyle = {
 	fontSize: "0.8rem",
 };
 
-export default (props) => {
+export default ({ book, showDetails }) => {
 	const [state, setState] = useState({ error: false });
-	const { book, options } = props;
 
 	if (!book) {
 		return "";
@@ -56,7 +56,7 @@ export default (props) => {
 					/>
 				)}
 			</a>
-			{options.details && (
+			{showDetails && (
 				<div>
 					<small style={authorStyle}>{book.authors.author.name}</small>
 					<span style={titleStyle}>{book.title}</span>

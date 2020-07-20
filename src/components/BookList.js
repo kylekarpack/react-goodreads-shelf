@@ -1,20 +1,19 @@
 import React from "react";
 import Book from "./Book";
 
-const shelfStyle = (minWidth) => ({
-	display: "grid",
-	alignItems: "center",
-	gridTemplateColumns: `repeat(auto-fit, minmax(${minWidth}px, 1fr))`,
-	gridColumnGap: "1vw",
-	margin: "1vw",
-	textAlign: "center",
-});
+const shelfStyle = (minWidth) => {
+	minWidth = minWidth || 100;
+	return {
+		columnWidth: minWidth,
+		gridColumnGap: "1vw",
+	};
+};
 
-export default ({ books, options }) => {
+export default ({ books, bookWidth }) => {
 	return (
-		<div style={shelfStyle(options?.width)}>
+		<div style={shelfStyle(bookWidth)}>
 			{books.map((book) => {
-				return <Book key={book.id} book={book.book} options={options} />;
+				return <Book key={book.id} book={book.book} bookWidth={bookWidth} />;
 			})}
 		</div>
 	);
