@@ -25,5 +25,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn install --frozen-lockfile
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1.3
+    - run: yarn test
+    
