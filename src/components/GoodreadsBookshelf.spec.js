@@ -1,7 +1,7 @@
-import GoodreadsBookshelf from "./GoodreadsBookshelf";
+import { mount, shallow } from "enzyme";
 import React from "react";
-import { shallow, mount, render } from "enzyme";
 import { act } from "react-dom/test-utils";
+import GoodreadsBookshelf from "./GoodreadsBookshelf";
 
 describe("testing bookshelf", () => {
 	beforeEach(() => {
@@ -36,10 +36,4 @@ describe("testing bookshelf", () => {
 			expect(props.sort).toEqual("date_read");
 		});
 	});
-
-	// it("gets books", async () => {
-	// 	const shelf = shallow(<GoodreadsBookshelf apiKey="test" userId="testUser" limit={15} shelf="read" sort="date_read" />);
-	// 	const books = await shelf.instance().getBooksJson();
-	// 	await expect(books.length).resolves.toBeLessThanOrEqual(15);
-	// });
 });
