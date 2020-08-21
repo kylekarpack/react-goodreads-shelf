@@ -12,7 +12,17 @@ module.exports = {
 		rules: [
 			{
 				test: /\.svg$/,
-				use: ["@svgr/webpack"],
+				use: [
+					{
+						loader: "babel-loader"
+					},
+					{
+						loader: "react-svg-loader",
+						options: {
+							jsx: true // true outputs JSX tags
+						}
+					}
+				]
 			},
 			{
 				test: /\.(js|jsx)$/,
