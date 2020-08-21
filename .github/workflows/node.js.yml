@@ -24,7 +24,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn install --frozen-lockfile
+    - name: Install Packages
+      run: yarn install --frozen-lockfile
+    - name: Run Tests
       run: yarn test --coverage --updateSnapshot --testResultsProcessor=jest-sonar-reporter
     - name: Analyze with SonarCloud
       uses: sonarsource/sonarcloud-github-action@master
