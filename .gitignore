@@ -76,6 +76,5 @@ typings/
 .fusebox/
 
 dist/
-
 __snapshots__/
 test-report.xml
