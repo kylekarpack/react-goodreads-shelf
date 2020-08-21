@@ -49,7 +49,7 @@
     "@babel/runtime": "^7.9.6"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage --updateSnapshot",
     "start": "webpack --config webpack.config.debug.js --watch",
     "build": "webpack  --mode production",
     "prepublish": "yarn build",
