@@ -1,8 +1,5 @@
 # react-goodreads-shelf
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/468bb279800b728cb808/maintainability)](https://codeclimate.com/github/kylekarpack/react-goodreads-shelf/maintainability)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/468bb279800b728cb808/test_coverage)](https://codeclimate.com/github/kylekarpack/react-goodreads-shelf/test_coverage)
+![build](https://github.com/kylekarpack/react-goodreads-shelf/workflows/Node.js%20CI/badge.svg) ![CodeQL](https://github.com/kylekarpack/react-goodreads-shelf/workflows/CodeQL/badge.svg) [![Maintainability](https://api.codeclimate.com/v1/badges/468bb279800b728cb808/maintainability)](https://codeclimate.com/github/kylekarpack/react-goodreads-shelf/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/468bb279800b728cb808/test_coverage)](https://codeclimate.com/github/kylekarpack/react-goodreads-shelf/test_coverage)
 
 This React component allows you to display a public Goodreads shelf in a React application. It's a lot like the Goodreads JavaScript widget, but allows for more customization, better async loading, and React-like usage.
 
