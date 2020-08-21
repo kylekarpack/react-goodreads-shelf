@@ -11,6 +11,10 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.svg$/,
+				loader: "svg-inline-loader",
+			},
+			{
 				test: /\.(js|jsx)$/,
 				include: path.resolve(__dirname, "src"),
 				exclude: /(node_modules|bower_components|dist|.*\.spec\.js)/,
@@ -33,5 +37,5 @@ module.exports = {
 			amd: "React",
 			root: "React",
 		},
-	}
+	},
 };
