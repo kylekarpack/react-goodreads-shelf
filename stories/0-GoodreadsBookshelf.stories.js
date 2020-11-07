@@ -1,17 +1,5 @@
-import {
-	boolean,
-	number,
-	text,
-	withKnobs,
-	select,
-} from "@storybook/addon-knobs";
 import React from "react";
 import { GoodreadsBookshelf } from "../dist/index";
-
-export default {
-	title: "GoodreadsBookshelf",
-	decorators: [withKnobs],
-};
 
 const sorts = [
 	"title",
@@ -49,16 +37,81 @@ const sorts = [
 
 const shelves = ["read", "currently-reading", "to-read"];
 
-export const Story = () => (
-	<GoodreadsBookshelf
-		userId={text("User ID", "63515611", "Auth")}
-		apiKey={text("API Key", "PsmXJodsWJgBPgTosjdEkQ", "Auth")}
-		width={number("Width", 100, { min: 20, max: 400 }, "Display")}
-		details={boolean("Show Details", false, "Display")}
-		limit={number("Limit", 20, { min: 1, max: 50 }, "API")}
-		shelf={select("Shelf", shelves, "read", "API")}
-		sort={select("Sort", sorts, "date_read", "API")}
-		order={select("Order", ["a", "d"], "d", "API")}
-		search={text("Search", "", "API")}
-	/>
-);
+export default {
+	title: "GoodreadsBookshelf",
+	component: GoodreadsBookshelf,
+	argTypes: {
+		userId: {
+			name: "User ID",
+			defaultValue: "63515611",
+			control: {
+				type: "text",
+			},
+		},
+		apiKey: {
+			name: "API Key",
+			defaultValue: "PsmXJodsWJgBPgTosjdEkQ",
+			control: {
+				type: "text",
+			},
+		},
+		width: {
+			name: "Book Width",
+			defaultValue: 100,
+			control: {
+				type: "number",
+				min: 20,
+				max: 400,
+			},
+		},
+		details: {
+			name: "Details",
+			defaultValue: false,
+			control: {
+				type: "boolean",
+			},
+		},
+		limit: {
+			name: "Number of Books",
+			defaultValue: 10,
+			control: {
+				type: "number",
+				min: 1,
+				max: 50,
+			},
+		},
+		shelf: {
+			name: "Shelf Name",
+			defaultValue: "read",
+			control: {
+				type: "select",
+				options: shelves
+			},
+		},
+		sort: {
+			name: "Sort Field",
+			defaultValue: "date_read",
+			control: {
+				type: "select",
+				options: sorts,
+			},
+		},
+		order: {
+			name: "Order",
+			defaultValue: "d",
+			control: {
+				type: "inline-radio",
+				options: ["a", "d"],
+			},
+		},
+		search: {
+			name: "Search Text",
+			defaultValue: "",
+			control: {
+				type: "text",
+			},
+		},
+	},
+};
+
+export const Story = (args) => <GoodreadsBookshelf {...args} />;
