@@ -50,7 +50,7 @@ export default {
 		},
 		apiKey: {
 			name: "API Key",
-			defaultValue: "", // ToDo: add a description here
+			defaultValue: "", // ToDo: add a description here 
 			control: {
 				type: "text",
 			},
