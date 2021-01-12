@@ -20,7 +20,7 @@ export default function useGoodreadsShelf(props) {
 				);
 				const bookElements = [
 					...goodreadsDocument.querySelectorAll("#booksBody .bookalike"),
-				];
+				].slice(0, props.limit || 10);
 
 				const books = bookElements.map((row, index) => {
 					const isbn = row
