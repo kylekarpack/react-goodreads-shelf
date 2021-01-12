@@ -50,7 +50,7 @@ export default {
 		},
 		apiKey: {
 			name: "API Key",
-			defaultValue: "PsmXJodsWJgBPgTosjdEkQ",
+			defaultValue: "",
 			control: {
 				type: "text",
 			},
@@ -64,13 +64,13 @@ export default {
 				max: 400,
 			},
 		},
-		details: {
-			name: "Details",
-			defaultValue: false,
-			control: {
-				type: "boolean",
-			},
-		},
+		// details: {
+		// 	name: "Details",
+		// 	defaultValue: false,
+		// 	control: {
+		// 		type: "boolean",
+		// 	},
+		// },
 		limit: {
 			name: "Number of Books",
 			defaultValue: 10,

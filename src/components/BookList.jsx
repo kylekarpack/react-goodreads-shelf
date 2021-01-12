@@ -13,7 +13,7 @@ export default ({ books, bookWidth }) => {
 	return (
 		<div style={shelfStyle(bookWidth)}>
 			{books.map((book) => {
-				return <Book key={book.id} book={book.book} bookWidth={bookWidth} />;
+				return <Book key={book.id} book={book} bookWidth={bookWidth} />;
 			})}
 		</div>
 	);

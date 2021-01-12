@@ -6,9 +6,11 @@ import Loader from "./Loader";
 
 export default (props) => {
 	// If directed to use API, do that, otherwise scrape the site
-	const { books, loading, error } =
-		props.apiKey ? useGoodreadsApi(props) : useGoodreadsShelf(props);
+	const { books, loading, error } = props.apiKey
+		? useGoodreadsApi(props)
+		: useGoodreadsShelf(props);
 
+	console.warn(books);
 	return (
 		<div className="goodreads-shelf">
 			{loading ? (

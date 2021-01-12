@@ -58,7 +58,7 @@ export default ({ book, showDetails }) => {
 			</a>
 			{showDetails && (
 				<div>
-					<small style={authorStyle}>{book.authors.author.name}</small>
+					<small style={authorStyle}>{book.author || book.authors?.author?.name}</small>
 					<span style={titleStyle}>{book.title}</span>
 					<p
 						style={descriptionStyle}
