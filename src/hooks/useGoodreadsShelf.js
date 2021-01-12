@@ -44,10 +44,8 @@ export default function useGoodreadsShelf(props) {
 					};
 				});
 
-				console.warn(books);
 				setBooks(books);
 			} catch (error) {
-				console.log(error);
 				setError(error);
 			} finally {
 				setLoading(false);

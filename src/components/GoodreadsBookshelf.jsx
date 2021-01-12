@@ -10,7 +10,6 @@ export default (props) => {
 		? useGoodreadsApi(props)
 		: useGoodreadsShelf(props);
 
-	console.warn(books);
 	return (
 		<div className="goodreads-shelf">
 			{loading ? (
