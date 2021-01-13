@@ -73,7 +73,7 @@ export default {
 		// },
 		limit: {
 			name: "Number of Books",
-			defaultValue: 3,
+			defaultValue: 12,
 			control: {
 				type: "number",
 				min: 1,

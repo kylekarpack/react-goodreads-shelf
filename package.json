@@ -57,6 +57,6 @@
     "build": "webpack  --mode production",
     "prepublish": "yarn build",
     "storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook -o docs-build"
+    "build-storybook": "build-storybook -o docs-build"
   }
 }
