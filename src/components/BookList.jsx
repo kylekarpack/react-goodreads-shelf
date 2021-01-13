@@ -2,10 +2,14 @@ import React from "react";
 import Book from "./Book";
 
 const shelfStyle = (minWidth) => {
-	minWidth = minWidth || 100;
+	minWidth = minWidth || "6rem";
 	return {
-		columnWidth: minWidth,
-		gridColumnGap: "1vw",
+		display: "grid",
+		gridTemplateColumns: `repeat(auto-fill, ${minWidth})`,
+		justifyContent: "space-around",
+		alignItems: "center",
+		gridColumnGap: "0.5rem",
+		gridRowGap: "0.5rem",
 	};
 };
 

@@ -50,18 +50,16 @@ export default {
 		},
 		apiKey: {
 			name: "API Key",
-			defaultValue: "", // ToDo: add a description here 
+			defaultValue: "", // ToDo: add a description here
 			control: {
 				type: "text",
 			},
 		},
 		width: {
 			name: "Book Width",
-			defaultValue: 100,
+			defaultValue: "7rem",
 			control: {
-				type: "number",
-				min: 20,
-				max: 400,
+				type: "text",
 			},
 		},
 		// details: {
@@ -85,7 +83,7 @@ export default {
 			defaultValue: "read",
 			control: {
 				type: "select",
-				options: shelves
+				options: shelves,
 			},
 		},
 		sort: {
