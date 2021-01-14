@@ -16,6 +16,14 @@ describe("testing bookshelf", () => {
 		expect(shelf).toMatchSnapshot();
 	});
 
+	it("works with API key", async () => {
+		await act(async () => {
+			const shelf = mount(<GoodreadsBookshelf userId="testUser" />);
+			const props = shelf.props();
+			expect(props.userId).toEqual("testUser");
+		});
+	});
+
 	it("passes props properly", async () => {
 		await act(async () => {
 			const shelf = mount(
