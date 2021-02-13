@@ -4,12 +4,6 @@ export const getUrl = (props) => {
 		`https://cors.kylekarpack.workers.dev/corsproxy/?apiurl=https://www.goodreads.com/review/list/${props.userId}`
 	);
 
-	// If an API key is included, GoodReads will return an XML response
-	// Otherwise, get the HTML and parse it
-	if (props.apiKey) {
-		url.searchParams.set("key", props.apiKey);
-		url.searchParams.set("v", 2);
-	}
 	url.searchParams.set("per_page", props.limit || 10);
 	url.searchParams.set("shelf", props.shelf || "read");
 	url.searchParams.set("sort", props.sort || "date_read");

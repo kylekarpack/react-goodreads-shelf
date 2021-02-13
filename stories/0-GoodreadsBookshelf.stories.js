@@ -48,13 +48,6 @@ export default {
 				type: "text",
 			},
 		},
-		apiKey: {
-			name: "API Key",
-			defaultValue: "", // ToDo: add a description here
-			control: {
-				type: "text",
-			},
-		},
 		width: {
 			name: "Book Width",
 			defaultValue: "7rem",

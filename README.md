@@ -24,12 +24,10 @@ import { GoodreadsBookshelf } from "react-goodreads-shelf";
 
 export default function App() {
 	return (
-		<GoodreadsBookshelf userId="USER_ID_HERE" apiKey="API_KEY_HERE" />
+		<GoodreadsBookshelf userId="USER_ID_HERE" />
 	);
 }
 ```
-
-Note that the apiKey is option. If supplied, react-goodreads-shelf will use the GoodReads API, which provides a little more functionality. If omitted, it will try to scrape the public shelf page.
 
 ## Customization
 

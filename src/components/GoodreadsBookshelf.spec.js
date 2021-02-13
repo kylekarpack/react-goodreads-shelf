@@ -28,7 +28,6 @@ describe("testing bookshelf", () => {
 		await act(async () => {
 			const shelf = mount(
 				<GoodreadsBookshelf
-					apiKey="test"
 					userId="testUser"
 					limit={15}
 					shelf="read"
@@ -39,7 +38,6 @@ describe("testing bookshelf", () => {
 			const props = shelf.props();
 			expect(props.limit).toEqual(15);
 			expect(props.userId).toEqual("testUser");
-			expect(props.apiKey).toEqual("test");
 			expect(props.shelf).toEqual("read");
 			expect(props.sort).toEqual("date_read");
 		});
