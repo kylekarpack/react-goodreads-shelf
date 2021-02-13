@@ -1,7 +1,7 @@
 export const getUrl = (props) => {
 	// Build a request to the Goodreads API
 	const url = new URL(
-		`https://cors.kylekarpack.workers.dev/corsproxy/?apiurl=https://www.goodreads.com/review/list/${props.userId}`
+		`https://www.goodreads.com/review/list/${props.userId}`
 	);
 
 	url.searchParams.set("per_page", props.limit || 10);
@@ -14,5 +14,7 @@ export const getUrl = (props) => {
 		url.searchParams.set("search[query]", props.search);
 	}
 
-	return url;
+	const outputUrl = new URL(`https://cors.kylekarpack.workers.dev/corsproxy/?apiurl=${encodeURIComponent(url.toString())}`);
+
+	return outputUrl;
 };
