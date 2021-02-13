@@ -1,9 +1,9 @@
 export const getUrl = (props) => {
 	// Build a request to the Goodreads API
 	const url = new URL(
-		`https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/${props.userId}`
+		`https://cors.kylekarpack.workers.dev/corsproxy/?apiurl=https://www.goodreads.com/review/list/${props.userId}`
 	);
-	
+
 	// If an API key is included, GoodReads will return an XML response
 	// Otherwise, get the HTML and parse it
 	if (props.apiKey) {
