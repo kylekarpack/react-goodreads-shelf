@@ -29,10 +29,39 @@ module.exports = {
 				include: path.resolve(__dirname, "src"),
 				exclude: /(node_modules|bower_components|dist|.*\.spec\.js)/,
 				use: {
-					loader: "babel-loader",
+					loader: "swc-loader",
 					options: {
-						presets: ["@babel/preset-env"],
-					},
+						"jsc": {
+							"parser": {
+								"syntax": "ecmascript",
+								"jsx": true,
+								"numericSeparator": false,
+								"classPrivateProperty": false,
+								"privateMethod": false,
+								"classProperty": false,
+								"functionBind": false,
+								"decorators": false,
+								"decoratorsBeforeExport": false
+							},
+							"transform": {
+								"react": {
+									"pragma": "React.createElement",
+									"pragmaFrag": "React.Fragment",
+									"throwIfNamespace": true,
+									"development": false,
+									"useBuiltins": false
+								},
+								"optimizer": {
+									"globals": {
+										"vars": {
+											"__DEBUG__": "true"
+										}
+									}
+								}
+							}
+						},
+						minify: true
+					}
 				},
 			},
 		],
