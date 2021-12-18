@@ -5,24 +5,13 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "index.js",
-		library: "",
 		libraryTarget: "commonjs",
 	},
 	module: {
 		rules: [
 			{
 				test: /\.svg$/,
-				use: [
-					{
-						loader: "babel-loader"
-					},
-					{
-						loader: "react-svg-loader",
-						options: {
-							jsx: true // true outputs JSX tags
-						}
-					}
-				]
+				use: ["@svgr/webpack"]
 			},
 			{
 				test: /\.(js|jsx)$/,
