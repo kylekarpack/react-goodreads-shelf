@@ -31,35 +31,6 @@ module.exports = {
 				use: {
 					loader: "swc-loader",
 					options: {
-						"jsc": {
-							"parser": {
-								"syntax": "ecmascript",
-								"jsx": true,
-								"numericSeparator": false,
-								"classPrivateProperty": false,
-								"privateMethod": false,
-								"classProperty": false,
-								"functionBind": false,
-								"decorators": false,
-								"decoratorsBeforeExport": false
-							},
-							"transform": {
-								"react": {
-									"pragma": "React.createElement",
-									"pragmaFrag": "React.Fragment",
-									"throwIfNamespace": true,
-									"development": false,
-									"useBuiltins": false
-								},
-								"optimizer": {
-									"globals": {
-										"vars": {
-											"__DEBUG__": "true"
-										}
-									}
-								}
-							}
-						},
 						minify: true
 					}
 				},
