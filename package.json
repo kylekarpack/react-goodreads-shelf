@@ -30,7 +30,6 @@
     "jest-svg-transformer": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
-    "react-svg-loader": "^3.0.3",
     "react-test-renderer": "16.13.1",
     "swc-loader": "^0.1.15",
     "webpack": "^5.65.0",
@@ -39,14 +38,12 @@
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0"
   },
-  "dependencies": {
-    "@babel/runtime": "^7.12.13"
-  },
   "scripts": {
     "test": "jest",
     "start": "webpack --config webpack.config.debug.js --watch",
     "build": "webpack  --mode production",
-    "swc": "spack",
+    "spack": "spack --mode production",
+    "swc": "swc",
     "prepublish": "yarn build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build"
