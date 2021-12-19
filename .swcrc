@@ -2,9 +2,9 @@
 	"minify": true,
 	"jsc": {
 		"minify": {
-      "compress": true,
-      "mangle": true
-    },
+			"compress": true,
+			"mangle": true
+		},
 		"parser": {
 			"syntax": "ecmascript",
 			"jsx": true,
