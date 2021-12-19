@@ -11,18 +11,13 @@ module.exports = {
 		rules: [
 			{
 				test: /\.svg$/,
-				use: ["@svgr/webpack"]
+				use: ["@svgr/webpack"],
 			},
 			{
 				test: /\.(js|jsx)$/,
 				include: path.resolve(__dirname, "src"),
 				exclude: /(node_modules|bower_components|dist|.*\.spec\.js)/,
-				use: {
-					loader: "swc-loader",
-					options: {
-						minify: true
-					}
-				},
+				use: ["swc-loader"],
 			},
 		],
 	},

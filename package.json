@@ -4,7 +4,7 @@
   "description": "A React widget for displaying a user's public book shelf",
   "main": "dist/index.js",
   "repository": "https://github.com/kylekarpack/react-goodreads-shelf",
-  "author": "Kyle Karpack <kylekarpack@gmail.com>",
+  "author": "Kyle Karpack <kylekarpack+rgg@gmail.com>",
   "license": "MIT",
   "private": false,
   "files": [
@@ -18,8 +18,6 @@
     "@storybook/addons": "^6.0.28",
     "@storybook/react": "^6.0.28",
     "@svgr/webpack": "^6.1.2",
-    "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.120",
     "@types/jest": "^24.9.1",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
@@ -42,9 +40,7 @@
     "test": "jest",
     "start": "webpack --config webpack.config.debug.js --watch",
     "build": "webpack  --mode production",
-    "spack": "spack --mode production",
-    "swc": "swc",
-    "prepublish": "yarn build",
+    "prepublish": "npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build"
   }
