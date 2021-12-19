@@ -4,58 +4,45 @@
   "description": "A React widget for displaying a user's public book shelf",
   "main": "dist/index.js",
   "repository": "https://github.com/kylekarpack/react-goodreads-shelf",
-  "author": "Kyle Karpack <kylekarpack@gmail.com>",
+  "author": "Kyle Karpack <kylekarpack+rgg@gmail.com>",
   "license": "MIT",
   "private": false,
   "files": [
     "dist/index.js"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/plugin-proposal-optional-chaining": "^7.12.1",
-    "@babel/plugin-transform-react-jsx": "^7.12.5",
-    "@babel/plugin-transform-regenerator": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.5",
     "@storybook/addon-actions": "^6.0.28",
     "@storybook/addon-controls": "^6.0.28",
     "@storybook/addon-links": "^6.0.28",
     "@storybook/addon-storysource": "^6.0.28",
     "@storybook/addons": "^6.0.28",
     "@storybook/react": "^6.0.28",
+    "@svgr/webpack": "^6.1.2",
+    "@swc/core": "^1.2.120",
+    "@swc/jest": "^0.2.15",
     "@types/jest": "^24.9.1",
-    "babel-jest": "^26.3.0",
     "babel-loader": "^8.0.6",
-    "babel-plugin-istanbul": "^6.0.0",
-    "babel-preset-minify": "^0.5.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "jest": "26.4.1",
+    "jest": "^26.4.1",
     "jest-fetch-mock": "^2.1.2",
     "jest-sonar-reporter": "^2.0.0",
     "jest-svg-transformer": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
-    "react-svg-loader": "^3.0.3",
     "react-test-renderer": "16.13.1",
-    "webpack": "^4.34.0",
-    "webpack-cli": "^3.3.12"
+    "swc-loader": "^0.1.15",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
   },
   "peerDependencies": {
-    "react": "^16.8.6"
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.12.13"
+    "react": "^16.8.6 || ^17.0.0"
   },
   "scripts": {
     "test": "jest",
     "start": "webpack --config webpack.config.debug.js --watch",
     "build": "webpack  --mode production",
-    "prepublish": "yarn build",
+    "prepublish": "npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build"
   }
