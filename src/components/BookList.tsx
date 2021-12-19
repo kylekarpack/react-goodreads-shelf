@@ -1,7 +1,7 @@
-import React from "react";
+import React, { CSSProperties, FunctionComponent } from "react";
 import Book from "./Book";
 
-const shelfStyle = (minWidth) => {
+const shelfStyle = (minWidth: number | string): CSSProperties => {
   minWidth = minWidth || "6rem";
   return {
     display: "grid",
@@ -13,12 +13,14 @@ const shelfStyle = (minWidth) => {
   };
 };
 
-export default ({ books, bookWidth }) => {
+const BookList: FunctionComponent<{ books: any[], bookWidth?: number }> = ({ books, bookWidth }) => {
   return (
     <div style={shelfStyle(bookWidth)}>
       {books.map((book) => {
-        return <Book key={book.id} book={book} bookWidth={bookWidth} />;
+        return <Book key={book.id} book={book} />;
       })}
     </div>
   );
 };
+
+export default BookList;

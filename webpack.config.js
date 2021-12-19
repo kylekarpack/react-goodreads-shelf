@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-	entry: "./src/index.js",
+	entry: "./src/index.ts",
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "index.js",
@@ -14,15 +14,15 @@ module.exports = {
 				use: ["@svgr/webpack"],
 			},
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.(ts|tsx)$/,
 				include: path.resolve(__dirname, "src"),
-				exclude: /(node_modules|bower_components|dist|.*\.spec\.js)/,
+				exclude: /(node_modules|bower_components|dist|.*\.test\.tsx?)/,
 				use: ["swc-loader"],
 			},
 		],
 	},
 	resolve: {
-		extensions: [".js", ".jsx"],
+		extensions: [".ts", ".tsx"],
 	},
 	externals: {
 		react: {

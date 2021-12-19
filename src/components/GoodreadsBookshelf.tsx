@@ -1,9 +1,10 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import useGoodreadsShelf from "../hooks/useGoodreadsShelf";
+import { Props } from "../types";
 import BookList from "./BookList";
 import Loader from "./Loader";
 
-export default (props) => {
+const GoodreadsBookshelf: FunctionComponent<Props> = (props) => {
   const { books, loading, error } = useGoodreadsShelf(props);
 
   return (
@@ -14,3 +15,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default GoodreadsBookshelf;

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import LoaderSvg from "../assets/loader.svg";
 
-const Loader = () => {
+const Loader: FunctionComponent = () => {
   return (
     <div style={{ textAlign: "center" }}>
       <LoaderSvg />
