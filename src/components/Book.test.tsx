@@ -4,7 +4,7 @@ import Book from "./Book";
 
 describe("testing book", () => {
   it("renders without crashing", () => {
-    const book = shallow(<Book />);
+    const book = shallow(<Book book={null} />);
     expect(book).toMatchSnapshot();
   });
 

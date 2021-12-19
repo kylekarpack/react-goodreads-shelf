@@ -5,12 +5,13 @@ import GoodreadsBookshelf from "./GoodreadsBookshelf";
 
 describe("testing bookshelf", () => {
   beforeEach(() => {
+    const fetch = global.fetch as any;
     fetch.resetMocks();
     fetch.mockResponseOnce(JSON.stringify({ GoodreadsResponse: { reviews: { review: [] } } }));
   });
 
   it("renders without crashing", () => {
-    const shelf = shallow(<GoodreadsBookshelf />);
+    const shelf = shallow(<GoodreadsBookshelf userId={null} />);
     expect(shelf).toMatchSnapshot();
   });
 

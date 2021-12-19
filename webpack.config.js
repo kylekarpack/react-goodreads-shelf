@@ -14,15 +14,15 @@ module.exports = {
 				use: ["@svgr/webpack"],
 			},
 			{
-				test: /\.(js|jsx|ts|tsx)$/,
+				test: /\.(ts|tsx)$/,
 				include: path.resolve(__dirname, "src"),
-				exclude: /(node_modules|bower_components|dist|.*\.spec\.js)/,
+				exclude: /(node_modules|bower_components|dist|.*\.test\.tsx?)/,
 				use: ["swc-loader"],
 			},
 		],
 	},
 	resolve: {
-		extensions: [".js", ".jsx", ".ts", ".tsx"],
+		extensions: [".ts", ".tsx"],
 	},
 	externals: {
 		react: {
