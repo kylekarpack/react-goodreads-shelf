@@ -1,6 +1,7 @@
 {
-  "include": ["src/custom.d.ts"],
+  "include": ["src/index.ts", "src/custom.d.ts"],
   "compilerOptions": {
+    "jsx": "react-jsx",
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Projects */

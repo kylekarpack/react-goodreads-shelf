@@ -1,7 +1,7 @@
 import React, { CSSProperties, FunctionComponent } from "react";
 import Book from "./Book";
 
-const shelfStyle = (minWidth: number | string): CSSProperties => {
+const shelfStyle = (minWidth?: number | string): CSSProperties => {
   minWidth = minWidth || "6rem";
   return {
     display: "grid",
