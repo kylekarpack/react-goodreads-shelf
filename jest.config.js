@@ -165,8 +165,7 @@ module.exports = {
 
 	// A map from regular expressions to paths to transformers
 	transform: {
-		"^.+\\.tsx?$": "@swc/jest",
-		"^.+\\.jsx?$": "@swc/jest",
+		"^.+\\.[jt]sx?$": "@swc/jest",
 		"^.+\\.svg$": "jest-svg-transformer",
 	},
 
