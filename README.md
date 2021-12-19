@@ -20,12 +20,12 @@ yarn add react-goodreads-shelf
 
 ```jsx
 import React from "react";
-import { GoodreadsBookshelf } from "react-goodreads-shelf";
+import GoodreadsBookshelf from "react-goodreads-shelf";
 
 export default function App() {
-	return (
-		<GoodreadsBookshelf userId="USER_ID_HERE" />
-	);
+  return (
+    <GoodreadsBookshelf userId="USER_ID_HERE" />
+  );
 }
 ```
 

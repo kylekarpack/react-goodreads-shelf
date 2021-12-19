@@ -1,7 +1,5 @@
 import React from "react";
-import { GoodreadsBookshelf } from "../dist/index";
-
-console.log(GoodreadsBookshelf)
+import GoodreadsBookshelf from "../dist/index";
 
 const sorts = [
 	"title",
