@@ -1,8 +1,10 @@
-export const getUrl = (props) => {
+import { Props } from "../types";
+
+export const getUrl = (props: Props): URL => {
   // Build a request to the Goodreads API
   const url = new URL(`https://www.goodreads.com/review/list/${props.userId}`);
 
-  url.searchParams.set("per_page", props.limit || 10);
+  url.searchParams.set("per_page", String(props.limit || 10));
   url.searchParams.set("shelf", props.shelf || "read");
   url.searchParams.set("sort", props.sort || "date_read");
   url.searchParams.set("order", props.order || "d");

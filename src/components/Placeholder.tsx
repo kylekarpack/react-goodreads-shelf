@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 
-const Placeholder = ({ name }) => {
+const Placeholder: FunctionComponent = () => {
   return (
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" style={{ width: "100%" }} viewBox="0 0 170 250">

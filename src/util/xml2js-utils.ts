@@ -1,31 +1,18 @@
 export class Xml {
-  static parseXmlStringToObject = (stringContent) => {
+  static parseXmlStringToObject = (stringContent: string): any => {
     const parsed = Xml.parse(stringContent);
     return Xml.xmlToJson(parsed);
   };
 
-  static parse = (stringContent) => {
+  static parse = (stringContent: string) => {
     const parser = new DOMParser();
     return parser.parseFromString(stringContent, "text/xml");
   };
 
-  static xmlToJson = (xml) => {
+  static xmlToJson = (xml: Document | ChildNode): any => {
     // Create the return object
     let obj = {};
 
-    /*
-		if (xml.nodeType === 1) {
-			// element
-			// do attributes (not needed for BeerXml?)
-			if (xml.attributes.length > 0) {
-				obj["@attributes"] = {};
-				for (let j = 0; j < xml.attributes.length; j++) {
-					const attribute = xml.attributes.item(j);
-					obj["@attributes"][camelCase(attribute.nodeName)] =
-						attribute.nodeValue;
-				}
-			}
-		} */
     if (xml.nodeType === 3) {
       // text
       obj = xml.nodeValue;

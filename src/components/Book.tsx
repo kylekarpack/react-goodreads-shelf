@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { CSSProperties, FunctionComponent, useState } from "react";
 import Placeholder from "./Placeholder";
 
-const bookStyle = {
+const bookStyle: CSSProperties = {
   textAlign: "left",
   marginBottom: "1vw"
 };
 
-const imageStyle = {
+const imageStyle: CSSProperties = {
   width: "100%"
 };
 
-const authorStyle = {
+const authorStyle: CSSProperties = {
   fontSize: "0.8rem",
   opacity: 0.5,
   display: "block",
   padding: "0.5rem 0"
 };
 
-const titleStyle = {
+const titleStyle: CSSProperties = {
   fontSize: "1.2rem",
   borderBottom: "1px solid #eee",
   display: "block",
@@ -33,11 +33,11 @@ const descriptionStyle = {
   fontSize: "0.8rem"
 };
 
-export default ({ book, showDetails }) => {
+const Book: FunctionComponent<{ book: any, showDetails?: boolean }> = ({ book, showDetails }) => {
   const [state, setState] = useState({ error: false });
 
   if (!book) {
-    return "";
+    return null;
   }
 
   // Truncate description
@@ -62,3 +62,5 @@ export default ({ book, showDetails }) => {
     </div>
   );
 };
+
+export default Book;

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { Props } from "../types";
 import { getUrl } from "../util/get-url";
 
-export default function useGoodreadsShelf(props) {
+export default function useGoodreadsShelf(props: Props) {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +13,7 @@ export default function useGoodreadsShelf(props) {
         setLoading(true);
         setError(null);
         const url = getUrl(props);
-        const response = await fetch(url);
+        const response = await fetch(url.toString());
         const parser = new DOMParser();
         const goodreadsDocument = parser.parseFromString(await response.text(), "text/html");
         const bookElements = [...goodreadsDocument.querySelectorAll("#booksBody .bookalike")].slice(
@@ -21,12 +22,12 @@ export default function useGoodreadsShelf(props) {
         );
 
         const books = bookElements.map((row, index) => {
-          const isbn = row.querySelector("td.field.isbn .value").innerText.trim();
+          const isbn = row.querySelector("td.field.isbn .value").textContent.trim();
           return {
             id: `${isbn}_${index}`,
             isbn: isbn,
             title: row.querySelector("td.field.title a").getAttribute("title"),
-            author: row.querySelector("td.field.author .value").innerText.trim(),
+            author: row.querySelector("td.field.author .value").textContent.trim(),
             image_url: row
               .querySelector("td.field.cover img")
               .getAttribute("src")
