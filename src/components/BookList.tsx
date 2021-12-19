@@ -13,7 +13,7 @@ const shelfStyle = (minWidth: number | string): CSSProperties => {
   };
 };
 
-const BookList: FunctionComponent<{ books: any[], bookWidth?: number }> = ({ books, bookWidth }) => {
+const BookList: FunctionComponent<{ books: any[]; bookWidth?: number }> = ({ books, bookWidth }) => {
   return (
     <div style={shelfStyle(bookWidth)}>
       {books.map((book) => {

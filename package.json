@@ -47,7 +47,7 @@
     "test": "jest",
     "start": "webpack --config webpack.config.debug.js --watch",
     "build": "webpack  --mode production",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write src/**/*.{ts,tsx}",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build"
