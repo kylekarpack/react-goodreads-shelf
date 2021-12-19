@@ -4,6 +4,7 @@ import { Props } from "../types";
 import BookList from "./BookList";
 import Loader from "./Loader";
 
+/** Display a Goodreads bookshelf component */
 const GoodreadsBookshelf: FunctionComponent<Props> = (props) => {
   const { books, loading, error } = useGoodreadsShelf(props);
 

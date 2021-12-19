@@ -20,12 +20,12 @@ yarn add react-goodreads-shelf
 
 ```jsx
 import React from "react";
-import { GoodreadsBookshelf } from "react-goodreads-shelf";
+import GoodreadsBookshelf from "react-goodreads-shelf";
 
 export default function App() {
-	return (
-		<GoodreadsBookshelf userId="USER_ID_HERE" />
-	);
+  return (
+    <GoodreadsBookshelf userId="USER_ID_HERE" />
+  );
 }
 ```
 
@@ -36,7 +36,7 @@ You can also set some options as supported by the Goodreads API:
 | Option | Type | Description | Default | Works Without API? |
 | ------ | ---- | ----------- | ------- | ------- |
 | shelf  | string | The shelf from which to fetch books | read | ✓ |
-| sort  | string | The order in which to sort the results returned | date_read | no |
+| sort  | string | The field by which to sort the results returned | date_read | no |
 | limit  | number | The maximum number of books to be returned | 10 | sort of
 | width | number | Minimum width allowed for each book | 100 | ✓ |
 | search | string | Search text | "" | ✓ |

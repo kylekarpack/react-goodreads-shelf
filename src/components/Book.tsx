@@ -33,7 +33,7 @@ const descriptionStyle = {
   fontSize: "0.8rem"
 };
 
-const Book: FunctionComponent<{ book: any, showDetails?: boolean }> = ({ book, showDetails }) => {
+const Book: FunctionComponent<{ book: any; showDetails?: boolean }> = ({ book, showDetails }) => {
   const [state, setState] = useState({ error: false });
 
   if (!book) {
