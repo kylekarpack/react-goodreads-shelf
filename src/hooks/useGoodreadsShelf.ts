@@ -16,7 +16,7 @@ export default function useGoodreadsShelf(props: Props) {
         const response = await fetch(url.toString());
         const parser = new DOMParser();
         const goodreadsDocument = parser.parseFromString(await response.text(), "text/html");
-        const bookElements = [...goodreadsDocument.querySelectorAll("#booksBody .bookalike")].slice(
+        const bookElements = Array.from(goodreadsDocument.querySelectorAll("#booksBody .bookalike")).slice(
           0,
           props.limit || 10
         );
