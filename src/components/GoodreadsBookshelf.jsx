@@ -4,17 +4,13 @@ import BookList from "./BookList";
 import Loader from "./Loader";
 
 export default (props) => {
-	const { books, loading, error } = useGoodreadsShelf(props);
+  const { books, loading, error } = useGoodreadsShelf(props);
 
-	return (
-		<div className="goodreads-shelf">
-			{loading ? (
-				<Loader />
-			) : (
-				<BookList books={books} bookWidth={props.width} />
-			)}
+  return (
+    <div className="goodreads-shelf">
+      {loading ? <Loader /> : <BookList books={books} bookWidth={props.width} />}
 
-			{error && <div>Sorry, we couldn't load books right now</div>}
-		</div>
-	);
+      {error && <div>Sorry, we couldn't load books right now</div>}
+    </div>
+  );
 };
