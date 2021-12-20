@@ -1,16 +1,15 @@
-import { shallow } from "enzyme";
-import React from "react";
+import { render } from "@testing-library/react";
 import Book from "./Book";
 
 describe("testing book", () => {
   it("renders without crashing", () => {
-    const book = shallow(<Book book={null} />);
-    expect(book).toMatchSnapshot();
+    const book = render(<Book book={null} />);
+    expect(book.container).toBeInTheDocument();
   });
 
   it("renders a book", () => {
     const data = { description: "Test" };
-    const book = shallow(<Book book={data} />);
-    expect(book).toMatchSnapshot();
+    const book = render(<Book book={data} />);
+    expect(book.container).toBeInTheDocument();
   });
 });
