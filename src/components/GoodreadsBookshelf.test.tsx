@@ -1,6 +1,4 @@
-import { mount, shallow } from "enzyme";
-import React from "react";
-import { act } from "react-dom/test-utils";
+import { render, act } from "@testing-library/react";
 import GoodreadsBookshelf from "./GoodreadsBookshelf";
 
 describe("testing bookshelf", () => {
@@ -10,28 +8,24 @@ describe("testing bookshelf", () => {
     fetch.mockResponseOnce(JSON.stringify({ GoodreadsResponse: { reviews: { review: [] } } }));
   });
 
-  it("renders without crashing", () => {
-    const shelf = shallow(<GoodreadsBookshelf userId={null} />);
-    expect(shelf).toMatchSnapshot();
+  it("renders without crashing", async () => {
+    await act(async () => {
+      const shelf = render(<GoodreadsBookshelf userId={null} />);
+      expect(shelf).toMatchSnapshot();
+    });
   });
 
   it("works with API key", async () => {
     await act(async () => {
-      const shelf = mount(<GoodreadsBookshelf userId="testUser" />);
-      const props = shelf.props();
-      expect(props.userId).toEqual("testUser");
+      const shelf = render(<GoodreadsBookshelf userId="testUser" />);
+      expect(shelf).toMatchSnapshot();
     });
   });
 
   it("passes props properly", async () => {
     await act(async () => {
-      const shelf = mount(<GoodreadsBookshelf userId="testUser" limit={15} shelf="read" sort="date_read" />);
-
-      const props = shelf.props();
-      expect(props.limit).toEqual(15);
-      expect(props.userId).toEqual("testUser");
-      expect(props.shelf).toEqual("read");
-      expect(props.sort).toEqual("date_read");
+      const shelf = render(<GoodreadsBookshelf userId="testUser" limit={15} shelf="read" sort="date_read" />);
+      expect(shelf).toMatchSnapshot();
     });
   });
 });

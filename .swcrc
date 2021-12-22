@@ -1,29 +1,29 @@
 {
-	"minify": true,
-	"jsc": {
-		"minify": {
-			"compress": true,
-			"mangle": true
-		},
-		"parser": {
-			"syntax": "typescript",
-			"tsx": true,
-			"numericSeparator": false,
-			"classPrivateProperty": false,
-			"privateMethod": false,
-			"classProperty": false,
-			"functionBind": false,
-			"decorators": false,
-			"decoratorsBeforeExport": false
-		},
-		"transform": {
-			"react": {
-				"pragma": "React.createElement",
-				"pragmaFrag": "React.Fragment",
-				"throwIfNamespace": true,
-				"development": false,
-				"useBuiltins": false
-			}
-		}
-	}
+  "minify": true,
+  "jsc": {
+    "minify": {
+      "compress": true,
+      "mangle": true
+    },
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "numericSeparator": false,
+      "classPrivateProperty": false,
+      "privateMethod": false,
+      "classProperty": false,
+      "functionBind": false,
+      "decorators": false,
+      "decoratorsBeforeExport": false
+    },
+    "transform": {
+      "react": {
+        "pragma": "React.createElement",
+        "pragmaFrag": "React.Fragment",
+        "throwIfNamespace": true,
+        "development": false,
+        "useBuiltins": false
+      }
+    }
+  }
 }

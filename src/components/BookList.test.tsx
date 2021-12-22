@@ -1,18 +1,16 @@
-import { mount, shallow } from "enzyme";
-import React from "react";
+import { render } from "@testing-library/react";
 import BookList from "./BookList";
 
 describe("testing book list", () => {
   it("renders without crashing", () => {
-    const list = shallow(<BookList books={[]} />);
-    expect(list).toMatchSnapshot();
+    const { container } = render(<BookList books={[]} />);
+    expect(container).toBeInTheDocument();
   });
 
   it("passes props correctly", () => {
     const id = Math.round(Math.random() * 100000);
-    const list = mount(<BookList books={[{ id }]} />);
-    const books = list.props().books;
-    expect(books.length).toEqual(1);
-    expect(books[0].id).toEqual(id);
+    const list = render(<BookList books={[{ id }]} />);
+    const books = list.container;
+    expect(books.childElementCount).toEqual(1);
   });
 });
