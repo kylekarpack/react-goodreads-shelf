@@ -1,4 +1,4 @@
-import { CSSProperties, FunctionComponent, useState } from "react";
+import React, { CSSProperties, FunctionComponent, useState } from "react";
 import Placeholder from "./Placeholder";
 
 const bookStyle: CSSProperties = {
