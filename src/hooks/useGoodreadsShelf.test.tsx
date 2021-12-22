@@ -1,14 +1,9 @@
-import React from "react";
 import useGoodreadsShelf from "./useGoodreadsShelf";
+import { renderHook, act } from "@testing-library/react-hooks";
 
 describe("use shelf hook", () => {
-  it("loads", () => {
-    const Cmp = () => {
-      const { loading, books, error} = useGoodreadsShelf({ userId: null });
-      return <></>
-    }
-
-    // const rnd = render(<Cmp />);
-    // expect(rnd).toBeDefined();
+  it("doesn't run when not current", async () => {
+    renderHook(() => useGoodreadsShelf({ userId: "kyle" }));
+    expect(global.fetch).toHaveBeenCalled();
   });
 });
