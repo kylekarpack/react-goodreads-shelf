@@ -1,5 +1,5 @@
+import { renderHook } from "@testing-library/react-hooks";
 import useGoodreadsShelf from "./useGoodreadsShelf";
-import { renderHook, act } from "@testing-library/react-hooks";
 
 describe("use shelf hook", () => {
   it("doesn't run when not current", async () => {

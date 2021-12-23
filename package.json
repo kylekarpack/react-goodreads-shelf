@@ -10,6 +10,9 @@
   "files": [
     "dist/index.js"
   ],
+  "engines": {
+    "node": ">=14"
+  },
   "devDependencies": {
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-controls": "^6.4.9",
@@ -28,6 +31,7 @@
     "@types/node": "^17.0.0",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
+    "gts": "^3.1.0",
     "jest": "^26.4.1",
     "jest-fetch-mock": "^3.0.3",
     "jest-sonar-reporter": "^2.0.0",
@@ -42,13 +46,17 @@
   },
   "scripts": {
     "test": "jest",
+    "prettier": "prettier",
     "start": "webpack --config webpack.config.debug.js --watch",
     "build": "webpack  --mode production",
-    "format": "prettier --write src/**/*.{ts,tsx}",
     "postbuild": "tsc -p tsconfig.json --emitDeclarationOnly --declaration --declarationDir ./dist --skipLibCheck",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs-build"
+    "build-storybook": "build-storybook -o docs-build",
+    "lint": "gts lint src/**/*.{ts,tsx}",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix"
   },
   "dependencies": {
     "@testing-library/react-hooks": "^7.0.2"
