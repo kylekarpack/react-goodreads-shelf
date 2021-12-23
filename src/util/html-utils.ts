@@ -8,7 +8,8 @@ const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book =
     ?.querySelector("td.field.cover img")
     ?.getAttribute("src")
     // Get a thumbnail of the requested width
-    ?.replace(/\._(S[Y|X]\d+_?){1,2}_/i, `._SX${thumbnailWidth}_`);
+    // Add some padding factor for higher-quality rendering
+    ?.replace(/\._(S[Y|X]\d+_?){1,2}_/i, `._SX${thumbnailWidth * 1.5}_`);
   const href = row?.querySelector("td.field.cover a")?.getAttribute("href");
 
   return {
