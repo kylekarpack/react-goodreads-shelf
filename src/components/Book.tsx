@@ -21,7 +21,7 @@ const Book: FunctionComponent<{ book: BookType }> = ({ book }) => {
 
   return (
     <div style={bookStyle} title={book.title}>
-      <a href={book.link} target="_blank">
+      <a href={book.link} target="_blank" rel="nofollow noreferrer">
         {state.error ? (
           <div data-testid="placeholder">
             <Placeholder />
