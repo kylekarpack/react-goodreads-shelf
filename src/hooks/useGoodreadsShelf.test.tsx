@@ -5,7 +5,6 @@ import useGoodreadsShelf from "./useGoodreadsShelf";
 describe("use shelf hook", () => {
   beforeEach(() => {
     fetch.resetMocks();
-
   });
 
   it("handles loading state", async () => {
@@ -16,11 +15,12 @@ describe("use shelf hook", () => {
   });
 
   it("handles errors", async () => {
-    fetch.mockRejectOnce(new Error("fake error message"));
-
+    const message = "fake error message";
+    fetch.mockRejectOnce(new Error(message));
     const { result, waitForNextUpdate } = renderHook(() => useGoodreadsShelf({ userId: "kyle" }));
     expect(result.current.error).toBeNull();
     await waitForNextUpdate();
     expect(result.current.error).not.toBeNull();
+    expect(result.current.error.message).toBe(message);
   });
 });

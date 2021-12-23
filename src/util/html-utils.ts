@@ -1,4 +1,4 @@
-import { Book } from "../types/Book";
+import { Book } from "../types";
 
 const bookMapper = (row: Element, index: number): Book => {
   const isbn = row?.querySelector("td.field.isbn .value")?.textContent?.trim();

@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Book, Props } from "../types";
-import { getUrl } from "../util/get-url";
-import { getBooksFromHtml } from "../util/html-utils";
+import { getUrl, getBooksFromHtml } from "../util";
 
 export default function useGoodreadsShelf(props: Props) {
   const { userId, limit, order, search, shelf, sort } = props;
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<unknown>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   const fetchBooks = async () => {
     try {
@@ -21,7 +20,7 @@ export default function useGoodreadsShelf(props: Props) {
       const books = getBooksFromHtml(html);
       setBooks(books);
     } catch (error: unknown) {
-      setError(error);
+      setError(error as Error);
     } finally {
       setLoading(false);
     }
