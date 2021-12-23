@@ -16,11 +16,8 @@ export default function useGoodreadsShelf(props: Props) {
 
       // Get the books from Goodreads
       const url = getUrl(props);
-      console.log("TEST STARTED", url.toString())
       const response = await fetch(url.toString());
-      console.log("First", response.body.toString());
       const html = await response.text();
-      console.log("Second", html);
       const books = getBooksFromHtml(html);
       setBooks(books);
     } catch (error: unknown) {
