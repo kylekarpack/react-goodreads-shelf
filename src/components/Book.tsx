@@ -13,21 +13,21 @@ const imageStyle: CSSProperties = {
 
 const Book: FunctionComponent<{ book: Book }> = ({ book }) => {
   const [state, setState] = useState({ error: false });
+  const onError = () => setState({ error: true });
 
   if (!book) {
     return null;
   }
 
-  // Truncate description
-  book.description = book.description?.toString()?.substring(0, 200) + "...";
-
   return (
     <div style={bookStyle} title={book.title}>
       <a href={book.link} target="_blank">
         {state.error ? (
-          <Placeholder />
+          <div data-testid="placeholder">
+            <Placeholder />
+          </div>
         ) : (
-          <img style={imageStyle} src={book.image_url} onError={() => setState({ error: true })} />
+          <img alt={book.title} style={imageStyle} src={book.image_url} onError={onError} />
         )}
       </a>
     </div>
