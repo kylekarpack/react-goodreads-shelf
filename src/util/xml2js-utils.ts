@@ -37,7 +37,7 @@ export class Xml {
     }
 
     // Move up all text attrs
-    for (let key in obj) {
+    for (const key in obj) {
       if (typeof obj[key]["#text"] === "string") {
         obj[key] = obj[key]["#text"];
       } else if (typeof obj[key].text === "string") {
@@ -49,7 +49,7 @@ export class Xml {
     }
 
     // Move up all sub-arrays
-    for (let key in obj) {
+    for (const key in obj) {
       const value = obj[key];
       const keys = Object.keys(value);
       if (typeof value === "object" && keys.length === 1 && Array.isArray(value[keys[0]])) {

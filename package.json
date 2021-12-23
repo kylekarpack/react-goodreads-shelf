@@ -43,6 +43,7 @@
   },
   "scripts": {
     "test": "jest",
+    "prettier": "prettier",
     "start": "webpack --config webpack.config.debug.js --watch",
     "build": "webpack  --mode production",
     "postbuild": "tsc -p tsconfig.json --emitDeclarationOnly --declaration --declarationDir ./dist --skipLibCheck",
