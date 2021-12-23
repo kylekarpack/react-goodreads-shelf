@@ -1,9 +1,9 @@
-import { render, act } from "@testing-library/react";
+import { act, render } from "@testing-library/react";
+import fetch from "jest-fetch-mock";
 import GoodreadsBookshelf from "./GoodreadsBookshelf";
 
 describe("testing bookshelf", () => {
   beforeEach(() => {
-    const fetch = global.fetch as any;
     fetch.resetMocks();
     fetch.mockResponseOnce(JSON.stringify({ GoodreadsResponse: { reviews: { review: [] } } }));
   });
