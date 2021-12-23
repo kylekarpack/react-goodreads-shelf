@@ -7,8 +7,7 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testMatch: ["**/?(*.)+(spec|test).[tj]s?(x)"],
   transform: {
-    "^.+\\.(t|j)sx?$": "@swc/jest",
-    "^.+\\.svg$": "<rootDir>/__test__/mocks/svg.js"
+    "^.+\\.(t|j)sx?$": "@swc/jest"
   },
   transformIgnorePatterns: ["/node_modules/"],
   testEnvironment: "jsdom",

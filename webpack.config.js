@@ -10,10 +10,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.svg$/,
-        use: ["@svgr/webpack"]
-      },
-      {
         test: /\.(ts|tsx)$/,
         include: path.resolve(__dirname, "src"),
         exclude: /(node_modules|bower_components|dist|.*\.test\.tsx?)/,
