@@ -1,5 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-src/util/response.test.html linguist-vendored
-src/util/response.test.xml linguist-vendored
+src/util/* linguist-vendored
