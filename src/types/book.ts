@@ -9,6 +9,6 @@ export type Book = {
       name: string;
     };
   };
-  image_url?: string;
+  imageUrl?: string;
   link?: string;
 };

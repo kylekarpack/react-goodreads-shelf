@@ -27,7 +27,7 @@ const Book: FunctionComponent<{ book: Book }> = ({ book }) => {
             <Placeholder />
           </div>
         ) : (
-          <img alt={book.title} style={imageStyle} src={book.image_url} onError={onError} />
+          <img alt={book.title} style={imageStyle} src={book.imageUrl} onError={onError} />
         )}
       </a>
     </div>

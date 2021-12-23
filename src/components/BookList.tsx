@@ -2,11 +2,10 @@ import React, { CSSProperties, FunctionComponent } from "react";
 import { Book as BookType } from "../types";
 import Book from "./Book";
 
-const shelfStyle = (minWidth?: number | string): CSSProperties => {
-  minWidth = minWidth || "6rem";
+const shelfStyle = (minWidth = 150): CSSProperties => {
   return {
     display: "grid",
-    gridTemplateColumns: `repeat(auto-fill, ${minWidth})`,
+    gridTemplateColumns: `repeat(auto-fill, ${minWidth}px)`,
     justifyContent: "space-around",
     alignItems: "center",
     gridColumnGap: "0.5rem",

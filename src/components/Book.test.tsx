@@ -9,7 +9,7 @@ describe("testing book", () => {
   });
 
   it("renders image", () => {
-    const data: BookType = { id: "1", title: "test", image_url: "test.jpg" };
+    const data: BookType = { id: "1", title: "test", imageUrl: "test.jpg" };
     const book = render(<Book book={data} />);
     act(() => {
       expect(book.getByAltText(data.title)).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe("testing book", () => {
   });
 
   it("renders a placeholder", async () => {
-    const data: BookType = { title: "Test", id: "1", image_url: "fail.jpg" };
+    const data: BookType = { title: "Test", id: "1", imageUrl: "fail.jpg" };
     const screen = render(<Book book={data} />);
     const img = screen.getByAltText(data.title);
     fireEvent(img, new Event("error"));
