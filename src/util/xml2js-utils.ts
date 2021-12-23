@@ -11,7 +11,7 @@ export class Xml {
 
   static xmlToJson = (xml: Document | ChildNode): any => {
     // Create the return object
-    let obj = {};
+    let obj: any = {};
 
     if (xml.nodeType === 3) {
       // text

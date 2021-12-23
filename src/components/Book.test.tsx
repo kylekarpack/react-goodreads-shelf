@@ -1,5 +1,6 @@
-import { render } from "@testing-library/react";
+import { act, fireEvent, render } from "@testing-library/react";
 import Book from "./Book";
+import { Book as BookType } from "../types";
 
 describe("testing book", () => {
   it("renders without crashing", () => {
@@ -7,9 +8,19 @@ describe("testing book", () => {
     expect(book.container).toBeInTheDocument();
   });
 
-  it("renders a book", () => {
-    const data = { description: "Test", id: "1" };
+  it("renders image", () => {
+    const data: BookType = { id: "1", title: "test", image_url: "test.jpg" };
     const book = render(<Book book={data} />);
-    expect(book.container).toBeInTheDocument();
+    act(() => {
+      expect(book.getByAltText(data.title)).toBeInTheDocument();
+    });
+  });
+
+  it("renders a placeholder", async () => {
+    const data: BookType = { title: "Test", id: "1", image_url: "fail.jpg" };
+    const screen = render(<Book book={data} />);
+    const img = screen.getByAltText(data.title);
+    fireEvent(img, new Event("error"));
+    expect(img).not.toBeInTheDocument();
   });
 });
