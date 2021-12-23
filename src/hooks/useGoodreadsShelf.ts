@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Book, Props } from "../types";
 import { getUrl } from "../util/get-url";
 
@@ -24,38 +24,42 @@ const bookMapper = (row: Element, index: number): Book => {
 };
 
 export default function useGoodreadsShelf(props: Props) {
+  const memoizedProps = useMemo(() => props, []);
   const [books, setBooks] = useState<Book[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
 
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const url = getUrl(props);
-        const response = await fetch(url.toString());
-        const parser = new DOMParser();
-        const goodreadsDocument = parser.parseFromString(await response.text(), "text/html");
-        const bookElements = Array.from(goodreadsDocument.querySelectorAll("#booksBody .bookalike")).slice(
-          0,
-          props.limit ?? 10
-        );
+  const fetchBooks = async () => {
+    try {
+      setLoading(true);
+      setError(null);
 
-        const books = bookElements.map(bookMapper);
+      // Get the books from Goodreads
+      const url = getUrl(props);
+      const response = await fetch(url.toString());
+      const parser = new DOMParser();
+      const goodreadsDocument = parser.parseFromString(await response.text(), "text/html");
+      const bookElements = Array.from(goodreadsDocument.querySelectorAll("#booksBody .bookalike")).slice(
+        0,
+        props.limit ?? 10
+      );
 
-        setBooks(books);
-      } catch (error: unknown) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+      const books = bookElements.map(bookMapper);
 
-    if (props) {
-      fetchBooks();
+      setBooks(books);
+    } catch (error: unknown) {
+      setError(error);
+    } finally {
+      setLoading(false);
     }
-  }, [props]);
+  };
+
+  useEffect(() => {
+    if (!props) {
+      return;
+    }
+    fetchBooks();
+  }, [memoizedProps]);
 
   return { books, loading, error };
 }
