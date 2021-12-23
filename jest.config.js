@@ -8,7 +8,7 @@ module.exports = {
   testMatch: ["**/?(*.)+(spec|test).[tj]s?(x)"],
   transform: {
     "^.+\\.(t|j)sx?$": "@swc/jest",
-    "^.+\\.svg$": "jest-svg-transformer"
+    "^.+\\.svg$": "<rootDir>/__test__/mocks/svg.js"
   },
   transformIgnorePatterns: ["/node_modules/"],
   testEnvironment: "jsdom",
