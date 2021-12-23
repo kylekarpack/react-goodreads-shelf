@@ -8,14 +8,22 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testMatch: ["**/?(*.)+(spec|test).[tj]s?(x)"],
   transform: {
-    "^.+\\.(t|j)sx?$": ["@swc/jest", { sourceMaps: true, jsc: { target: "es2021" } }]
+    "^.+\\.(t|j)sx?$": [
+      "@swc/jest",
+      {
+        sourceMaps: true,
+        jsc: {
+          target: "es2021",
+          transform: {
+            react: {
+              runtime: "automatic"
+            }
+          }
+        }
+      }
+    ]
   },
   transformIgnorePatterns: ["/node_modules/"],
   testEnvironment: "jsdom",
-  moduleDirectories: ["node_modules", "<rootDir>/src"],
-  globals: {
-    "ts-jest": {
-      diagnostics: false
-    }
-  }
+  moduleDirectories: ["node_modules", "<rootDir>/src"]
 };
