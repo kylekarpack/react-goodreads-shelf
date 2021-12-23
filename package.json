@@ -10,6 +10,9 @@
   "files": [
     "dist/index.js"
   ],
+  "engines": {
+    "node": ">=14"
+  },
   "devDependencies": {
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-controls": "^6.4.9",

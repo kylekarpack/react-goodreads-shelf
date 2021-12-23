@@ -1,6 +1,6 @@
-import { Xml } from "./xml2js-utils";
 import fs from "fs";
 import path from "path";
+import { Xml } from "./xml2js-utils";
 
 const filePath = path.join(__dirname, "./response.test.xml");
 const sampleXml = fs.readFileSync(filePath).toString();
