@@ -1,5 +1,6 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
+
 module.exports = {
   automock: false,
   coverageDirectory: "coverage",
@@ -7,7 +8,7 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testMatch: ["**/?(*.)+(spec|test).[tj]s?(x)"],
   transform: {
-    "^.+\\.(t|j)sx?$": "@swc/jest"
+    "^.+\\.(t|j)sx?$": ["@swc/jest", { sourceMaps: true }]
   },
   transformIgnorePatterns: ["/node_modules/"],
   testEnvironment: "jsdom",
