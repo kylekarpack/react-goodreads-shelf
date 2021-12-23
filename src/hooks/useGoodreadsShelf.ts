@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Book, Props } from "../types";
 import { getUrl } from "../util/get-url";
 
@@ -24,7 +24,7 @@ const bookMapper = (row: Element, index: number): Book => {
 };
 
 export default function useGoodreadsShelf(props: Props) {
-  const memoizedProps = useMemo(() => props, []);
+  const { userId, limit, order, search, shelf, sort } = props;
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
@@ -41,7 +41,7 @@ export default function useGoodreadsShelf(props: Props) {
       const goodreadsDocument = parser.parseFromString(await response.text(), "text/html");
       const bookElements = Array.from(goodreadsDocument.querySelectorAll("#booksBody .bookalike")).slice(
         0,
-        props.limit ?? 10
+        limit ?? 10
       );
 
       const books = bookElements.map(bookMapper);
@@ -55,11 +55,11 @@ export default function useGoodreadsShelf(props: Props) {
   };
 
   useEffect(() => {
-    if (!props) {
+    if (!userId) {
       return;
     }
     fetchBooks();
-  }, [memoizedProps]);
+  }, [userId, limit, order, search, shelf, sort]);
 
   return { books, loading, error };
 }
