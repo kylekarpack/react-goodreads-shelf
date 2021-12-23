@@ -14,9 +14,5 @@ export const getUrl = (props: Props): URL => {
     url.searchParams.set("search[query]", props.search);
   }
 
-  const outputUrl = new URL(
-    `https://cors.kylekarpack.workers.dev/corsproxy/?apiurl=${encodeURIComponent(url.toString())}`
-  );
-
-  return outputUrl;
+  return new URL(`https://cors.kylekarpack.workers.dev/corsproxy/?apiurl=${encodeURIComponent(url.toString())}`);
 };

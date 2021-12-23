@@ -31,6 +31,5 @@ export const getBooksFromHtml = (html: string, limit = 10, width = 150): Book[] 
   if (typeof width !== "number") {
     width = 100;
   }
-  const books = bookArray.map((el, i) => bookMapper(el, i, width));
-  return books;
+  return bookArray.map((el, i) => bookMapper(el, i, width));
 };

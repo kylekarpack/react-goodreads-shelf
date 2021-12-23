@@ -1,5 +1,5 @@
 import React, { CSSProperties, FunctionComponent, useState } from "react";
-import { Book } from "../types";
+import { Book as BookType } from "../types";
 import Placeholder from "./Placeholder";
 
 const bookStyle: CSSProperties = {
@@ -11,7 +11,7 @@ const imageStyle: CSSProperties = {
   width: "100%"
 };
 
-const Book: FunctionComponent<{ book: Book }> = ({ book }) => {
+const Book: FunctionComponent<{ book: BookType }> = ({ book }) => {
   const [state, setState] = useState({ error: false });
   const onError = () => setState({ error: true });
 

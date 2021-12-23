@@ -17,10 +17,10 @@ const useGoodreadsShelf = (props: Props) => {
       const url = getUrl(props);
       const response = await fetch(url.toString());
       const html = await response.text();
-      const books = getBooksFromHtml(html, limit, width);
-      setBooks(books);
-    } catch (error: unknown) {
-      setError(error as Error);
+      const booksResult = getBooksFromHtml(html, limit, width);
+      setBooks(booksResult);
+    } catch (err: unknown) {
+      setError(err as Error);
     } finally {
       setLoading(false);
     }
