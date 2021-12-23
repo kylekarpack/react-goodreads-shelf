@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { Xml } from "./xml2js-utils";
 
-const filePath = path.join(__dirname, "./response.test.xml");
+const filePath = path.join(__dirname, "../../__test__/data/response.test.xml");
 const sampleXml = fs.readFileSync(filePath).toString();
 
 describe("XML deserializer", () => {
