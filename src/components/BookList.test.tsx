@@ -9,8 +9,9 @@ describe("testing book list", () => {
 
   it("passes props correctly", () => {
     const id = Math.round(Math.random() * 100000);
-    const list = render(<BookList books={[{ id }]} />);
-    const books = list.container;
-    expect(books.childElementCount).toEqual(1);
+    const books = [{ id: id.toString() }];
+    const list = render(<BookList books={books} />);
+    const items = list.container;
+    expect(items.childElementCount).toEqual(books.length);
   });
 });
