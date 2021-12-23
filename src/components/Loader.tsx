@@ -4,7 +4,7 @@ import LoaderSvg from "../assets/loader.svg";
 const Loader: FunctionComponent = () => {
   return (
     <div style={{ textAlign: "center" }}>
-      <LoaderSvg />
+      <LoaderSvg is="" /> {/* "is" prevents Jest warnings */}
     </div>
   );
 };
