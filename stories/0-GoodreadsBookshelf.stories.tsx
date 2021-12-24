@@ -1,5 +1,7 @@
+import type { ComponentMeta } from "@storybook/react";
 import React from "react";
 import GoodreadsBookshelf from "../dist/index";
+import type { Props } from "../dist/types";
 
 const sorts = [
   "title",
@@ -37,7 +39,7 @@ const sorts = [
 
 const shelves = ["read", "currently-reading", "to-read"];
 
-export default {
+const story: ComponentMeta<typeof GoodreadsBookshelf> = {
   title: "GoodreadsBookshelf",
   component: GoodreadsBookshelf,
   argTypes: {
@@ -107,4 +109,5 @@ export default {
   }
 };
 
-export const Story = (args) => <GoodreadsBookshelf {...args} />;
+export default story;
+export const Story = (args: Props) => <GoodreadsBookshelf {...args} />;

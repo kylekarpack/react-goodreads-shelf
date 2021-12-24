@@ -1,5 +1,5 @@
 name: Build and Deploy Storybook
-on: 
+on:
   push:
     paths: ["stories/**", "src/components/**"] # Trigger the action only when files change in the folders defined here
 jobs:
@@ -12,8 +12,8 @@ jobs:
           persist-credentials: false
       - name: Install and Build 🔧
         run: | # Install npm packages and build the Storybook files
-          yarn install --frozen-lockfile
-          yarn build-storybook
+          npm ci
+          npm run build-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
