@@ -4,7 +4,15 @@
 module.exports = {
   automock: false,
   coverageDirectory: "coverage",
-  collectCoverageFrom: ["**/*.{ts,tsx}", "!**/*.d.ts", "!**/src/index.ts", "!**/src/types/**", "!**/node_modules/**"],
+  collectCoverageFrom: [
+    "**/*.{ts,tsx}",
+    "!**/*.d.ts",
+    "!**/.storybook/**",
+    "!**/stories/**",
+    "!**/src/index.ts",
+    "!**/src/types/**",
+    "!**/node_modules/**"
+  ],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testMatch: ["**/?(*.)+(spec|test).[tj]s?(x)"],
   transform: {
