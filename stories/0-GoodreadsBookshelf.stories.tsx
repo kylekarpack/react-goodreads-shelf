@@ -39,7 +39,7 @@ const sorts = [
 
 const shelves = ["read", "currently-reading", "to-read"];
 
-const story: ComponentMeta<typeof GoodreadsBookshelf> = {
+export default {
   title: "GoodreadsBookshelf",
   component: GoodreadsBookshelf,
   argTypes: {
@@ -107,7 +107,6 @@ const story: ComponentMeta<typeof GoodreadsBookshelf> = {
       }
     }
   }
-};
+} as ComponentMeta<typeof GoodreadsBookshelf>;
 
-export default story;
 export const Story = (args: Props) => <GoodreadsBookshelf {...args} />;
