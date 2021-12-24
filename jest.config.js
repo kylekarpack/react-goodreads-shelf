@@ -5,7 +5,7 @@ module.exports = {
   automock: false,
   coverageDirectory: "coverage",
   collectCoverageFrom: ["**/*.{ts,tsx}", "!**/*.d.ts", "!**/src/index.ts", "!**/src/types/**", "!**/node_modules/**"],
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testMatch: ["**/?(*.)+(spec|test).[tj]s?(x)"],
   transform: {
     "^.+\\.(t|j)sx?$": [
@@ -13,7 +13,7 @@ module.exports = {
       {
         sourceMaps: true,
         jsc: {
-          target: "es2021",
+          target: "es2022",
           transform: {
             react: {
               runtime: "automatic"
