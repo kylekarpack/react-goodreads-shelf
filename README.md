@@ -47,8 +47,8 @@ You can also set some options as supported by the Goodreads API:
 | search | string | Search text | "" | ✓ |
 
 ## Development
-- `yarn start` to watch changes and build
-- `yarn storybook` to launch storybook for testing
+- `npm run start` to watch changes and build
+- `npm run storybook` to launch storybook for testing
 
 ## ToDo
 
