@@ -1,4 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-__test__/* linguist-vendored
+# Exclude some test files from language stats
+__test__/* linguist-generated
+__test__/data/response.test.html linguist-generated
+__test__/data/response.test.xml linguist-generated
+response.test.html linguist-generated
+response.test.xml linguist-generated
