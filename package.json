@@ -2,14 +2,15 @@
   "name": "react-goodreads-shelf",
   "version": "2.2.1",
   "description": "A React widget for displaying a user's public book shelf",
-  "main": "dist/index.js",
+  "main": "dist/index",
+  "typings": "dist/index",
+  "files": [
+    "dist/index.js"
+  ],
   "repository": "https://github.com/kylekarpack/react-goodreads-shelf",
   "author": "Kyle Karpack <kylekarpack+rgg@gmail.com>",
   "license": "MIT",
   "private": false,
-  "files": [
-    "dist/index.js"
-  ],
   "engines": {
     "node": ">=14"
   },
