@@ -1,6 +1,7 @@
-import { getBooksFromHtml } from "./html-utils";
 import fs from "fs";
 import path from "path";
+import { describe, expect, it } from "vitest";
+import { getBooksFromHtml } from "./html-utils";
 
 const filePath = path.join(__dirname, "../../__test__/data/response.test.html");
 const sampleHtml = fs.readFileSync(filePath).toString();
