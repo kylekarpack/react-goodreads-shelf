@@ -1,5 +1,4 @@
 import { act, render } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
 import GoodreadsBookshelf from "./GoodreadsBookshelf";
 
 describe("testing bookshelf", () => {

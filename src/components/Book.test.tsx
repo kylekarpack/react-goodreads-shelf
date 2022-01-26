@@ -21,7 +21,7 @@ describe("testing book", () => {
     const data: BookType = { title: "Test", id: "1", imageUrl: "fail.jpg" };
     const screen = render(<Book book={data} />);
     const img = screen.getByAltText(data.title);
-    fireEvent(img, new Event("error"));
+    fireEvent(img, new Event("error", { bubbles: true, cancelable: true }));
     expect(img).not.toBeInTheDocument();
   });
 });
