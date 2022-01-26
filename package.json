@@ -2,8 +2,15 @@
   "name": "react-goodreads-shelf",
   "version": "2.2.3",
   "description": "A React widget for displaying a user's public book shelf",
-  "main": "dist/index",
-  "typings": "dist/index",
+  "main": "./dist/index",
+  "typings": "./dist/src/index",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
   "files": [
     "dist"
   ],

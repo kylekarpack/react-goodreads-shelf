@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     outDir: "./dist",
     lib: {
-      entry: "./index.ts",
+      entry: "./src/index.ts",
       formats: ["cjs", "es"],
       fileName: "index"
     },
