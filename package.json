@@ -1,5 +1,6 @@
 {
   "name": "react-goodreads-shelf",
+  "type": "module",
   "version": "2.2.3",
   "description": "A React widget for displaying a user's public book shelf",
   "main": "./dist/index",
@@ -43,7 +44,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.5.4",
-    "vi-fetch": "^0.4.1",
     "vite": "^2.7.13",
     "vite-plugin-dts": "^0.9.9",
     "vitest": "^0.2.3"
@@ -61,5 +61,9 @@
     "clean": "gts clean",
     "compile": "tsc",
     "fix": "gts fix"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.1.5",
+    "msw": "^0.36.7"
   }
 }

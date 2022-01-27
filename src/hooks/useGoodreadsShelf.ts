@@ -20,6 +20,7 @@ const useGoodreadsShelf = (props: Props) => {
       const booksResult = getBooksFromHtml(html, limit, width);
       setBooks(booksResult);
     } catch (err: unknown) {
+      console.log("error!", err);
       setError(err as Error);
     } finally {
       setLoading(false);
