@@ -1,7 +1,7 @@
 import type { ComponentMeta } from "@storybook/react";
 import React from "react";
-import GoodreadsBookshelf from "../dist/index";
-import type { Props } from "../dist/types";
+import GoodreadsBookshelf from "../dist/index.cjs";
+import type { Props } from "../dist/src/custom";
 
 const sorts = [
   "title",
