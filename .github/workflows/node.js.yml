@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Run Tests
-        run: npm run test -- --verbose --coverage --updateSnapshot --testResultsProcessor=jest-sonar-reporter
+        run: npm run test -- --coverage --update
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
