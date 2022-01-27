@@ -15,7 +15,7 @@ const useGoodreadsShelf = (props: Props) => {
 
       // Get the books from Goodreads
       const url = getUrl(props);
-      const response = await fetch(url.toString());
+      const response = await window.fetch(url.toString());
       const html = await response.text();
       const booksResult = getBooksFromHtml(html, limit, width);
       setBooks(booksResult);

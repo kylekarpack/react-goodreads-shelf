@@ -1,4 +1,5 @@
 import { act, fireEvent, render } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import Book from "./Book";
 import { Book as BookType } from "../types";
 
@@ -20,7 +21,7 @@ describe("testing book", () => {
     const data: BookType = { title: "Test", id: "1", imageUrl: "fail.jpg" };
     const screen = render(<Book book={data} />);
     const img = screen.getByAltText(data.title);
-    fireEvent(img, new Event("error"));
+    fireEvent.error(img);
     expect(img).not.toBeInTheDocument();
   });
 });
