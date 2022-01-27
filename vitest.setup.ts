@@ -1,12 +1,11 @@
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom"; // needed for testing-library assertions
 import { vi } from "vitest";
 
+// Mock fetch
 beforeAll(() => {
-  window.fetch = vi.fn().mockImplementation(() => null);
-
-  vi.spyOn(window, "fetch").mockImplementation(() => {
-    return Promise.resolve({
+  window.fetch = vi.fn().mockImplementation(() =>
+    Promise.resolve({
       text: () => Promise.resolve([])
-    });
-  });
+    })
+  );
 });

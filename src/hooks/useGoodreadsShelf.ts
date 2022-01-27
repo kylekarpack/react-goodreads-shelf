@@ -18,10 +18,8 @@ const useGoodreadsShelf = (props: Props) => {
       const response = await window.fetch(url.toString());
       const html = await response.text();
       const booksResult = getBooksFromHtml(html, limit, width);
-      console.log("WORKED", booksResult);
       setBooks(booksResult);
     } catch (err: unknown) {
-      console.log("error!", err);
       setError(err as Error);
     } finally {
       setLoading(false);
