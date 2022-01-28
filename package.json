@@ -1,7 +1,7 @@
 {
   "name": "react-goodreads-shelf",
   "type": "module",
-  "version": "2.3.0-0",
+  "version": "2.3.0",
   "description": "A React widget for displaying a user's public book shelf",
   "main": "./dist/index",
   "typings": "./dist/src/index",
