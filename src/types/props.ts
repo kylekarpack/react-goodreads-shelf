@@ -37,7 +37,7 @@ export type Props = {
   /** The shelf from which to fetch books */
   shelf?: "read" | "currently-reading" | "to-read" | string;
   /** Minimum width allowed for each book */
-  width?: number;
+  width?: string | number;
   /** The field by which to sort the results returned */
   sort?: SortKey;
   /** The direction in which to sort the results */

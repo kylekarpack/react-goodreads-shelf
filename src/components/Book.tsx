@@ -3,8 +3,7 @@ import { Book as BookType } from "../types";
 import Placeholder from "./Placeholder";
 
 const bookStyle: CSSProperties = {
-  textAlign: "left",
-  marginBottom: "1vw"
+  textAlign: "left"
 };
 
 const imageStyle: CSSProperties = {
