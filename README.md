@@ -7,7 +7,7 @@ This React component allows you to display a public Goodreads shelf in a React a
 ## Demo
 [Live Demo](https://kylekarpack.github.io/react-goodreads-shelf)
 
-Preview:
+Preview
 
 ![Example image](/sample/sample.png)
 
@@ -39,7 +39,7 @@ export default function App() {
 You can also set some options as supported by the Goodreads list page:
 
 | Option | Type | Description | Default |
-| ------ | ---- | ----------- | ------- | ------- |
+| ------ | ---- | ----------- | ------- |
 | shelf  | string | The shelf from which to fetch books | read |
 | sort  | string | The field by which to sort the results returned | date_read |
 | limit  | number | The maximum number of books to be returned | 10 |
