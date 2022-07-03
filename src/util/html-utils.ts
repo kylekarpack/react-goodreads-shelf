@@ -1,6 +1,9 @@
 import { Book } from "../types";
 
-const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book => {
+const bookMapper = (row: Element, index: number, thumbnailWidth: string | number | undefined): Book => {
+  if (typeof thumbnailWidth !== "number") {
+    thumbnailWidth = 300;
+  }
   const isbn = row?.querySelector("td.field.isbn .value")?.textContent?.trim();
   const title = row?.querySelector("td.field.title a")?.getAttribute("title") ?? "";
   const author = row?.querySelector("td.field.author .value")?.textContent?.trim();
@@ -22,7 +25,7 @@ const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book =
   };
 };
 
-export const getBooksFromHtml = (html: string, limit = 10, width = 150): Book[] => {
+export const getBooksFromHtml = (html: string, limit = 10, width: string | number | undefined = 150): Book[] => {
   const parser = new DOMParser();
   const goodreadsDocument = parser.parseFromString(html, "text/html");
   const bookElements = goodreadsDocument.querySelectorAll("#booksBody .bookalike");
