@@ -1,5 +1,5 @@
 import React, { CSSProperties, FunctionComponent } from "react";
-import type { Book as BookType, Props } from "../types";
+import type { Book as BookType, HideDetails, Props } from "../types";
 import Cover from "./Cover";
 import Rating from "./Rating";
 
@@ -17,10 +17,23 @@ const authorStyle: CSSProperties = {
   marginTop: "0.5em"
 };
 
+const Details: FunctionComponent<{ book: BookType; hideDetails: HideDetails }> = ({ book, hideDetails }) => {
+  return (
+    <div>
+      {!hideDetails?.title && <div style={titleStyle}>{book.title}</div>}
+      {!hideDetails?.subtitle && book.subtitle ? <div>{book.subtitle}</div> : null}
+      {!hideDetails?.author && <div style={authorStyle}>{book.author}</div>}
+      {!hideDetails?.rating && <Rating stars={book.rating} />}
+    </div>
+  );
+};
+
 const Book: FunctionComponent<{ book: BookType; options?: Props }> = ({ book, options }) => {
   if (!book) {
     return null;
   }
+
+  const hideDetails = options?.hideDetails;
 
   return (
     <div>
@@ -29,14 +42,7 @@ const Book: FunctionComponent<{ book: BookType; options?: Props }> = ({ book, op
           <Cover book={book} />
         </a>
       </div>
-      {!options?.hideDetails ? (
-        <div>
-          <div style={titleStyle}>{book.title}</div>
-          {book.subtitle ? <div>{book.subtitle}</div> : null}
-          <div style={authorStyle}>{book.author}</div>
-          <Rating stars={book.rating} />
-        </div>
-      ) : null}
+      {options?.hideDetails !== true ? <Details book={book} hideDetails={hideDetails as HideDetails} /> : null}
     </div>
   );
 };

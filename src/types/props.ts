@@ -1,3 +1,5 @@
+import { Book } from "./book";
+
 type SortKey =
   | "title"
   | "author"
@@ -31,6 +33,8 @@ type SortKey =
   | "purchase_location"
   | "condition";
 
+export type HideDetails = { [Property in keyof Book]?: boolean };
+
 export type Props = {
   /** The user ID for whom to fetch books */
   userId: string;
@@ -47,5 +51,5 @@ export type Props = {
   /** Optional search text */
   search?: string;
   /** Hide details option */
-  hideDetails?: boolean;
+  hideDetails?: boolean | HideDetails;
 };

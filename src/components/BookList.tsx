@@ -9,6 +9,8 @@ const shelfStyle = (options?: Props): CSSProperties => {
     width = `${width}px`;
   }
 
+  width = width || "200px";
+
   return {
     display: "grid",
     gridTemplateColumns: `repeat(auto-fill, ${width})`,
