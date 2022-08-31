@@ -3,7 +3,7 @@ import { Book } from "../types";
 const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book => {
   const isbn = row?.querySelector("td.field.isbn .value")?.textContent?.trim();
   const title = row?.querySelector("td.field.title a")?.getAttribute("title") ?? "";
-  const author = row?.querySelector("td.field.author .value")?.textContent?.trim();
+  const author = row?.querySelector("td.field.author .value")?.textContent?.trim().replace(" *", "").split(", ").reverse().join(" ");
   const imageUrl = row
     ?.querySelector("td.field.cover img")
     ?.getAttribute("src")
@@ -11,6 +11,7 @@ const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book =
     // Add some padding factor for higher-quality rendering
     ?.replace(/\._(S[Y|X]\d+_?){1,2}_/i, `._SX${thumbnailWidth * 1.5}_`);
   const href = row?.querySelector("td.field.cover a")?.getAttribute("href");
+  const rating = row?.querySelectorAll("td.field.rating .staticStars .p10")?.length;
 
   return {
     id: `${isbn}_${index}`,
@@ -18,6 +19,7 @@ const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book =
     title,
     author,
     imageUrl,
+    rating,
     link: `https://www.goodreads.com/${href}`
   };
 };

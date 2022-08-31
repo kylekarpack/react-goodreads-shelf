@@ -11,4 +11,5 @@ export type Book = {
   };
   imageUrl?: string;
   link?: string;
+  rating?: number;
 };

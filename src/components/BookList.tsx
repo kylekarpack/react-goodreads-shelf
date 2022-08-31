@@ -10,7 +10,7 @@ const shelfStyle = (minWidth: string | number = 150): CSSProperties => {
     display: "grid",
     gridTemplateColumns: `repeat(auto-fill, ${minWidth})`,
     justifyContent: "space-around",
-    alignItems: "center",
+    alignItems: "top",
     gridColumnGap: "0.5rem",
     gridRowGap: "0.5rem"
   };
