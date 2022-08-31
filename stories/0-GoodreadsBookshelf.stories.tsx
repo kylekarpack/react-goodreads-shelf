@@ -59,20 +59,19 @@ export default {
         max: 250
       }
     },
-    // details: {
-    // 	name: "Details",
-    // 	defaultValue: false,
-    // 	control: {
-    // 		type: "boolean",
-    // 	},
-    // },
+    hideDetails: {
+      control: {
+        type: "check",
+        options: ["title", "subtitle", "author", "rating"]
+      }
+    },
     limit: {
       name: "Number of Books",
       defaultValue: 12,
       control: {
         type: "number",
         min: 1,
-        max: 50
+        max: 250
       }
     },
     shelf: {
@@ -109,4 +108,13 @@ export default {
   }
 } as ComponentMeta<typeof GoodreadsBookshelf>;
 
-export const Story = (args: Props) => <GoodreadsBookshelf {...args} />;
+const mapHide = (toHide: string[]) => {
+  const output = {};
+  for (let key of toHide) {
+    output[key] = true;
+  }
+
+  return output;
+};
+
+export const Story = (args: Props) => <GoodreadsBookshelf {...args} hideDetails={mapHide(args.hideDetails as any)} />;
