@@ -6,7 +6,20 @@ const imageStyle: CSSProperties = {
   display: "block",
   objectFit: "contain",
   width: "100%",
-  aspectRatio: "2 / 3"
+  aspectRatio: "2 / 3",
+  position: "relative",
+  zIndex: 2,
+  backdropFilter: "blur(6px)"
+};
+
+const getBackground = (imageUrl: string): CSSProperties => {
+  return {
+    zIndex: 1,
+    backgroundImage: `url("${imageUrl}")`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "50% 0"
+  };
 };
 
 const Cover: FunctionComponent<{ book: Book }> = ({ book }) => {
@@ -23,7 +36,7 @@ const Cover: FunctionComponent<{ book: Book }> = ({ book }) => {
   }
 
   return (
-    <div>
+    <div style={getBackground(imageUrl!)}>
       {state.error ? (
         <div data-testid="placeholder">
           <Placeholder />
