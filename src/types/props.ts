@@ -46,4 +46,6 @@ export type Props = {
   limit?: number;
   /** Optional search text */
   search?: string;
+  /** Hide details option */
+  hideDetails?: boolean;
 };

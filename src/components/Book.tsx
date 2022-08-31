@@ -1,5 +1,5 @@
 import React, { CSSProperties, FunctionComponent } from "react";
-import type { Book as BookType } from "../types";
+import type { Book as BookType, Props } from "../types";
 import Cover from "./Cover";
 import Rating from "./Rating";
 
@@ -9,14 +9,15 @@ const bookStyle: CSSProperties = {
 
 const titleStyle: CSSProperties = {
   fontWeight: 700,
-  fontSize: "1.1em"
+  fontSize: "1.1em",
+  margin: "0.5em 0 0.25em"
 };
 
-const subtitleStyle: CSSProperties = {
-  opacity: 0.9
+const authorStyle: CSSProperties = {
+  marginTop: "0.5em"
 };
 
-const Book: FunctionComponent<{ book: BookType }> = ({ book }) => {
+const Book: FunctionComponent<{ book: BookType; options?: Props }> = ({ book, options }) => {
   if (!book) {
     return null;
   }
@@ -28,16 +29,14 @@ const Book: FunctionComponent<{ book: BookType }> = ({ book }) => {
           <Cover book={book} />
         </a>
       </div>
-      <div>
-        <div style={titleStyle}>{book.title}</div>
-        {book.subtitle ? <div style={subtitleStyle}>{book.subtitle}</div> : null}
-        <div>{book.author}</div>
-        {book.rating ? (
-          <div>
-            <Rating stars={book.rating} />
-          </div>
-        ) : null}
-      </div>
+      {!options?.hideDetails ? (
+        <div>
+          <div style={titleStyle}>{book.title}</div>
+          {book.subtitle ? <div>{book.subtitle}</div> : null}
+          <div style={authorStyle}>{book.author}</div>
+          <Rating stars={book.rating} />
+        </div>
+      ) : null}
     </div>
   );
 };

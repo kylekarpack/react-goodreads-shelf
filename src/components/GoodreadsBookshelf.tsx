@@ -10,7 +10,7 @@ const GoodreadsBookshelf: FunctionComponent<Props> = (props) => {
 
   return (
     <div className="goodreads-shelf">
-      {loading ? <Loader /> : <BookList books={books} bookWidth={props.width} />}
+      {loading ? <Loader /> : <BookList books={books} options={props} />}
 
       {error && <div>Sorry, we couldn't load books right now</div>}
     </div>
