@@ -2,8 +2,15 @@ import { Book } from "../types";
 
 const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book => {
   const isbn = row?.querySelector("td.field.isbn .value")?.textContent?.trim();
-  const title = row?.querySelector("td.field.title a")?.getAttribute("title") ?? "";
-  const author = row?.querySelector("td.field.author .value")?.textContent?.trim().replace(" *", "").split(", ").reverse().join(" ");
+  const asin = row?.querySelector("td.field.asin .value")?.textContent?.trim();
+  let title = row?.querySelector("td.field.title a")?.getAttribute("title") ?? "";
+  const author = row
+    ?.querySelector("td.field.author .value")
+    ?.textContent?.trim()
+    .replace(" *", "")
+    .split(", ")
+    .reverse()
+    .join(" ");
   const imageUrl = row
     ?.querySelector("td.field.cover img")
     ?.getAttribute("src")
@@ -13,10 +20,26 @@ const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book =
   const href = row?.querySelector("td.field.cover a")?.getAttribute("href");
   const rating = row?.querySelectorAll("td.field.rating .staticStars .p10")?.length;
 
+  let subtitle;
+  const splitTitle = title.split(":");
+  if (splitTitle.length > 1) {
+    title = splitTitle[0];
+    subtitle = splitTitle[1];
+  }
+
+  const parens = title.match(/\(.*\)/);
+  if (parens) {
+    const [match] = parens;
+    subtitle = match.replace("(", "").replace(")", "");
+    title = title.replace(match, "");
+  }
+
   return {
     id: `${isbn}_${index}`,
     isbn,
+    asin,
     title,
+    subtitle,
     author,
     imageUrl,
     rating,

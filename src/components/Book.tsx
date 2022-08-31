@@ -1,10 +1,7 @@
-import React, { CSSProperties, FunctionComponent, useState } from "react";
-import { Book as BookType } from "../types";
-import Placeholder from "./Placeholder";
-
-const coverStyle: CSSProperties = {
-  textAlign: "left"
-};
+import React, { CSSProperties, FunctionComponent } from "react";
+import type { Book as BookType } from "../types";
+import Cover from "./Cover";
+import Rating from "./Rating";
 
 const bookStyle: CSSProperties = {
   textAlign: "left"
@@ -13,26 +10,13 @@ const bookStyle: CSSProperties = {
 const titleStyle: CSSProperties = {
   fontWeight: 700,
   fontSize: "1.1em"
-}
-
-const imageStyle: CSSProperties = {
-  width: "100%"
 };
 
-const Rating: FunctionComponent<{ stars: number }> = ({stars}) => {
-  if (stars) {
-    const arr = new Array(stars).fill("★");
-    return <>
-      {arr.map(el => <>{el}</>)}
-    </>
-  }
-  return null;
-}
+const subtitleStyle: CSSProperties = {
+  opacity: 0.9
+};
 
 const Book: FunctionComponent<{ book: BookType }> = ({ book }) => {
-  const [state, setState] = useState({ error: false });
-  const onError = () => setState({ error: true });
-
   if (!book) {
     return null;
   }
@@ -40,25 +24,20 @@ const Book: FunctionComponent<{ book: BookType }> = ({ book }) => {
   return (
     <div>
       <div style={bookStyle} title={book.title}>
-          <a href={book.link} target="_blank" rel="nofollow noreferrer">
-            {state.error ? (
-              <div data-testid="placeholder">
-                <Placeholder />
-              </div>
-            ) : (
-              <img alt={book.title} style={imageStyle} src={book.imageUrl} onError={onError} />
-            )}
-          </a>
-        </div>
-        <div>
-          <div style={titleStyle}>
-            {book.title}
-          </div>
+        <a href={book.link} target="_blank" rel="nofollow noreferrer">
+          <Cover book={book} />
+        </a>
+      </div>
+      <div>
+        <div style={titleStyle}>{book.title}</div>
+        {book.subtitle ? <div style={subtitleStyle}>{book.subtitle}</div> : null}
+        <div>{book.author}</div>
+        {book.rating ? (
           <div>
-            {book.author}
+            <Rating stars={book.rating} />
           </div>
-          {book.rating ? <div><Rating stars={book.rating} /></div> : null}
-        </div>
+        ) : null}
+      </div>
     </div>
   );
 };
