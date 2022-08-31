@@ -1,4 +1,4 @@
-import React, { CSSProperties, FunctionComponent, useState } from "react";
+import React, { CSSProperties, FunctionComponent, useEffect, useMemo, useRef, useState } from "react";
 import type { Book } from "../types";
 import Placeholder from "./Placeholder";
 
@@ -12,19 +12,30 @@ const imageStyle: CSSProperties = {
   backdropFilter: "blur(6px)"
 };
 
-const getBackground = (imageUrl: string): CSSProperties => {
-  return {
-    zIndex: 1,
-    backgroundImage: `url("${imageUrl}")`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "50% 0"
-  };
-};
-
 const Cover: FunctionComponent<{ book: Book }> = ({ book }) => {
   const [state, setState] = useState({ error: false });
-  const onError = () => setState({ error: true });
+  const [isInView, setIsInView] = useState(false);
+
+  const root = useRef(null); // the container
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const { isIntersecting } = entries[0];
+
+        if (isIntersecting) {
+          // is in view
+          observer.disconnect();
+        }
+
+        setIsInView(isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    if (root.current) {
+      observer.observe(root.current);
+    }
+  }, []);
 
   let { imageUrl } = book;
   if (!imageUrl) {
@@ -35,14 +46,33 @@ const Cover: FunctionComponent<{ book: Book }> = ({ book }) => {
     }
   }
 
+  const onError = () => setState({ error: true });
+
+  const getBackground = useMemo(
+    () =>
+      (imageUrl: string): CSSProperties => {
+        return {
+          backgroundImage: isInView ? `url("${imageUrl}")` : "",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "50% 0",
+          opacity: isInView ? 1 : 0,
+          transition: "opacity .25s ease-in-out"
+        };
+      },
+    [imageUrl, isInView]
+  );
+
   return (
-    <div style={getBackground(imageUrl!)}>
+    <div ref={root} style={getBackground(imageUrl!)}>
       {state.error ? (
         <div data-testid="placeholder">
           <Placeholder />
         </div>
       ) : (
-        <img alt={book.title} style={imageStyle} src={imageUrl} onError={onError} />
+        <div>
+          <img alt={book.title} style={imageStyle} src={imageUrl} loading="lazy" onError={onError} />
+        </div>
       )}
     </div>
   );
