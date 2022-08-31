@@ -5,8 +5,8 @@ import Placeholder from "./Placeholder";
 const imageStyle: CSSProperties = {
   display: "block",
   objectFit: "contain",
-  maxWidth: "100%",
-  height: "270px"
+  width: "100%",
+  aspectRatio: "2 / 3"
 };
 
 const Cover: FunctionComponent<{ book: Book }> = ({ book }) => {

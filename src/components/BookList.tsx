@@ -9,15 +9,15 @@ const shelfStyle = (options?: Props): CSSProperties => {
     width = `${width}px`;
   }
 
-  width = width || "200px";
+  width = width || "175px";
 
   return {
     display: "grid",
-    gridTemplateColumns: `repeat(auto-fill, ${width})`,
+    gridTemplateColumns: `repeat(auto-fill, minmax(${width}, 1fr))`,
     justifyContent: "space-around",
     alignItems: "top",
-    gridColumnGap: "0.5rem",
-    gridRowGap: options?.hideDetails ? "0.5rem" : "2rem"
+    gridColumnGap: "1rem",
+    gridRowGap: options?.hideDetails ? "1rem" : "2rem"
   };
 };
 
