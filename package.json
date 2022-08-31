@@ -61,6 +61,6 @@
     "lint": "gts lint src/**/*.{ts,tsx}",
     "clean": "gts clean",
     "compile": "tsc",
-    "fix": "gts fix"
+    "fix": "gts fix src/**/*.{ts,tsx}"
   }
 }

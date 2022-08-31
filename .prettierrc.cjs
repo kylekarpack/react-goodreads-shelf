@@ -7,5 +7,6 @@ module.exports = {
   singleQuote: false,
   printWidth: 120,
   useTabs: false,
-  tabWidth: 2
+  tabWidth: 2,
+  eol: "lf"
 };
