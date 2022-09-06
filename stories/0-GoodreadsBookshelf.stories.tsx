@@ -1,7 +1,7 @@
 import type { ComponentMeta } from "@storybook/react";
 import React from "react";
 import GoodreadsBookshelf from "../dist/index.es";
-import type { Props } from "../src/types";
+import { Props } from "../src/types";
 
 const sorts = [
   "title",
@@ -110,7 +110,7 @@ export default {
 
 const mapHide = (toHide: string[]) => {
   const output = {};
-  for (let key of toHide) {
+  for (let key of toHide || []) {
     output[key] = true;
   }
 

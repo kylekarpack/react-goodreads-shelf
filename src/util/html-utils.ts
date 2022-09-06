@@ -13,6 +13,18 @@ export const fetchPage = async (page: number, props: Props): Promise<FetchResult
   const url = getUrl(props, page);
   url.searchParams.append("page", String(page));
   const response = await window.fetch(url.toString(), { headers: { accept: "text/javascript" } });
+
+  // Simulate success if we get a 204 No Content response
+  if (response.status === 204) {
+    return {
+      books: [],
+      status: {
+        end: page * 30,
+        total: 0
+      }
+    };
+  }
+
   const responseBody = await response.text();
   const { html, status } = parseJsonP(responseBody);
   const table = `<table>${html}</table>`;
