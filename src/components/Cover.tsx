@@ -19,7 +19,7 @@ const Cover: FunctionComponent<{ book: Book }> = ({ book }) => {
   const root = useRef(null); // the container
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const observer = new window.IntersectionObserver(
       (entries) => {
         const { isIntersecting } = entries[0];
 

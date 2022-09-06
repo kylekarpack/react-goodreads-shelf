@@ -10,7 +10,7 @@ const useGoodreadsShelf = (props: Props) => {
 
   const fetchAllBooks = async () => {
     const pageSize = 30;
-    const maxPages = Math.ceil(limit! / pageSize);
+    const maxPages = Math.ceil(limit ?? 10 / pageSize);
     const promises = [];
 
     for (let i = 1; i <= maxPages; i++) {
@@ -23,11 +23,11 @@ const useGoodreadsShelf = (props: Props) => {
       setLoading(true);
       setError(null);
       data = await Promise.all(promises);
+      setLoading(false);
     } catch (err: unknown) {
       setError(err as Error);
-      return;
-    } finally {
       setLoading(false);
+      return;
     }
 
     data.sort((a, b) => {

@@ -1,4 +1,5 @@
 import { renderHook } from "@testing-library/react-hooks";
+import { vi } from "vitest";
 import useGoodreadsShelf from "./useGoodreadsShelf";
 
 describe("use shelf hook", () => {
@@ -10,11 +11,14 @@ describe("use shelf hook", () => {
   });
 
   it("handles errors", async () => {
-    const message = "fake error message";
-    window.fetch.mockImplementationOnce(() => Promise.reject(message));
+    const message = "some error message";
+    const spy = vi.spyOn(window, "fetch");
+    spy.mockImplementationOnce(() => Promise.reject(message));
+
     const { result, waitForNextUpdate } = renderHook(() => useGoodreadsShelf({ userId: "kyle" }));
     expect(result.current.error).toBeNull();
     await waitForNextUpdate();
     expect(result.current.error).toBe(message);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
