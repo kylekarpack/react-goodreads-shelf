@@ -16,8 +16,9 @@ export const fetchPage = async (page: number, props: Props): Promise<FetchResult
   const responseBody = await response.text();
   const { html, status } = parseJsonP(responseBody);
   const table = `<table>${html}</table>`;
+  const books = getBooksFromHtml(table, props.width);
   return {
-    books: getBooksFromHtml(table, props.limit, props.width),
+    books,
     status
   };
 };
@@ -39,11 +40,11 @@ const parseJsonP = (jsonp: string): { html: string; status: Status } => {
   };
 };
 
-export const getBooksFromHtml = (html: string, limit = 10, width: string | number | undefined = 150): Book[] => {
+export const getBooksFromHtml = (html: string, width: string | number | undefined = 150): Book[] => {
   const parser = new DOMParser();
   const goodreadsDocument = parser.parseFromString(html, "text/html");
   const bookElements = goodreadsDocument.querySelectorAll("tr");
-  const bookArray = Array.from(bookElements).slice(0, limit);
+  const bookArray = Array.from(bookElements);
   // Get width if not a number
   let newWidth: number;
   if (typeof width !== "number") {
@@ -51,10 +52,10 @@ export const getBooksFromHtml = (html: string, limit = 10, width: string | numbe
   } else {
     newWidth = width;
   }
-  return bookArray.map((el, i) => bookMapper(el, i, newWidth));
+  return bookArray.map((el) => bookMapper(el, newWidth));
 };
 
-const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book => {
+const bookMapper = (row: Element, thumbnailWidth: number): Book => {
   const isbn = row?.querySelector("td.field.isbn .value")?.textContent?.trim();
   const asin = row?.querySelector("td.field.asin .value")?.textContent?.trim();
   let title = row?.querySelector("td.field.title a")?.getAttribute("title") ?? "";
@@ -89,7 +90,7 @@ const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book =
   }
 
   return {
-    id: `${isbn}_${index}`,
+    id: `${isbn || asin || crypto.randomUUID()}`,
     isbn,
     asin,
     title,
