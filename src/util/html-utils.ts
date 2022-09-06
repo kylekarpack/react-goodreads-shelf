@@ -50,7 +50,7 @@ const bookMapper = (row: Element, index: number, thumbnailWidth: number): Book =
 export const getBooksFromHtml = (html: string, limit = 10, width: string | number | undefined = 150): Book[] => {
   const parser = new DOMParser();
   const goodreadsDocument = parser.parseFromString(html, "text/html");
-  const bookElements = goodreadsDocument.querySelectorAll("#booksBody .bookalike");
+  const bookElements = goodreadsDocument.querySelectorAll("tr");
   const bookArray = Array.from(bookElements).slice(0, limit);
   // Get width if not a number
   let newWidth: number;

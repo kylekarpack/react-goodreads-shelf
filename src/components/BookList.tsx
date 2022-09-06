@@ -9,7 +9,7 @@ const shelfStyle = (options?: Props): CSSProperties => {
     width = `${width}px`;
   }
 
-  width = width || "175px";
+  width = width || "170px";
 
   return {
     display: "grid",
