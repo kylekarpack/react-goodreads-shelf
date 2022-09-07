@@ -15,4 +15,5 @@ export type Book = {
   link?: string;
   rating?: number;
   dateRead?: Date;
+  dateAdded?: Date;
 };

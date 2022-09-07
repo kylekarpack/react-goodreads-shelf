@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Book, Props } from "../types";
+import { BookGroup, Props } from "../types";
 import { fetchAllBooks } from "../util";
 
 const useGoodreadsShelf = (props: Props) => {
   const { userId, limit, order, search, shelf, sort } = props;
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState<BookGroup[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 

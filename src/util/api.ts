@@ -18,6 +18,7 @@ export const fetchAllBooks = async (props: Props): Promise<BookGroup[]> => {
   }
 
   const data = await Promise.all(promises);
+
   data.sort((a, b) => {
     return a.status.end - b.status.end;
   });
@@ -26,14 +27,18 @@ export const fetchAllBooks = async (props: Props): Promise<BookGroup[]> => {
     return prev.concat(cur.books);
   }, firstPage.books);
 
-  // eslint-disable-next-line eqeqeq
-  if (props.limit != null) {
+  // Optionally filter the books
+  if (props.filter) {
+    books = books.filter(props.filter);
+  }
+
+  if (props.limit) {
     books = books.slice(0, props.limit);
   }
 
   if (props.groupBy) {
     const grouped = books.reduce((prev: { [key: string]: Book[] }, cur: Book) => {
-      const key = String(cur.dateRead?.getFullYear());
+      const key = String((cur.dateRead || cur.dateAdded)?.getFullYear());
       (prev[key] = prev[key] || []).push(cur);
       return prev;
     }, {});

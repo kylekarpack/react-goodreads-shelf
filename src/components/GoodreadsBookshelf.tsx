@@ -29,7 +29,7 @@ const GoodreadsBookshelf: FunctionComponent<Props> = (props) => {
               <div key={el.title} style={groupStyle}>
                 {el.title !== ALL_GROUP_TITLE && (
                   <div style={titleStyle}>
-                    {el.title} ({el.books.length} books)
+                    {el.title} <small>({el.books.length} books)</small>
                   </div>
                 )}
                 <BookList books={el.books} options={props} />

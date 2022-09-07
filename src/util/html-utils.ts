@@ -34,7 +34,11 @@ const bookMapper = (row: Element, thumbnailWidth: number): Book => {
     ?.replace(/\._(S[Y|X]\d+_?){1,2}_/i, `._SX${thumbnailWidth * 2}_`);
   const href = row?.querySelector("td.field.cover a")?.getAttribute("href");
   const rating = row?.querySelectorAll("td.field.rating .staticStars .p10")?.length;
-  const dateRead = new Date(row?.querySelector("td.field.date_read .date_read_value")?.innerHTML ?? new Date());
+
+  const dateReadString = row?.querySelector("td.field.date_read .date_read_value")?.textContent;
+  const dateAddedString = row?.querySelector("td.field.date_added span")?.textContent;
+  const dateRead = dateReadString ? new Date(dateReadString) : undefined;
+  const dateAdded = dateAddedString ? new Date(dateAddedString) : undefined;
 
   let subtitle = "";
   const splitTitle = title.split(":");
@@ -60,6 +64,7 @@ const bookMapper = (row: Element, thumbnailWidth: number): Book => {
     imageUrl,
     rating,
     dateRead,
+    dateAdded,
     link: `https://www.goodreads.com/${href}`
   };
 };
