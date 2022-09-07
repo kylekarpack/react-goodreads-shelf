@@ -6,3 +6,8 @@ export type FetchResults = {
   books: Book[];
   status: Status;
 };
+
+export type BookGroup = {
+  title: string;
+  books: Book[];
+};

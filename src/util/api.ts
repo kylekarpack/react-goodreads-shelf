@@ -1,10 +1,12 @@
-import { Book, FetchResults, Props, Status } from "../types";
+import { Book, BookGroup, FetchResults, Props, Status } from "../types";
 import { getUrl } from "./get-url";
 import { getBooksFromHtml } from "./html-utils";
 
 const GOODREADS_PAGE_SIZE = 30;
 
-export const fetchAllBooks = async (props: Props): Promise<Book[]> => {
+export const ALL_GROUP_TITLE = "All";
+
+export const fetchAllBooks = async (props: Props): Promise<BookGroup[]> => {
   // Get first page
   const firstPage = await fetchPage(1, props);
   const maxBooks = Math.min(props.limit ?? 10, firstPage.status.total);
@@ -28,7 +30,33 @@ export const fetchAllBooks = async (props: Props): Promise<Book[]> => {
   if (props.limit != null) {
     books = books.slice(0, props.limit);
   }
-  return books;
+
+  if (props.groupBy) {
+    const grouped = books.reduce((prev: { [key: string]: Book[] }, cur: Book) => {
+      const key = String(cur.dateRead?.getFullYear());
+      (prev[key] = prev[key] || []).push(cur);
+      return prev;
+    }, {});
+
+    const groups: BookGroup[] = [];
+    for (const key in grouped) {
+      groups.push({
+        title: key,
+        books: grouped[key]
+      });
+    }
+    groups.sort((a, b) => {
+      return Number(b.title) - Number(a.title);
+    });
+    return groups;
+  } else {
+    return [
+      {
+        title: ALL_GROUP_TITLE,
+        books
+      }
+    ];
+  }
 };
 
 const fetchPage = async (page: number, props: Props): Promise<FetchResults> => {

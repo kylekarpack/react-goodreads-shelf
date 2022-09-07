@@ -33,6 +33,8 @@ type SortKey =
   | "purchase_location"
   | "condition";
 
+type GroupBy = "year";
+
 export type HideDetails = { [Property in keyof Book]?: boolean };
 
 export type Props = {
@@ -52,4 +54,8 @@ export type Props = {
   search?: string;
   /** Hide details option */
   hideDetails?: boolean | HideDetails;
+  /** Filter book option */
+  filter?: (book: Book) => boolean;
+  /** Group by option */
+  groupBy?: GroupBy;
 };
