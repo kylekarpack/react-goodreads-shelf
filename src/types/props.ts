@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import { Book } from "./book";
 
 type SortKey =
@@ -35,7 +36,13 @@ type SortKey =
 
 type GroupBy = "year";
 
-export type HideDetails = { [Property in keyof Book]?: boolean };
+type HideDetails = { [Property in keyof Book]?: boolean };
+
+type DisplayOptions = {
+  hideDetails?: boolean | HideDetails;
+  hideBackgroundImages?: boolean;
+  gridStyle?: Pick<CSSProperties, "gridColumnGap" | "gridRowGap">;
+};
 
 export type Props = {
   /** The user ID for whom to fetch books */
@@ -52,8 +59,8 @@ export type Props = {
   limit?: number;
   /** Optional search text */
   search?: string;
-  /** Hide details option */
-  hideDetails?: boolean | HideDetails;
+  /** Shelf display options */
+  displayOptions?: DisplayOptions;
   /** Filter book option */
   filter?: (book: Book) => boolean;
   /** Group by option */

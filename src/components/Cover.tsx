@@ -1,5 +1,5 @@
 import React, { CSSProperties, FunctionComponent, useEffect, useMemo, useRef, useState } from "react";
-import type { Book } from "../types";
+import type { Book, Props } from "../types";
 import Placeholder from "./Placeholder";
 
 const imageStyle: CSSProperties = {
@@ -12,7 +12,7 @@ const imageStyle: CSSProperties = {
   backdropFilter: "blur(6px)"
 };
 
-const Cover: FunctionComponent<{ book: Book }> = ({ book }) => {
+const Cover: FunctionComponent<{ book: Book; options?: Props }> = ({ book, options }) => {
   const [state, setState] = useState({ error: false });
   const [isInView, setIsInView] = useState(false);
 
@@ -51,8 +51,16 @@ const Cover: FunctionComponent<{ book: Book }> = ({ book }) => {
   const getBackground = useMemo(
     () =>
       (imageUrl: string): CSSProperties => {
+        let backgroundImage = "";
+
+        if (!options?.displayOptions?.hideBackgroundImages) {
+          if (isInView) {
+            backgroundImage = `url("${imageUrl}")`;
+          }
+        }
+
         return {
-          backgroundImage: isInView ? `url("${imageUrl}")` : "",
+          backgroundImage,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "50% 0",
@@ -60,7 +68,7 @@ const Cover: FunctionComponent<{ book: Book }> = ({ book }) => {
           transition: "opacity .25s ease-in-out"
         };
       },
-    [imageUrl, isInView]
+    [imageUrl, isInView, options?.displayOptions?.hideBackgroundImages]
   );
 
   return (

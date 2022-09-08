@@ -10,7 +10,13 @@ const filter = (book: Book): boolean => {
 render(
   <div>
     <h1>React Goodreads Shelf Demo Page</h1>
-    <GoodreadsBookshelf userId="63515611" limit={40} width={80} hideDetails={true} />
+    <GoodreadsBookshelf
+      userId="63515611"
+      limit={40}
+      width={80}
+      displayOptions={{ hideDetails: true, hideBackgroundImages: true }}
+      filter={filter}
+    />
     <GoodreadsBookshelf userId="63515611" limit={250} groupBy="year" filter={filter} />
   </div>,
   document.getElementById("home")
