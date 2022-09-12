@@ -1,5 +1,5 @@
 import React, { CSSProperties, FunctionComponent } from "react";
-import type { Book as BookType, HideDetails, Props } from "../types";
+import type { Book as BookType, Props } from "../types";
 import Cover from "./Cover";
 import Rating from "./Rating";
 
@@ -10,20 +10,32 @@ const bookStyle: CSSProperties = {
 const titleStyle: CSSProperties = {
   fontWeight: 700,
   fontSize: "1.1em",
-  margin: "0.5em 0 0.25em"
+  margin: "0 0 0.25em"
 };
 
 const authorStyle: CSSProperties = {
   marginTop: "0.5em"
 };
 
-const Details: FunctionComponent<{ book: BookType; hideDetails: HideDetails }> = ({ book, hideDetails }) => {
+const Details: FunctionComponent<{ book: BookType; options?: Props }> = ({ book, options }) => {
+  const hideDetails = options?.displayOptions?.hideDetails;
+  if (hideDetails === true) {
+    return null;
+  }
+
+  const shouldShow = (item: keyof BookType): boolean => {
+    if (hideDetails === false) {
+      return true;
+    }
+    return !hideDetails?.[item];
+  };
+
   return (
-    <div>
-      {!hideDetails?.title && <div style={titleStyle}>{book.title}</div>}
-      {!hideDetails?.subtitle && book.subtitle ? <div>{book.subtitle}</div> : null}
-      {!hideDetails?.author && <div style={authorStyle}>{book.author}</div>}
-      {!hideDetails?.rating && <Rating stars={book.rating} />}
+    <div style={{ marginTop: "0.5em" }}>
+      {shouldShow("title") && <div style={titleStyle}>{book.title}</div>}
+      {shouldShow("subtitle") && book.subtitle ? <div>{book.subtitle}</div> : null}
+      {shouldShow("author") && <div style={authorStyle}>{book.author}</div>}
+      {shouldShow("rating") && <Rating stars={book.rating} />}
     </div>
   );
 };
@@ -33,16 +45,14 @@ const Book: FunctionComponent<{ book: BookType; options?: Props }> = ({ book, op
     return null;
   }
 
-  const hideDetails = options?.hideDetails;
-
   return (
     <div>
       <div style={bookStyle} title={book.title}>
         <a href={book.link} target="_blank" rel="nofollow noreferrer">
-          <Cover book={book} />
+          <Cover book={book} options={options} />
         </a>
       </div>
-      {options?.hideDetails !== true ? <Details book={book} hideDetails={hideDetails as HideDetails} /> : null}
+      <Details book={book} options={options} />
     </div>
   );
 };

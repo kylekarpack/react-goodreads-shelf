@@ -60,10 +60,15 @@ export default {
       }
     },
     hideDetails: {
+      name: "Hide Details",
       control: {
         type: "check",
         options: ["title", "subtitle", "author", "rating"]
       }
+    },
+    hideBackgroundImages: {
+      name: "Hide backround images",
+      control: "boolean"
     },
     limit: {
       name: "Number of Books",
@@ -117,4 +122,11 @@ const mapHide = (toHide: string[]) => {
   return output;
 };
 
-export const Story = (args: Props) => <GoodreadsBookshelf {...args} hideDetails={mapHide(args.hideDetails as any)} />;
+export const Story = (args: Props) => {
+  console.warn(args);
+  const displayOptions = {
+    hideDetails: mapHide((args as any)?.hideDetails),
+    hideBackgroundImages: (args as any)?.hideBackgroundImages
+  };
+  return <GoodreadsBookshelf {...args} displayOptions={displayOptions} />;
+};
