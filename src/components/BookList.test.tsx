@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import BookList from "./BookList";
 
-describe("testing book list", () => {
+describe("book list component", () => {
   it("renders without crashing", () => {
     const { container } = render(<BookList books={[]} />);
     expect(container).toBeInTheDocument();

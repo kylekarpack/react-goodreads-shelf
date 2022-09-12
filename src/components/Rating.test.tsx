@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import Rating from "./Rating";
 
-describe("testing rating", () => {
+describe("rating component", () => {
   it("hides if no stars", () => {
     const { container } = render(<Rating />);
     expect(container.childElementCount).toBe(0);
