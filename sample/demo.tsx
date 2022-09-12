@@ -12,9 +12,10 @@ render(
     <h1>React Goodreads Shelf Demo Page</h1>
     <GoodreadsBookshelf
       userId="63515611"
-      limit={40}
+      limit={500}
       width={80}
       displayOptions={{ hideDetails: true, hideBackgroundImages: true }}
+      groupBy="year"
       filter={filter}
     />
     <GoodreadsBookshelf userId="63515611" limit={250} groupBy="year" filter={filter} />

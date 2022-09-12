@@ -7,7 +7,7 @@ import Loader from "./Loader";
 
 const titleStyle: CSSProperties = {
   fontSize: "2em",
-  marginBottom: "1em"
+  marginBottom: "0.5em"
 };
 
 const groupStyle: CSSProperties = {
