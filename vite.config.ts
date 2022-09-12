@@ -9,7 +9,7 @@ export default defineConfig({
     setupFiles: "./vitest.setup.ts",
     coverage: {
       reporter: ["lcov", "text"],
-      exclude: ["vitest.setup.ts"]
+      exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"]
     }
   },
   plugins: [react(), dts()],
