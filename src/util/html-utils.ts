@@ -55,7 +55,7 @@ const bookMapper = (row: Element, thumbnailWidth: number): Book => {
   }
 
   return {
-    id: `${isbn || asin || crypto.randomUUID()}`,
+    id: `${isbn || asin || window.crypto.randomUUID()}`,
     isbn,
     asin,
     title,

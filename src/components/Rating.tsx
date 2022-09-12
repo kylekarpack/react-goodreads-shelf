@@ -5,7 +5,7 @@ const Rating: FunctionComponent<{ stars?: number }> = ({ stars }) => {
   if (stars) {
     const arr = new Array(stars).fill("★");
     return (
-      <div>
+      <div role="presentation">
         {arr.map((el, i) => (
           <span key={i}>{el}</span>
         ))}
