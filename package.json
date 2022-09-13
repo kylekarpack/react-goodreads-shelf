@@ -52,6 +52,7 @@
   },
   "scripts": {
     "test": "vitest run --reporter=verbose",
+    "test:watch": "vitest --reporter=verbose",
     "test:related": "vitest related",
     "dev": "vite",
     "build": "vite build",

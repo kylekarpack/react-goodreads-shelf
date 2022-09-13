@@ -14,4 +14,11 @@ describe("book list component", () => {
     const items = list.container;
     expect(items.childElementCount).toEqual(books.length);
   });
+
+  it("handles widths", () => {
+    const books = [{ id: "1" }, { id: "2" }];
+    const list = render(<BookList books={books} options={{ userId: "", width: 100 }} />);
+    const elements = list.getByRole("grid");
+    expect(elements.childElementCount).toBe(2);
+  });
 });

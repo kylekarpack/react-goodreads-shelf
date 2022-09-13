@@ -25,7 +25,7 @@ const shelfStyle = (options?: Props): CSSProperties => {
 
 const BookList: FunctionComponent<{ books: BookType[]; options?: Props }> = ({ books, options }) => {
   return (
-    <div style={shelfStyle(options)}>
+    <div style={shelfStyle(options)} role="grid">
       {books.map((book) => {
         return <Book key={book.id} book={book} options={options} />;
       })}
