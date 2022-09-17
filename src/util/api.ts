@@ -39,7 +39,8 @@ export const fetchAllBooks = async (props: Props): Promise<BookGroup[]> => {
   if (props.groupBy) {
     const grouped = books.reduce((prev: { [key: string]: Book[] }, cur: Book) => {
       const key = String((cur.dateRead || cur.dateAdded)?.getFullYear());
-      (prev[key] = prev[key] || []).push(cur);
+      prev[key] = prev[key] || [];
+      prev[key].push(cur);
       return prev;
     }, {});
 

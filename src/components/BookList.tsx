@@ -18,8 +18,8 @@ const shelfStyle = (options?: Props): CSSProperties => {
     gridTemplateColumns: `repeat(auto-fill, minmax(${width}, 1fr))`,
     justifyContent: "space-around",
     alignItems: "top",
-    gridColumnGap: options?.displayOptions?.gridStyle?.gridColumnGap ?? gap,
-    gridRowGap: options?.displayOptions?.gridStyle?.gridRowGap ?? gap
+    columnGap: options?.displayOptions?.gridStyle?.columnGap ?? gap,
+    rowGap: options?.displayOptions?.gridStyle?.rowGap ?? gap
   };
 };
 

@@ -41,7 +41,7 @@ type HideDetails = { [Property in keyof Book]?: boolean };
 type DisplayOptions = {
   hideDetails?: boolean | HideDetails;
   hideBackgroundImages?: boolean;
-  gridStyle?: Pick<CSSProperties, "gridColumnGap" | "gridRowGap">;
+  gridStyle?: Pick<CSSProperties, "columnGap" | "rowGap">;
 };
 
 export type Props = {
