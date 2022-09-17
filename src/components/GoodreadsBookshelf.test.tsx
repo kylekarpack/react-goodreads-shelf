@@ -9,7 +9,7 @@ describe("bookshelf component", () => {
     });
   });
 
-  it("works with API key", async () => {
+  it("works with a user ID", async () => {
     await act(async () => {
       const shelf = render(<GoodreadsBookshelf userId="testUser" />);
       expect(shelf.container).toBeInTheDocument();
