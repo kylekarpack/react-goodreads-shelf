@@ -22,6 +22,7 @@
   "engines": {
     "node": ">=14"
   },
+  "engineStrict": true,
   "devDependencies": {
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-controls": "^6.5.10",
@@ -45,6 +46,7 @@
     "prettier": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "release-it": "^15.4.2",
     "typescript": "^4.8.3",
     "vite": "^3.1.0",
     "vite-plugin-dts": "^1.5.0",
@@ -63,6 +65,13 @@
     "lint": "gts lint src/**/*.{ts,tsx}",
     "clean": "gts clean",
     "compile": "tsc",
-    "fix": "gts fix src/**/*.{ts,tsx}"
+    "fix": "gts fix src/**/*.{ts,tsx}",
+    "release": "release-it"
+  },
+  "release-it": {
+    "github": {
+      "release": true,
+      "web": true
+    }
   }
 }
