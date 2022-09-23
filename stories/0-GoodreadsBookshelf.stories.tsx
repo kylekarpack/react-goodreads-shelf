@@ -1,7 +1,7 @@
 import type { ComponentMeta } from "@storybook/react";
 import React from "react";
-import GoodreadsBookshelf from "../dist/index.es";
-import type { Props } from "../src/types";
+import GoodreadsBookshelf from "../src/index";
+import { Props } from "../src/types";
 
 const sorts = [
   "title",
@@ -59,20 +59,24 @@ export default {
         max: 250
       }
     },
-    // details: {
-    // 	name: "Details",
-    // 	defaultValue: false,
-    // 	control: {
-    // 		type: "boolean",
-    // 	},
-    // },
+    hideDetails: {
+      name: "Hide Details",
+      control: {
+        type: "check",
+        options: ["title", "subtitle", "author", "rating"]
+      }
+    },
+    hideBackgroundImages: {
+      name: "Hide backround images",
+      control: "boolean"
+    },
     limit: {
       name: "Number of Books",
       defaultValue: 12,
       control: {
         type: "number",
         min: 1,
-        max: 50
+        max: 250
       }
     },
     shelf: {
@@ -109,4 +113,20 @@ export default {
   }
 } as ComponentMeta<typeof GoodreadsBookshelf>;
 
-export const Story = (args: Props) => <GoodreadsBookshelf {...args} />;
+const mapHide = (toHide: string[]) => {
+  const output = {};
+  for (let key of toHide || []) {
+    output[key] = true;
+  }
+
+  return output;
+};
+
+export const Story = (args: Props) => {
+  console.warn(args);
+  const displayOptions = {
+    hideDetails: mapHide((args as any)?.hideDetails),
+    hideBackgroundImages: (args as any)?.hideBackgroundImages
+  };
+  return <GoodreadsBookshelf {...args} displayOptions={displayOptions} />;
+};

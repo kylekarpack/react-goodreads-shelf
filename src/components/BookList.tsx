@@ -1,26 +1,33 @@
 import React, { CSSProperties, FunctionComponent } from "react";
-import { Book as BookType } from "../types";
+import { Book as BookType, Props } from "../types";
 import Book from "./Book";
 
-const shelfStyle = (minWidth: string | number = 150): CSSProperties => {
-  if (typeof minWidth === "number") {
-    minWidth = `${minWidth}px`;
+const shelfStyle = (options?: Props): CSSProperties => {
+  let { width } = options || {};
+
+  if (typeof width === "number") {
+    width = `${width}px`;
   }
+
+  width = width || "170px";
+
+  const gap = options?.displayOptions?.hideDetails ? `calc(${width} / 8)` : `calc(${width} / 6)`;
+
   return {
     display: "grid",
-    gridTemplateColumns: `repeat(auto-fill, ${minWidth})`,
+    gridTemplateColumns: `repeat(auto-fill, minmax(${width}, 1fr))`,
     justifyContent: "space-around",
-    alignItems: "center",
-    gridColumnGap: "0.5rem",
-    gridRowGap: "0.5rem"
+    alignItems: "top",
+    columnGap: options?.displayOptions?.gridStyle?.columnGap ?? gap,
+    rowGap: options?.displayOptions?.gridStyle?.rowGap ?? gap
   };
 };
 
-const BookList: FunctionComponent<{ books: BookType[]; bookWidth?: string | number }> = ({ books, bookWidth }) => {
+const BookList: FunctionComponent<{ books: BookType[]; options?: Props }> = ({ books, options }) => {
   return (
-    <div style={shelfStyle(bookWidth)}>
+    <div style={shelfStyle(options)} role="grid">
       {books.map((book) => {
-        return <Book key={book.id} book={book} />;
+        return <Book key={book.id} book={book} options={options} />;
       })}
     </div>
   );

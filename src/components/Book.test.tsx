@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import Book from "./Book";
 import { Book as BookType } from "../types";
 
-describe("testing book", () => {
+describe("book component", () => {
   it("renders without crashing", () => {
     const book = render(<Book book={null} />);
     expect(book.container).toBeInTheDocument();

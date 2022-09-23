@@ -1,24 +1,20 @@
 import { useEffect, useState } from "react";
-import { Book, Props } from "../types";
-import { getUrl, getBooksFromHtml } from "../util";
+import { BookGroup, Props } from "../types";
+import { fetchAllBooks } from "../util";
 
 const useGoodreadsShelf = (props: Props) => {
-  const { userId, limit, order, search, shelf, sort, width } = props;
-  const [books, setBooks] = useState<Book[]>([]);
+  const { userId, limit, order, search, shelf, sort } = props;
+  const [books, setBooks] = useState<BookGroup[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
-  const fetchBooks = async () => {
-    try {
-      setLoading(true);
-      setError(null);
+  const refresh = async () => {
+    setLoading(true);
+    setError(null);
 
-      // Get the books from Goodreads
-      const url = getUrl(props);
-      const response = await window.fetch(url.toString());
-      const html = await response.text();
-      const booksResult = getBooksFromHtml(html, limit, width);
-      setBooks(booksResult);
+    try {
+      const books = await fetchAllBooks(props);
+      setBooks(books);
     } catch (err: unknown) {
       setError(err as Error);
     } finally {
@@ -30,7 +26,7 @@ const useGoodreadsShelf = (props: Props) => {
     if (!userId) {
       return;
     }
-    fetchBooks();
+    refresh();
   }, [userId, limit, order, search, shelf, sort]);
 
   return { books, loading, error };

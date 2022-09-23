@@ -1,3 +1,6 @@
+import { CSSProperties } from "react";
+import { Book } from "./book";
+
 type SortKey =
   | "title"
   | "author"
@@ -31,6 +34,16 @@ type SortKey =
   | "purchase_location"
   | "condition";
 
+type GroupBy = "year";
+
+type HideDetails = { [Property in keyof Book]?: boolean };
+
+type DisplayOptions = {
+  hideDetails?: boolean | HideDetails;
+  hideBackgroundImages?: boolean;
+  gridStyle?: Pick<CSSProperties, "columnGap" | "rowGap">;
+};
+
 export type Props = {
   /** The user ID for whom to fetch books */
   userId: string;
@@ -46,4 +59,10 @@ export type Props = {
   limit?: number;
   /** Optional search text */
   search?: string;
+  /** Shelf display options */
+  displayOptions?: DisplayOptions;
+  /** Filter book option */
+  filter?: (book: Book) => boolean;
+  /** Group by option */
+  groupBy?: GroupBy;
 };
