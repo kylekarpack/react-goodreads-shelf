@@ -1,0 +1,5 @@
+.shelf {
+  display: grid;
+  justify-content: space-around;
+  align-items: top;
+}

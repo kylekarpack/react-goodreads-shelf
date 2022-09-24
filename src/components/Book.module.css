@@ -1,0 +1,21 @@
+.book {
+  text-align: left;
+}
+
+.details {
+  margin-top: 0.5em;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-bottom: 0.25em;
+}
+
+.subtitle {
+  margin-bottom: 0.25em;
+}
+
+.author {
+  margin-bottom: 0.25em;
+}

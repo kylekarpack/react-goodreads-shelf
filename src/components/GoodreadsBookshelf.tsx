@@ -1,35 +1,30 @@
-import React, { CSSProperties, FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import useGoodreadsShelf from "../hooks/useGoodreadsShelf";
 import { Props } from "../types";
 import { ALL_GROUP_TITLE } from "../util";
 import BookList from "./BookList";
+import styles from "./GoodreadsBookshelf.module.css";
 import Loader from "./Loader";
-
-const titleStyle: CSSProperties = {
-  fontSize: "2em",
-  marginBottom: "0.5em"
-};
-
-const groupStyle: CSSProperties = {
-  marginBottom: "2em"
-};
 
 /** Display a Goodreads bookshelf component */
 const GoodreadsBookshelf: FunctionComponent<Props> = (props) => {
   const { books, loading, error } = useGoodreadsShelf(props);
 
   return (
-    <div className="goodreads-shelf">
+    <div className="rgs-shelf">
       {loading ? (
         <Loader />
       ) : (
         <div>
           {books.map((el) => {
             return (
-              <div key={el.title} style={groupStyle}>
+              <div key={el.title} className={`rgs-group ${styles.group}`}>
                 {el.title !== ALL_GROUP_TITLE && (
-                  <div style={titleStyle}>
-                    {el.title} <small>({el.books.length} books)</small>
+                  <div className={`rgs-group-title ${styles.groupTitle}`}>
+                    {el.title}{" "}
+                    <small>
+                      ({el.books.length} {el.books.length === 1 ? "book" : "books"})
+                    </small>
                   </div>
                 )}
                 <BookList books={el.books} options={props} />
