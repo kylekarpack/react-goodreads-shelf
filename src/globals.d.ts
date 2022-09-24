@@ -5,4 +5,9 @@ declare module "*.css" {
   export default content;
 }
 
+declare module "*.css?inline" {
+  const content: Record<string, string>;
+  export default content;
+}
+
 export { Props };
