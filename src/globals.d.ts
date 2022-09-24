@@ -1,7 +1,7 @@
 import type { Props } from "./types";
 
-declare module "*.svg" {
-  const content: any;
+declare module "*.css" {
+  const content: Record<string, string>;
   export default content;
 }
 
