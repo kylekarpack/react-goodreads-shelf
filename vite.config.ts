@@ -13,24 +13,26 @@ export default defineConfig({
       exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"]
     }
   },
-  plugins: [react(), dts(), cssInjectedByJsPlugin()],
+  plugins: [react(), dts({ entryRoot: "src" }), cssInjectedByJsPlugin()],
   build: {
     outDir: "./dist",
     lib: {
       entry: "./src/index.ts",
-      formats: ["cjs", "es"],
-      fileName: "index"
+      formats: ["cjs", "es", "umd"],
+      fileName: (format) => `react-goodreads-shelf.${format}.js`,
+      name: "react-goodreads-shelf"
     },
     minify: "esbuild",
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["react"],
+      external: ["react", "react-dom"],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          react: "React"
+          react: "React",
+          "react-dom": "ReactDOM"
         },
         exports: "named"
       }

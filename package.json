@@ -3,13 +3,13 @@
   "type": "module",
   "version": "3.0.0",
   "description": "A React widget for displaying a user's public book shelf",
-  "main": "./dist/index",
+  "main": "./dist/react-goodreads-shelf.umd.js",
+  "module": "./dist/react-goodreads-shelf.es.js",
   "typings": "./dist/index.d.ts",
-  "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs.js"
+      "import": "./dist/react-goodreads-shelf.es.js",
+      "require": "./dist/react-goodreads-shelf.umd.js"
     }
   },
   "files": [
