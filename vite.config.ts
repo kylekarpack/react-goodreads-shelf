@@ -19,7 +19,7 @@ export default defineConfig({
     lib: {
       entry: "./src/index.ts",
       formats: ["cjs", "es", "umd"],
-      fileName: (format) => `react-goodreads-shelf.${format}.js`,
+      fileName: (format) => `index.${format}.js`,
       name: "index"
     },
     minify: "esbuild",
