@@ -1,30 +1,19 @@
-import React, { CSSProperties, FunctionComponent, useEffect, useMemo, useRef, useState } from "react";
+import { CSSProperties, FunctionComponent, useEffect, useMemo, useRef, useState } from "react";
 import type { Book, Props } from "../types";
 import Placeholder from "./Placeholder";
-
-const imageStyle: CSSProperties = {
-  display: "block",
-  objectFit: "contain",
-  width: "100%",
-  aspectRatio: "2 / 3",
-  position: "relative",
-  zIndex: 2,
-  backdropFilter: "blur(6px)"
-};
+import styles from "./Cover.module.css";
 
 const Cover: FunctionComponent<{ book: Book; options?: Props }> = ({ book, options }) => {
   const [state, setState] = useState({ error: false });
   const [isInView, setIsInView] = useState(false);
 
-  const root = useRef(null); // the container
+  const root = useRef(null);
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       (entries) => {
         const { isIntersecting } = entries[0];
-
         if (isIntersecting) {
-          // is in view
           observer.disconnect();
         }
 
@@ -61,25 +50,27 @@ const Cover: FunctionComponent<{ book: Book; options?: Props }> = ({ book, optio
 
         return {
           backgroundImage,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "50% 0",
-          opacity: isInView ? 1 : 0,
-          transition: "opacity .25s ease-in-out"
+          opacity: isInView ? 1 : 0
         };
       },
     [imageUrl, isInView, options?.displayOptions?.hideBackgroundImages]
   );
 
   return (
-    <div ref={root} style={getBackground(imageUrl!)}>
+    <div ref={root} className={`rgs-cover ${styles.cover}`} style={getBackground(imageUrl!)}>
       {state.error ? (
-        <div data-testid="placeholder">
+        <div className="rgs-placeholder" data-testid="placeholder">
           <Placeholder />
         </div>
       ) : (
         <div>
-          <img alt={book.title} style={imageStyle} src={imageUrl} loading="lazy" onError={onError} />
+          <img
+            alt={book.title}
+            className={`rgs-image ${styles.image}`}
+            src={imageUrl}
+            loading="lazy"
+            onError={onError}
+          />
         </div>
       )}
     </div>

@@ -1,0 +1,18 @@
+.image {
+  display: block;
+  -o-object-fit: contain;
+  object-fit: contain;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  position: relative;
+  z-index: 2;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.cover {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  transition: opacity 0.25s ease-in-out;
+}

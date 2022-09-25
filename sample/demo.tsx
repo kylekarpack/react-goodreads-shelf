@@ -1,24 +1,13 @@
 import React from "react";
-import { render } from "react-dom";
-import { GoodreadsBookshelf } from "../src/index";
-import { Book } from "../src/types";
+import { createRoot } from "react-dom/client";
+import { GoodreadsBookshelf } from "../src";
 
-const filter = (book: Book): boolean => {
-  return !book.title?.toLowerCase()?.includes("hardy boys") && !book.subtitle?.toLowerCase()?.includes("hardy boys");
-};
-
-render(
+const container = document.getElementById("home");
+const root = createRoot(container!);
+root.render(
   <div>
+    <style dangerouslySetInnerHTML={{ __html: "body { font-family: sans-serif }" }}></style>
     <h1>React Goodreads Shelf Demo Page</h1>
-    <GoodreadsBookshelf
-      userId="63515611"
-      limit={500}
-      width={80}
-      displayOptions={{ hideDetails: true, hideBackgroundImages: true }}
-      groupBy="year"
-      filter={filter}
-    />
-    <GoodreadsBookshelf userId="63515611" limit={250} groupBy="year" filter={filter} />
-  </div>,
-  document.getElementById("home")
+    <GoodreadsBookshelf userId="63515611" width={160} limit={20} groupBy="year" />
+  </div>
 );
