@@ -31,7 +31,7 @@ const bookMapper = (row: Element, thumbnailWidth: number): Book => {
     ?.getAttribute("src")
     // Get a thumbnail of the requested width
     // Add some padding factor for higher-quality rendering
-    ?.replace(/\._(S[Y|X]\d+_?){1,2}_/i, `._SX${thumbnailWidth * 1.5}_`);
+    ?.replace(/\._(S[Y|X]\d+_?){1,2}_/i, `._SX${thumbnailWidth * 2}_`);
   const href = row?.querySelector("td.field.cover a")?.getAttribute("href");
   const rating = row?.querySelectorAll("td.field.rating .staticStars .p10")?.length;
 
