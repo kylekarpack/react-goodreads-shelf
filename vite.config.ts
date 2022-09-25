@@ -20,7 +20,7 @@ export default defineConfig({
       entry: "./src/index.ts",
       formats: ["cjs", "es", "umd"],
       fileName: (format) => `react-goodreads-shelf.${format}.js`,
-      name: "react-goodreads-shelf"
+      name: "index"
     },
     minify: "esbuild",
     rollupOptions: {
