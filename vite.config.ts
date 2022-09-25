@@ -13,7 +13,7 @@ export default defineConfig({
       exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"]
     }
   },
-  plugins: [react(), dts({ entryRoot: "src" }), cssInjectedByJsPlugin()],
+  plugins: [react(), dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()],
   build: {
     outDir: "./dist",
     lib: {
