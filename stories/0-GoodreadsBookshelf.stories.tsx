@@ -1,4 +1,4 @@
-import type { ComponentMeta } from "@storybook/react";
+import type { ComponentMeta, Story } from "@storybook/react";
 import React from "react";
 import GoodreadsBookshelf from "../src";
 import { Props } from "../src/types";
@@ -41,18 +41,17 @@ const shelves = ["read", "currently-reading", "to-read"];
 
 export default {
   title: "React Goodreads Shelf",
+
   component: GoodreadsBookshelf,
   argTypes: {
     userId: {
       name: "User ID",
-      defaultValue: "63515611",
       control: {
         type: "text"
       }
     },
     width: {
       name: "Book Width",
-      defaultValue: 100,
       control: {
         type: "number",
         min: 25,
@@ -67,12 +66,11 @@ export default {
       }
     },
     hideBackgroundImages: {
-      name: "Hide backround images",
+      name: "Hide background images",
       control: "boolean"
     },
     limit: {
       name: "Number of Books",
-      defaultValue: 12,
       control: {
         type: "number",
         min: 1,
@@ -81,7 +79,6 @@ export default {
     },
     shelf: {
       name: "Shelf Name",
-      defaultValue: "read",
       control: {
         type: "select",
         options: shelves
@@ -89,7 +86,6 @@ export default {
     },
     sort: {
       name: "Sort Field",
-      defaultValue: "date_read",
       control: {
         type: "select",
         options: sorts
@@ -97,7 +93,6 @@ export default {
     },
     order: {
       name: "Order",
-      defaultValue: "d",
       control: {
         type: "inline-radio",
         options: ["a", "d"]
@@ -105,9 +100,23 @@ export default {
     },
     search: {
       name: "Search Text",
-      defaultValue: "",
       control: {
         type: "text"
+      }
+    },
+    displayOptions: {
+      table: {
+        disable: true
+      }
+    },
+    filter: {
+      table: {
+        disable: true
+      }
+    },
+    groupBy: {
+      table: {
+        disable: true
       }
     }
   }
@@ -136,12 +145,39 @@ const getDisplayOptions = (args: StorybookProps) => {
   };
 };
 
-export const StandardShelf = (args: StorybookProps) => {
+const Template: Story<StorybookProps> = (args) => {
   const displayOptions = getDisplayOptions(args);
   return <GoodreadsBookshelf {...args} displayOptions={displayOptions} />;
 };
 
-export const GroupedShelf = (args: StorybookProps) => {
-  const displayOptions = getDisplayOptions(args);
-  return <GoodreadsBookshelf {...args} displayOptions={displayOptions} groupBy="year" />;
+const Primary: Story<StorybookProps> = Template.bind({});
+Primary.args = {
+  userId: "63515611",
+  width: 100,
+  limit: 12,
+  shelf: "read",
+  sort: "date_read",
+  order: "d",
+  search: ""
+};
+
+export const MinimalShelf: Story<StorybookProps> = Template.bind({});
+MinimalShelf.args = {
+  ...Primary.args,
+  hideDetails: ["title", "subtitle", "author", "rating"],
+  limit: 20
+};
+
+export const StandardShelf: Story<StorybookProps> = Template.bind({});
+StandardShelf.args = {
+  ...Primary.args,
+  hideDetails: ["rating"],
+  width: 130
+};
+
+export const GroupedShelf: Story<StorybookProps> = Template.bind({});
+GroupedShelf.args = {
+  ...Primary.args,
+  width: 130,
+  groupBy: "year"
 };

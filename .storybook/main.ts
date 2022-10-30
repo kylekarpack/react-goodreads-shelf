@@ -1,6 +1,6 @@
-import type { StorybookConfig } from "@storybook/react/types";
+import type { StorybookViteConfig } from "@storybook/builder-vite";
 
-const config: StorybookConfig = {
+const config: StorybookViteConfig = {
   stories: ["../stories/**/*.stories.{ts,tsx}"],
   addons: ["@storybook/addon-links", "@storybook/addon-storysource", "@storybook/addon-controls"],
   core: {
@@ -8,12 +8,10 @@ const config: StorybookConfig = {
   },
   typescript: {
     check: false,
-    checkOptions: {},
-    reactDocgen: "react-docgen-typescript",
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true)
-    }
+    checkOptions: {}
+  },
+  async viteFinal(config) {
+    return config;
   }
 };
 
