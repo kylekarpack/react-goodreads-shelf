@@ -10,8 +10,8 @@ const Loader: FunctionComponent = () => {
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid"
       >
-        <path d="M20 25h60v50H20z" fill="#fdfdfd" stroke="#85a2b6" />
-        <path d="M50 25l9.421-3.43v56.86L50 75" fill="#fdfdfd" stroke="#85a2b6">
+        <path d="M20 25h60v50H20z" fill="transparent" stroke="#85a2b6" />
+        <path d="M50 25l9.421-3.43v56.86L50 75" fill="transparent" stroke="#85a2b6">
           <animate
             attributeName="d"
             calcMode="linear"
@@ -31,7 +31,7 @@ const Loader: FunctionComponent = () => {
             repeatCount="indefinite"
           />
         </path>
-        <path d="M50 25h30v50H50" fill="#fdfdfd" stroke="#85a2b6">
+        <path d="M50 25h30v50H50" fill="transparent" stroke="#85a2b6">
           <animate
             attributeName="d"
             calcMode="linear"
@@ -51,7 +51,7 @@ const Loader: FunctionComponent = () => {
             repeatCount="indefinite"
           />
         </path>
-        <path d="M50 25h30v50H50" fill="#fdfdfd" stroke="#85a2b6">
+        <path d="M50 25h30v50H50" fill="transparent" stroke="#85a2b6">
           <animate
             attributeName="d"
             calcMode="linear"
@@ -71,7 +71,7 @@ const Loader: FunctionComponent = () => {
             repeatCount="indefinite"
           />
         </path>
-        <path d="M50 25l-10.379-3.27v56.54L50 75" fill="#fdfdfd" stroke="#85a2b6">
+        <path d="M50 25l-10.379-3.27v56.54L50 75" fill="transparent" stroke="#85a2b6">
           <animate
             attributeName="d"
             calcMode="linear"
@@ -91,7 +91,7 @@ const Loader: FunctionComponent = () => {
             repeatCount="indefinite"
           />
         </path>
-        <path d="M50 25l-.539-4.91v59.82L50 75" fill="#fdfdfd" stroke="#85a2b6">
+        <path d="M50 25l-.539-4.91v59.82L50 75" fill="transparent" stroke="#85a2b6">
           <animate
             attributeName="d"
             calcMode="linear"
@@ -111,7 +111,7 @@ const Loader: FunctionComponent = () => {
             repeatCount="indefinite"
           />
         </path>
-        <path d="M50 25H20v50h30" fill="#fdfdfd" stroke="#85a2b6">
+        <path d="M50 25H20v50h30" fill="transparent" stroke="#85a2b6">
           <animate
             attributeName="d"
             calcMode="linear"
