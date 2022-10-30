@@ -2,7 +2,7 @@ import type { StorybookViteConfig } from "@storybook/builder-vite";
 
 const config: StorybookViteConfig = {
   stories: ["../stories/**/*.stories.{ts,tsx}"],
-  addons: ["@storybook/addon-links", "@storybook/addon-storysource", "@storybook/addon-controls"],
+  addons: ["@storybook/addon-controls", "storybook-dark-mode"],
   core: {
     builder: "@storybook/builder-vite"
   },

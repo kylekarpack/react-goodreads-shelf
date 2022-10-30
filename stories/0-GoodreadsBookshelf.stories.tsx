@@ -122,12 +122,10 @@ export default {
   }
 } as ComponentMeta<typeof GoodreadsBookshelf>;
 
-type StorybookAdditionalProps = {
+type StorybookProps = Props & {
   hideDetails: string[];
   hideBackgroundImages: boolean;
 };
-
-type StorybookProps = Props & StorybookAdditionalProps;
 
 const mapHide = (toHide: string[]) => {
   const output = {};
@@ -179,5 +177,6 @@ export const GroupedShelf: Story<StorybookProps> = Template.bind({});
 GroupedShelf.args = {
   ...Primary.args,
   width: 130,
-  groupBy: "year"
+  groupBy: "year",
+  limit: 100
 };
