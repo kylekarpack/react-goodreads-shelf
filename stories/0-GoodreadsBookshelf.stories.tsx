@@ -41,7 +41,6 @@ const shelves = ["read", "currently-reading", "to-read"];
 
 export default {
   title: "React Goodreads Shelf",
-
   component: GoodreadsBookshelf,
   argTypes: {
     userId: {

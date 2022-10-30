@@ -12,5 +12,7 @@ addons.setConfig({
   theme: undefined,
   selectedPanel: "controls",
   initialActive: "controls",
-  showRoots: false
+  sidebar: {
+    showRoots: false
+  }
 });

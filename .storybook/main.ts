@@ -11,6 +11,7 @@ const config: StorybookViteConfig = {
     checkOptions: {}
   },
   async viteFinal(config) {
+    config.base = "/react-goodreads-shelf/";
     return config;
   }
 };

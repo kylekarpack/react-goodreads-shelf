@@ -14,7 +14,12 @@ export const parameters = {
 // create a component that uses the dark mode hook
 const ThemeWrapper: FunctionComponent<any> = ({ children }) => {
   // render your custom theme provider
-  return <div style={{ color: useDarkMode() ? "white" : "black", fontFamily: "sans-serif" }}>{children}</div>;
+  return (
+    <div>
+      <base href="/blaldgsag" />
+      <div style={{ color: useDarkMode() ? "white" : "black", fontFamily: "sans-serif" }}>{children}</div>
+    </div>
+  );
 };
 
 export const decorators = [(renderStory) => <ThemeWrapper>{renderStory()}</ThemeWrapper>];
