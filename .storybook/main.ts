@@ -3,6 +3,9 @@ import type { StorybookConfig } from "@storybook/react/types";
 const config: StorybookConfig = {
   stories: ["../stories/**/*.stories.{ts,tsx}"],
   addons: ["@storybook/addon-links", "@storybook/addon-storysource", "@storybook/addon-controls"],
+  core: {
+    builder: "@storybook/builder-vite"
+  },
   typescript: {
     check: false,
     checkOptions: {},

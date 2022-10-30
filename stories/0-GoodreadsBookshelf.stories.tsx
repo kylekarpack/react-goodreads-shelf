@@ -1,6 +1,6 @@
 import type { ComponentMeta } from "@storybook/react";
 import React from "react";
-import GoodreadsBookshelf from "../src/index";
+import GoodreadsBookshelf from "../src";
 import { Props } from "../src/types";
 
 const sorts = [
@@ -40,7 +40,7 @@ const sorts = [
 const shelves = ["read", "currently-reading", "to-read"];
 
 export default {
-  title: "GoodreadsBookshelf",
+  title: "React Goodreads Shelf",
   component: GoodreadsBookshelf,
   argTypes: {
     userId: {
@@ -113,6 +113,13 @@ export default {
   }
 } as ComponentMeta<typeof GoodreadsBookshelf>;
 
+type StorybookAdditionalProps = {
+  hideDetails: string[];
+  hideBackgroundImages: boolean;
+};
+
+type StorybookProps = Props & StorybookAdditionalProps;
+
 const mapHide = (toHide: string[]) => {
   const output = {};
   for (let key of toHide || []) {
@@ -122,11 +129,19 @@ const mapHide = (toHide: string[]) => {
   return output;
 };
 
-export const Story = (args: Props) => {
-  console.warn(args);
-  const displayOptions = {
-    hideDetails: mapHide((args as any)?.hideDetails),
-    hideBackgroundImages: (args as any)?.hideBackgroundImages
+const getDisplayOptions = (args: StorybookProps) => {
+  return {
+    hideDetails: mapHide(args.hideDetails),
+    hideBackgroundImages: args.hideBackgroundImages
   };
+};
+
+export const StandardShelf = (args: StorybookProps) => {
+  const displayOptions = getDisplayOptions(args);
   return <GoodreadsBookshelf {...args} displayOptions={displayOptions} />;
+};
+
+export const GroupedShelf = (args: StorybookProps) => {
+  const displayOptions = getDisplayOptions(args);
+  return <GoodreadsBookshelf {...args} displayOptions={displayOptions} groupBy="year" />;
 };
