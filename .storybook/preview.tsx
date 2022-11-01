@@ -15,10 +15,7 @@ export const parameters = {
 const ThemeWrapper: FunctionComponent<any> = ({ children }) => {
   // render your custom theme provider
   return (
-    <div>
-      <base href="/blaldgsag" />
-      <div style={{ color: useDarkMode() ? "white" : "black", fontFamily: "sans-serif" }}>{children}</div>
-    </div>
+     <div style={{ color: useDarkMode() ? "white" : "black", fontFamily: "sans-serif" }}>{children}</div>
   );
 };
 
