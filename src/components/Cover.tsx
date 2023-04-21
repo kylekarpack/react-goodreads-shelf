@@ -21,7 +21,7 @@ const Cover: FunctionComponent<{ book: Book; options?: Props }> = ({ book, optio
       },
       { threshold: 0 }
     );
-    if (root.current) {
+    if (root?.current) {
       observer.observe(root.current);
     }
   }, []);
