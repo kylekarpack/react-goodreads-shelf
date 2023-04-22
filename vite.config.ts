@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
+import preact from "@preact/preset-vite";
 
 export default defineConfig({
   test: {
@@ -13,7 +14,7 @@ export default defineConfig({
       exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"]
     }
   },
-  plugins: [react(), dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()],
+  plugins: [preact(), dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()],
   build: {
     outDir: "./dist",
     lib: {

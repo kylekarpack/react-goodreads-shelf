@@ -24,6 +24,7 @@
   },
   "engineStrict": true,
   "devDependencies": {
+    "@preact/preset-vite": "^2.5.0",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-controls": "^6.5.13",
     "@storybook/addons": "^6.5.13",
@@ -40,6 +41,7 @@
     "c8": "^7.11.0",
     "gts": "^3.1.0",
     "jsdom": "^19.0.0",
+    "preact": "^10.13.2",
     "prettier": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
