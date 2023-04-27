@@ -116,7 +116,8 @@ type StorybookProps = Props & {
   hideBackgroundImages: boolean;
 };
 
-const mapHide = (toHide: string[]) => {
+// Map from a Storybook control value to component props
+const mapHide = (toHide: string[]): Record<string, boolean> => {
   const output = {};
   for (let key of toHide || []) {
     output[key] = true;
