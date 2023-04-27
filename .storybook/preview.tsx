@@ -1,5 +1,4 @@
 import { themes } from "@storybook/theming";
-import "./preview.css";
 
 const parameters = {
   darkMode: {
