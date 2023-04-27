@@ -7,8 +7,7 @@ const config: StorybookConfig = {
     check: false
   },
   async viteFinal(config) {
-    config.base = "/react-goodreads-shelf/";
-    //config.plugins = []; // Remove extraneous plugins
+    config.base = process.env.BASE_PATH || config.base;
     return config;
   },
   framework: {

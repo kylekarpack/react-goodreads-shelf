@@ -1,7 +1,7 @@
 name: Build and Deploy Storybook
 on:
   push:
-    paths: ["stories/**", "src/components/**"] # Trigger the action only when files change in the folders defined here
+    paths: ["stories/**", "src/components/**", "./.storybook/**"] # Trigger the action only when files change in the folders defined here
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
       - name: Install and Build 🔧
         run: | # Install npm packages and build the Storybook files
           npm ci
-          npm run build-storybook
+          BASE_PATH=/react-goodreads-shelf/ npm run build-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
