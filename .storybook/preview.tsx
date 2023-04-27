@@ -2,7 +2,7 @@ import { themes } from "@storybook/theming";
 import { useDarkMode } from "storybook-dark-mode";
 import React, { FunctionComponent } from "react";
 
-export const parameters = {
+const parameters = {
   darkMode: {
     // Override the default dark theme
     dark: { ...themes.dark, appBg: "black", color: "white" },
@@ -14,9 +14,14 @@ export const parameters = {
 // create a component that uses the dark mode hook
 const ThemeWrapper: FunctionComponent<any> = ({ children }) => {
   // render your custom theme provider
-  return (
-     <div style={{ color: useDarkMode() ? "white" : "black", fontFamily: "sans-serif" }}>{children}</div>
-  );
+  return <div style={{ color: useDarkMode() ? "white" : "black", fontFamily: "sans-serif" }}>{children}</div>;
 };
 
-export const decorators = [(renderStory) => <ThemeWrapper>{renderStory()}</ThemeWrapper>];
+const decorators = [(renderStory) => <ThemeWrapper>{renderStory()}</ThemeWrapper>];
+
+const preview = {
+  parameters,
+  decorators
+};
+
+export default preview;
