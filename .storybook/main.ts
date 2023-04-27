@@ -1,14 +1,17 @@
 import type { StorybookViteConfig } from "@storybook/builder-vite";
+
 const config: StorybookViteConfig = {
   stories: ["../stories/**/*.stories.{ts,tsx}"],
   addons: ["@storybook/addon-controls", "storybook-dark-mode", "@storybook/addon-mdx-gfm"],
-  core: {},
+  core: {
+    builder: "@storybook/builder-vite"
+  },
   typescript: {
-    check: false,
-    checkOptions: {}
+    check: false
   },
   async viteFinal(config) {
     config.base = "/react-goodreads-shelf/";
+    config.plugins = []; // Remove extraneous plugins
     return config;
   },
   framework: {

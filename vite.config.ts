@@ -1,5 +1,5 @@
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
 
@@ -13,7 +13,7 @@ export default defineConfig({
       exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"]
     }
   },
-  plugins: [react(), dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()],
+  plugins: [react(), dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()] as any[],
   build: {
     outDir: "./dist",
     lib: {
