@@ -1,4 +1,4 @@
-import type { ComponentMeta, Story } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 import GoodreadsBookshelf from "../src";
 import { Props } from "../src/types";
@@ -59,10 +59,8 @@ export default {
     },
     hideDetails: {
       name: "Hide Details",
-      control: {
-        type: "check",
-        options: ["title", "subtitle", "author", "rating"]
-      }
+      control: "check",
+      options: ["title", "subtitle", "author", "rating"]
     },
     hideBackgroundImages: {
       name: "Hide background images",
@@ -78,30 +76,22 @@ export default {
     },
     shelf: {
       name: "Shelf Name",
-      control: {
-        type: "select",
-        options: shelves
-      }
+      control: "select",
+      options: shelves
     },
     sort: {
       name: "Sort Field",
-      control: {
-        type: "select",
-        options: sorts
-      }
+      control: "select",
+      options: sorts
     },
     order: {
       name: "Order",
-      control: {
-        type: "inline-radio",
-        options: ["a", "d"]
-      }
+      control: "inline-radio",
+      options: ["a", "d"]
     },
     search: {
       name: "Search Text",
-      control: {
-        type: "text"
-      }
+      control: "text"
     },
     displayOptions: {
       table: {
@@ -119,7 +109,7 @@ export default {
       }
     }
   }
-} as ComponentMeta<typeof GoodreadsBookshelf>;
+} as Meta<typeof GoodreadsBookshelf>;
 
 type StorybookProps = Props & {
   hideDetails: string[];
@@ -142,12 +132,12 @@ const getDisplayOptions = (args: StorybookProps) => {
   };
 };
 
-const Template: Story<StorybookProps> = (args) => {
+const Template: StoryFn<StorybookProps> = (args) => {
   const displayOptions = getDisplayOptions(args);
   return <GoodreadsBookshelf {...args} displayOptions={displayOptions} />;
 };
 
-const Primary: Story<StorybookProps> = Template.bind({});
+const Primary: StoryFn<StorybookProps> = Template.bind({});
 Primary.args = {
   userId: "63515611",
   width: 100,
@@ -158,21 +148,21 @@ Primary.args = {
   search: ""
 };
 
-export const MinimalShelf: Story<StorybookProps> = Template.bind({});
+export const MinimalShelf: StoryFn<StorybookProps> = Template.bind({});
 MinimalShelf.args = {
   ...Primary.args,
   hideDetails: ["title", "subtitle", "author", "rating"],
   limit: 20
 };
 
-export const StandardShelf: Story<StorybookProps> = Template.bind({});
+export const StandardShelf: StoryFn<StorybookProps> = Template.bind({});
 StandardShelf.args = {
   ...Primary.args,
   hideDetails: ["rating"],
   width: 130
 };
 
-export const GroupedShelf: Story<StorybookProps> = Template.bind({});
+export const GroupedShelf: StoryFn<StorybookProps> = Template.bind({});
 GroupedShelf.args = {
   ...Primary.args,
   width: 130,
