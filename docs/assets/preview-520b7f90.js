@@ -195,4 +195,4 @@ You may have forgotten to import it.`);var n=t.__emotion_real===t,a=n&&t.__emoti
     transform: translate3d(0, 0, 0);
   }
 `;__STORYBOOK_MODULE_CLIENT_LOGGER__;const da={darkMode:{dark:{...rt.dark,appBg:"black",color:"white"},light:{...rt.normal,appBg:"white"},darkClass:"lights-out",lightClass:"lights-on",stylePreview:!0}},ma={parameters:da};export{ma as default};
-//# sourceMappingURL=preview-b70e1d55.js.map
+//# sourceMappingURL=preview-520b7f90.js.map

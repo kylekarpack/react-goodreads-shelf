@@ -20,7 +20,7 @@
     window.CHANNEL_OPTIONS = {};
     window.FEATURES = {"warnOnLegacyHierarchySeparator":true,"buildStoriesJson":false,"storyStoreV7":true,"argTypeTargetsV7":true,"legacyDecoratorFileOrder":false};
     window.STORIES = [{"titlePrefix":"","directory":"./stories","files":"**/*.stories.{ts,tsx}","importPathMatcher":"^\\.[\\\\/](?:stories(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(ts|tsx))$"}];
-    window.DOCS_OPTIONS = {};
+    window.DOCS_OPTIONS = {"autodocs":"tag"};
     window.SERVER_CHANNEL_URL = undefined;
 
     // We do this so that "module && module.hot" etc. in Storybook source code
@@ -357,8 +357,18 @@
     console.warn('unable to connect to top frame for connecting dev tools');
   }
 </script>
+<style>
+	body {
+		font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI",
+			"Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
 
-  <script type="module" crossorigin src="/react-goodreads-shelf/assets/iframe-4c7117d3.js"></script>
+	.lights-out {
+		background-color: #222;
+		color: #fff;
+	}
+</style>
+  <script type="module" crossorigin src="/react-goodreads-shelf/assets/iframe-7dffac80.js"></script>
 </head>
 
 <body>
