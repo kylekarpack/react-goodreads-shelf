@@ -12,7 +12,7 @@
     "noEmit": true,
     "allowJs": true,
     "resolveJsonModule": true,
-    "types": ["vitest/globals"],
+    "types": ["vitest/globals", "vite/client"],
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }
