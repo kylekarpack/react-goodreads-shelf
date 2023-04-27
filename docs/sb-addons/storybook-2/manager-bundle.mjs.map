@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["global-externals:@storybook/addons", "../../../.storybook/manager.ts"],
+  "sourcesContent": ["export default __STORYBOOKADDONS__;\nconst { addons, types, mockChannel } = __STORYBOOKADDONS__;\nexport { addons, types, mockChannel };", "import { addons } from \"@storybook/addons\";\n\naddons.setConfig({\n  isFullscreen: false,\n  showNav: true,\n  showPanel: true,\n  showToolbar: true,\n  panelPosition: \"right\",\n  sidebarAnimations: true,\n  enableShortcuts: true,\n  isToolshown: true,\n  theme: undefined,\n  selectedPanel: \"controls\",\n  initialActive: \"controls\",\n  sidebar: {\n    showRoots: false\n  }\n});\n"],
+  "mappings": ";AAAA,IAAOA,EAAQ,oBACT,CAAE,OAAAC,EAAQ,MAAAC,EAAO,YAAAC,CAAY,EAAI,oBCCvCC,EAAO,UAAU,CACf,aAAc,GACd,QAAS,GACT,UAAW,GACX,YAAa,GACb,cAAe,QACf,kBAAmB,GACnB,gBAAiB,GACjB,YAAa,GACb,MAAO,OACP,cAAe,WACf,cAAe,WACf,QAAS,CACP,UAAW,EACb,CACF,CAAC",
+  "names": ["addons_default", "addons", "types", "mockChannel", "addons"]
+}
