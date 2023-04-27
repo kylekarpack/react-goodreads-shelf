@@ -126,6 +126,7 @@ const mapHide = (toHide: string[]): Record<string, boolean> => {
   return output;
 };
 
+// Get the display options from Storybook control values
 const getDisplayOptions = (args: StorybookProps) => {
   return {
     hideDetails: mapHide(args.hideDetails),
