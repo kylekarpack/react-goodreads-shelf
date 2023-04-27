@@ -111,6 +111,9 @@ export default {
   }
 } as Meta<typeof GoodreadsBookshelf>;
 
+/**
+ * Storybook component types
+ */
 type StorybookProps = Props & {
   hideDetails: string[];
   hideBackgroundImages: boolean;

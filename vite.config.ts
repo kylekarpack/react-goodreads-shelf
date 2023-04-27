@@ -3,6 +3,12 @@ import { defineConfig } from "vitest/config";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
 
+let plugins = [react()];
+
+if (!process.env.STORYBOOK) {
+  plugins = plugins.concat([dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()]);
+}
+
 export default defineConfig({
   test: {
     globals: true,
@@ -13,7 +19,7 @@ export default defineConfig({
       exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"]
     }
   },
-  plugins: [react(), dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()] as any[],
+  plugins,
   build: {
     outDir: "./dist",
     lib: {

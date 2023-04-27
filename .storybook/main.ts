@@ -1,4 +1,6 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { mergeConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 const config: StorybookConfig = {
   stories: ["../stories/**/*.stories.{ts,tsx}"],
@@ -7,8 +9,9 @@ const config: StorybookConfig = {
     check: false
   },
   async viteFinal(config) {
-    config.base = process.env.BASE_PATH || config.base;
-    return config;
+    return mergeConfig(config, {
+      base: process.env.BASE_PATH || config.base
+    });
   },
   framework: {
     name: "@storybook/react-vite",
