@@ -1,6 +1,7 @@
-name: Build and Deploy Storybook
+name: Deploy Storybook
 on:
   push:
+    branches: [main]
     paths: ["stories/**", "src/components/**", "./.storybook/**"] # Trigger the action only when files change in the folders defined here
 jobs:
   build-and-deploy:
