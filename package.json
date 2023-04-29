@@ -52,12 +52,13 @@
     "typescript": "^5.0.4",
     "typescript-plugin-css-modules": "^4.2.2",
     "vite": "^4.3.3",
-    "vite-plugin-css-injected-by-js": "^2.1.0",
+    "vite-plugin-css-injected-by-js": "^3.1.0",
     "vite-plugin-dts": "^2.3.0",
-    "vitest": "^0.30.1"
+    "vitest": "^0.30.1",
+    "vitest-sonar-reporter": "^0.4.0"
   },
   "scripts": {
-    "test": "vitest run --reporter=verbose",
+    "test": "vitest run",
     "test:watch": "vitest --reporter=verbose",
     "test:related": "vitest related",
     "dev": "vite",
