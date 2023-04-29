@@ -40,6 +40,7 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
     "@vitest/coverage-c8": "^0.23.2",
+    "@vitest/coverage-istanbul": "^0.30.1",
     "c8": "^7.11.0",
     "gts": "^3.1.0",
     "jsdom": "^19.0.0",
@@ -54,11 +55,11 @@
     "vite": "^4.3.3",
     "vite-plugin-css-injected-by-js": "^3.1.0",
     "vite-plugin-dts": "^2.3.0",
-    "vitest": "^0.30.1",
-    "vitest-sonar-reporter": "^0.4.0"
+    "vitest": "^0.30.1"
   },
   "scripts": {
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:watch": "vitest --reporter=verbose",
     "test:related": "vitest related",
     "dev": "vite",

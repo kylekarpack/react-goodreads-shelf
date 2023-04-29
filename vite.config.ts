@@ -9,11 +9,10 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./vitest.setup.ts",
     coverage: {
-      reporter: ["lcov", "text"],
-      exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"]
-    },
-    reporters: ["verbose", "vitest-sonar-reporter"],
-    outputFile: "coverage/sonar-report.xml"
+      reporter: ["lcov", "text", "html"],
+      exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"],
+      provider: "istanbul" // Until a bug in C8 is fixed that causes it to not provide any coverage for TSX files
+    }
   },
   plugins: [react(), dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()],
   build: {
