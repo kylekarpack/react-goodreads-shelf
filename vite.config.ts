@@ -11,7 +11,7 @@ export default defineConfig({
     coverage: {
       reporter: ["lcov", "text", "html"],
       exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"],
-      provider: "istanbul" // Until a bug in C8 is fixed that causes it to not provide any coverage for TSX files
+      provider: "c8"
     }
   },
   plugins: [react(), dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()],
