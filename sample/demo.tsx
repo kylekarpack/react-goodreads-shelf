@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { GoodreadsBookshelf } from "../src";
 
 const container = document.getElementById("home");
-const root = createRoot(container!);
+const root = createRoot(container as HTMLElement);
 root.render(
   <div>
     <style dangerouslySetInnerHTML={{ __html: "body { font-family: sans-serif }" }}></style>
