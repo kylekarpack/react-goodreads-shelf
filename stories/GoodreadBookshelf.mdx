@@ -1,3 +1,13 @@
+import { Meta, Description, Story, Canvas } from "@storybook/blocks";
+
+import * as GoodreadsBookshelfStories from "./0-GoodreadsBookshelf.stories";
+
+<Meta of={GoodreadsBookshelfStories} name="Documentation" />
+
 # react-goodreads-shelf
 
 This React component allows you to display a public Goodreads shelf in a React application. It's a lot like the Goodreads JavaScript widget, but allows for more customization, better async loading, and React-like usage.
+
+<Canvas>
+  <Story of={GoodreadsBookshelfStories.MinimalShelf} />
+</Canvas>
