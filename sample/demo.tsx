@@ -8,6 +8,6 @@ root.render(
   <div>
     <style dangerouslySetInnerHTML={{ __html: "body { font-family: sans-serif }" }}></style>
     <h1>React Goodreads Shelf Demo Page</h1>
-    <GoodreadsBookshelf userId="63515611" width={160} limit={20} groupBy="year" />
+    <GoodreadsBookshelf userId="63515611" width={80} limit={50} displayOptions={{ hideDetails: true }} />
   </div>
 );
