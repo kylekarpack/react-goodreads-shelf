@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
-import useGoodreadsShelf from "../hooks/useGoodreadsShelf";
-import { Props } from "../types";
-import { ALL_GROUP_TITLE } from "../util";
-import BookList from "./BookList";
+import useGoodreadsShelf from "../../hooks/useGoodreadsShelf";
+import { Props } from "../../types";
+import { ALL_GROUP_TITLE } from "../../util";
+import BookList from "../book-list/BookList";
 import styles from "./GoodreadsBookshelf.module.css";
-import Loader from "./Loader";
+import Loader from "../loader/Loader";
 
 /** Display a Goodreads bookshelf component */
 const GoodreadsBookshelf: FunctionComponent<Props> = (props) => {

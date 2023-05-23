@@ -1,6 +1,6 @@
 import { CSSProperties, FunctionComponent } from "react";
-import { Book as BookType, Props } from "../types";
-import Book from "./Book";
+import { Book as BookType, Props } from "../../types";
+import Book from "../book/Book";
 import styles from "./BookList.module.css";
 
 const shelfStyle = (options?: Props): CSSProperties => {

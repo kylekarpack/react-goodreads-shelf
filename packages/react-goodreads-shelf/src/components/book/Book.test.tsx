@@ -1,7 +1,7 @@
 import { act, fireEvent, render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import Book from "./Book";
-import { Book as BookType } from "../types";
+import { Book as BookType } from "../../types";
 
 describe("book component", () => {
   it("renders without crashing", () => {

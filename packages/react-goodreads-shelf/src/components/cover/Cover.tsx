@@ -1,6 +1,6 @@
 import { CSSProperties, FunctionComponent, useEffect, useMemo, useRef, useState } from "react";
-import type { Book, Props } from "../types";
-import Placeholder from "./Placeholder";
+import type { Book, Props } from "../../types";
+import Placeholder from "../placeholder/Placeholder";
 import styles from "./Cover.module.css";
 
 const Cover: FunctionComponent<{ book: Book; options?: Props }> = ({ book, options }) => {
