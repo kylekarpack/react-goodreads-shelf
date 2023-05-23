@@ -1,8 +1,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { GoodreadsBookshelf } from "../src";
+// eslint-disable-next-line node/no-unpublished-import
+import { GoodreadsBookshelf } from "../react-goodreads-shelf/src";
 
-const container = document.getElementById("home");
+const container = document.getElementById("root");
 const root = createRoot(container as HTMLElement);
 root.render(
   <div>
