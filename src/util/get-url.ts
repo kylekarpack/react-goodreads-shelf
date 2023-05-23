@@ -2,7 +2,7 @@ import { Props } from "../types";
 
 export const getUrl = (props: Props, page: number): URL => {
   // Build a request to the Goodreads API
-  const url = new URL(`https://node.kylekarpack.workers.dev/users/${props.userId}`);
+  const url = new URL(`https://react-goodreads-shelf.kylekarpack.workers.dev/users/${props.userId}`);
 
   url.searchParams.set("shelf", props.shelf || "read");
   url.searchParams.set("sort", props.sort || "date_read");
