@@ -1,9 +1,14 @@
 import { Book } from "./book";
 
-export type Status = { end: number; total: number };
+export type Status = {
+  total: number;
+  start: number;
+  end: number;
+  pageSize: number;
+};
 
 export type FetchResults = {
-  books: Book[];
+  data: Book[];
   status: Status;
 };
 

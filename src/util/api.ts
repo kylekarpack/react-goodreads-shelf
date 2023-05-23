@@ -1,6 +1,5 @@
-import { Book, BookGroup, FetchResults, Props, Status } from "../types";
+import { Book, BookGroup, FetchResults, Props } from "../types";
 import { getUrl } from "./get-url";
-import { getBooksFromHtml } from "./html-utils";
 
 const GOODREADS_PAGE_SIZE = 30;
 
@@ -24,8 +23,15 @@ export const fetchAllBooks = async (props: Props): Promise<BookGroup[]> => {
   });
 
   let books = data.reduce((prev, cur) => {
-    return prev.concat(cur.books);
-  }, firstPage.books);
+    return prev.concat(cur.data);
+  }, firstPage.data);
+
+  // Clean up the response a little
+  for (const book of books) {
+    book.dateAdded = new Date(String(book.dateAdded));
+    book.dateRead = new Date(String(book.dateRead));
+    book.id = book.isbn || book.asin || window.crypto.randomUUID();
+  }
 
   // Optionally filter the books
   if (props.filter) {
@@ -69,42 +75,7 @@ const fetchPage = async (page: number, props: Props): Promise<FetchResults> => {
   // Get the books from Goodreads
   const url = getUrl(props, page);
   url.searchParams.append("page", String(page));
-  const response = await window.fetch(url.toString(), { headers: { accept: "text/javascript" } });
+  const response = await window.fetch(url.toString());
 
-  // Simulate success if we get a 204 No Content response
-  if (response.status === 204) {
-    return {
-      books: [],
-      status: {
-        end: page * 30,
-        total: 0
-      }
-    };
-  }
-
-  const responseBody = await response.text();
-  const { html, status } = parseJsonP(responseBody);
-  const table = `<table>${html}</table>`;
-  const books = getBooksFromHtml(table, props.width);
-  return {
-    books,
-    status
-  };
-};
-
-const parseJsonP = (jsonp: string): { html: string; status: Status } => {
-  const [html, status] = jsonp.split("\n");
-
-  // eslint-disable-next-line quotes
-  const json = html.replace('Element.insert("booksBody", ', "").replace(" });", "}").replace("bottom", '"bottom"');
-  const output: string = JSON.parse(json).bottom;
-
-  const matches = status.match(/(?<end>\d*) of (?<total>\d*) loaded/);
-  return {
-    html: output,
-    status: {
-      end: parseInt(matches?.groups?.end ?? "0"),
-      total: parseInt(matches?.groups?.total ?? "0")
-    }
-  };
+  return await response.json();
 };
