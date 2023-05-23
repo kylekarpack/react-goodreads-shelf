@@ -1,6 +1,12 @@
 {
-  "extends": "./node_modules/gts/",
+  "extends": [
+    "./node_modules/gts/",
+    "plugin:storybook/recommended"
+  ],
   "rules": {
-    "quotes": ["warn", "double"]
+    "quotes": [
+      "warn",
+      "double"
+    ]
   }
 }

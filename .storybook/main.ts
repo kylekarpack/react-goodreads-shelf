@@ -2,8 +2,8 @@ import type { StorybookConfig } from "@storybook/react-vite";
 import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
-  stories: ["../stories/**/*.stories.{ts,tsx}"],
-  addons: ["@storybook/addon-controls", "storybook-dark-mode", "@storybook/addon-mdx-gfm"],
+  stories: ["../stories/**/*.stories.{ts,tsx}", "../stories/**/*.mdx"],
+  addons: ["@storybook/addon-controls", "@storybook/addon-links", "@storybook/addon-essentials", "storybook-dark-mode"],
   typescript: {
     check: false
   },
