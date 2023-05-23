@@ -1,6 +1,7 @@
-import { Counter } from './Counter'
+import { Counter } from "./Counter";
+import { GoodreadsBookshelf } from "../../../react-goodreads-shelf/src";
 
-export { Page }
+export { Page };
 
 function Page() {
   return (
@@ -13,6 +14,7 @@ function Page() {
           Interactive. <Counter />
         </li>
       </ul>
+      <GoodreadsBookshelf userId="63515611" width={80} limit={50} displayOptions={{ hideDetails: true }} />
     </>
-  )
+  );
 }
