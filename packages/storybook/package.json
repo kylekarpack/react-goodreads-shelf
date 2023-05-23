@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "STORYBOOK=true storybook dev -p 6006",
-    "build-storybook": "STORYBOOK=true storybook build -o docs-build"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o docs-build"
   },
   "author": "",
   "license": "MIT",

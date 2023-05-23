@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import React from "react";
-import GoodreadsBookshelf from "../src";
-import { Props } from "../src/types";
+import GoodreadsBookshelf from "../../react-goodreads-shelf/src";
+import { Props } from "../../react-goodreads-shelf/src/types";
 
 const sorts = [
   "title",
