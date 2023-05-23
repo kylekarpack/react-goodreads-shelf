@@ -3,14 +3,14 @@ import { ALL_GROUP_TITLE, fetchAllBooks } from "./api";
 import fs from "fs";
 import path from "path";
 
-const filePath = path.join(__dirname, "../../__test__/data/jsonp.test.html");
-const sampleResponse = fs.readFileSync(filePath).toString();
+const filePath = path.join(__dirname, "../../__test__/data/books.json");
+const sampleResponse = JSON.parse(fs.readFileSync(filePath).toString());
 
 describe("api", () => {
   beforeAll(() => {
     const fetch = vi.fn(() =>
       Promise.resolve({
-        text: () => Promise.resolve(sampleResponse)
+        json: () => Promise.resolve(sampleResponse)
       })
     );
 
@@ -25,9 +25,10 @@ describe("api", () => {
 
   it("fetches grouped books", async () => {
     const groups = await fetchAllBooks({ userId: "123", groupBy: "year" });
-    expect(groups.length).toBe(2);
-    expect(groups[0].title).toBe("2022");
-    expect(groups[1].title).toBe("2021");
+    expect(groups.length).toBe(3);
+    expect(groups[0].title).toBe("2023");
+    expect(groups[1].title).toBe("2022");
+    expect(groups[2].title).toBe("2021");
   });
 
   it("fetches with limit", async () => {
@@ -42,17 +43,5 @@ describe("api", () => {
     });
 
     expect(bookGroup.books.length).toBe(1);
-  });
-
-  it("stops when getting a 204", async () => {
-    const fetch = vi.fn(() =>
-      Promise.resolve({
-        status: 204
-      })
-    );
-
-    vi.stubGlobal("fetch", fetch);
-    const [bookGroup] = await fetchAllBooks({ userId: "123" });
-    expect(bookGroup.books.length).toBe(0);
   });
 });
