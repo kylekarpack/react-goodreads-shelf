@@ -1,0 +1,30 @@
+{
+  "name": "storybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "STORYBOOK=true storybook dev -p 6006",
+    "build-storybook": "STORYBOOK=true storybook build -o docs-build"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@storybook/addon-actions": "^7.0.12",
+    "@storybook/addon-controls": "^7.0.12",
+    "@storybook/addon-essentials": "^7.0.12",
+    "@storybook/addon-links": "^7.0.12",
+    "@storybook/addon-mdx-gfm": "^7.0.12",
+    "@storybook/addons": "^7.0.12",
+    "@storybook/client-api": "^7.0.12",
+    "@storybook/preview-web": "^7.0.12",
+    "@storybook/react": "^7.0.12",
+    "@storybook/react-vite": "^7.0.12",
+    "storybook": "^7.0.12",
+    "storybook-dark-mode": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-storybook": "^0.6.12"
+  }
+}
