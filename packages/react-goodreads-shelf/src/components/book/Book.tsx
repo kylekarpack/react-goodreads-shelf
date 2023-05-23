@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import type { Book as BookType, Props } from "../../types";
-import styles from "../Book.module.css";
+import styles from "./Book.module.css";
 import Cover from "../cover/Cover";
 import Rating from "../rating/Rating";
 

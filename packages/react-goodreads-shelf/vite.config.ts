@@ -6,7 +6,7 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   test: {
     globals: true,
-    environment: "jsdom",
+    environment: "happy-dom",
     setupFiles: "./vitest.setup.ts",
     coverage: {
       reporter: ["lcov", "text", "html"],
