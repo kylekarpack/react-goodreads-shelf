@@ -1,7 +1,6 @@
 /* eslint-disable node/no-unpublished-import */
 import { Text, Element } from "@cloudflare/workers-types";
-import type { Book } from "../../react-goodreads-shelf/src/types/book";
-import type { Status } from "../../react-goodreads-shelf/src/types/api";
+import type { Book, Status } from "../../react-goodreads-shelf/src/types";
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
