@@ -24,7 +24,6 @@ yarn add react-goodreads-shelf
 ## Usage
 
 ```jsx
-import React from "react";
 import GoodreadsBookshelf from "react-goodreads-shelf";
 
 export default function App() {
@@ -39,7 +38,7 @@ export default function App() {
 `react-goodreads-shelf` supports basic server-side rendering. [An example](./packages/example-ssr/pages/) with `vite-plugin-ssr` might look as follows:
 
 _index.page.server.tsx_
-```tsx
+```jsx
 import { fetchBooks } from "react-goodreads-shelf";
 
 export { onBeforeRender };
@@ -62,7 +61,7 @@ async function onBeforeRender() {
 ```
 
 _index.page.tsx_
-```tsx
+```jsx
 import { GoodreadsBookshelfPresentation } from "react-goodreads-shelf";
 
 export { Page };
