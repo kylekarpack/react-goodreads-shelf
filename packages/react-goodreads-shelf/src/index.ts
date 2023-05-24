@@ -4,5 +4,5 @@ import GoodreadsBookshelfPresentation from "./components/goodreads-bookshelf/Goo
 export { GoodreadsBookshelf };
 export { GoodreadsBookshelfPresentation };
 export { fetchBooks } from "./util/api";
-export type { Props, Book } from "./types";
+export type { Props, Book, BookGroup } from "./types";
 export default GoodreadsBookshelf;
