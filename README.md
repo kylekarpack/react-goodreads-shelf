@@ -9,7 +9,7 @@ This React component allows you to display a public Goodreads shelf in a React a
 
 Preview
 
-![Example image](/sample/sample.png)
+![Example image](/sample.png)
 
 ## Installation
 
@@ -30,6 +30,53 @@ import GoodreadsBookshelf from "react-goodreads-shelf";
 export default function App() {
   return (
     <GoodreadsBookshelf userId="USER_ID_HERE" />
+  );
+}
+```
+
+### SSR
+
+`react-goodreads-shelf` supports basic server-side rendering. [An example](./packages/example-ssr/pages/) with `vite-plugin-ssr` might look as follows:
+
+_index.page.server.tsx_
+```tsx
+import { fetchBooks } from "react-goodreads-shelf";
+
+export { onBeforeRender };
+
+async function onBeforeRender() {
+  const books = await fetchBooks({
+    userId: "63515611",
+    limit: 10,
+    width: 80
+  });
+
+  return {
+    pageContext: {
+      pageProps: {
+        books
+      }
+    }
+  };
+}
+```
+
+_index.page.tsx_
+```tsx
+import { GoodreadsBookshelfPresentation } from "react-goodreads-shelf";
+
+export { Page };
+
+function Page({ books }: { books: BookGroup[] }) {
+  return (
+    <>
+      <h1>SSR Rendered:</h1>
+      <GoodreadsBookshelfPresentation
+        books={books}
+        width={80}
+        displayOptions={{ hideBackgroundImages: true, hideDetails: true }}
+      />
+    </>
   );
 }
 ```

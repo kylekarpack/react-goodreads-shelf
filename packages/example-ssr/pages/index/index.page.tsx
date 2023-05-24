@@ -1,5 +1,4 @@
-import type { BookGroup } from "../../../react-goodreads-shelf";
-import GoodreadsBookshelf, { GoodreadsBookshelfPresentation } from "../../../react-goodreads-shelf";
+import GoodreadsBookshelf, { BookGroup, GoodreadsBookshelfPresentation } from "react-goodreads-shelf";
 
 export { Page };
 

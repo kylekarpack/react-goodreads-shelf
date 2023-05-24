@@ -1,4 +1,4 @@
-import { fetchBooks } from "../../../react-goodreads-shelf/src";
+import { fetchBooks } from "react-goodreads-shelf";
 
 export { onBeforeRender };
 
