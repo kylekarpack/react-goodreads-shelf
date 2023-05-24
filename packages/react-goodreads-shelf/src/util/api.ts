@@ -1,6 +1,6 @@
 import { Book, BookGroup, FetchResults, Props } from "../types";
 import { getUrl } from "./get-url";
-import isomorphicCrypto from "./isomorphic-crypto";
+import { uuidv4 } from "./uuid";
 
 const GOODREADS_PAGE_SIZE = 30;
 
@@ -31,7 +31,7 @@ export const fetchBooks = async (props: Props): Promise<BookGroup[]> => {
   for (const book of books) {
     book.dateAdded = new Date(String(book.dateAdded));
     book.dateRead = new Date(String(book.dateRead));
-    book.id = book.isbn || book.asin || isomorphicCrypto.randomUUID();
+    book.id = book.isbn || book.asin || uuidv4();
   }
 
   // Optionally filter the books

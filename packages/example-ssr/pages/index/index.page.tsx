@@ -1,6 +1,6 @@
 import { Counter } from "./Counter";
-import { BookGroup } from "../../../react-goodreads-shelf/src/types";
-import { GoodreadsBookshelfPresentation } from "../../../react-goodreads-shelf/src";
+import { BookGroup } from "../../../react-goodreads-shelf";
+import { GoodreadsBookshelfPresentation } from "../../../react-goodreads-shelf";
 
 export { Page };
 
