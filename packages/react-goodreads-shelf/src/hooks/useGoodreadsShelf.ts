@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BookGroup, Props } from "../types";
-import { fetchAllBooks } from "../util";
+import { fetchBooks } from "../util";
 
 const useGoodreadsShelf = (props: Props) => {
   const { userId, limit, order, search, shelf, sort } = props;
@@ -13,7 +13,7 @@ const useGoodreadsShelf = (props: Props) => {
     setError(null);
 
     try {
-      const books = await fetchAllBooks(props);
+      const books = await fetchBooks(props);
       setBooks(books);
     } catch (err: unknown) {
       setError(err as Error);

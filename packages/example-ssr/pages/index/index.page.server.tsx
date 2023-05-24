@@ -1,14 +1,16 @@
-import fetch from "node-fetch";
+import { fetchBooks } from "../../../react-goodreads-shelf/src";
 
 export { onBeforeRender };
 
 async function onBeforeRender() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts/");
-  const posts = await response.json();
+  const books = await fetchBooks({
+    userId: "63515611"
+  });
+
   return {
     pageContext: {
       pageProps: {
-        posts
+        books
       }
     }
   };

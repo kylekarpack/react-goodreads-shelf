@@ -1,12 +1,13 @@
 import { Counter } from "./Counter";
 import { GoodreadsBookshelf } from "../../../react-goodreads-shelf/src";
+import { BookGroup } from "../../../react-goodreads-shelf/src/types";
 
 export { Page };
 
-function Page({ posts }) {
+function Page({ books }: { books: BookGroup[] }) {
   return (
     <>
-      POSTS: {JSON.stringify(posts)}
+      POSTS: {JSON.stringify(books)}
       <h1>Welcome</h1>
       This page is:
       <ul>

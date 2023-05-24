@@ -1,11 +1,12 @@
 import { Book, BookGroup, FetchResults, Props } from "../types";
 import { getUrl } from "./get-url";
+import isomorphicCrypto from "./isomorphic-crypto";
 
 const GOODREADS_PAGE_SIZE = 30;
 
 export const ALL_GROUP_TITLE = "All";
 
-export const fetchAllBooks = async (props: Props): Promise<BookGroup[]> => {
+export const fetchBooks = async (props: Props): Promise<BookGroup[]> => {
   // Get first page
   const firstPage = await fetchPage(1, props);
   const maxBooks = Math.min(props.limit ?? 10, firstPage.status.total);
@@ -30,7 +31,7 @@ export const fetchAllBooks = async (props: Props): Promise<BookGroup[]> => {
   for (const book of books) {
     book.dateAdded = new Date(String(book.dateAdded));
     book.dateRead = new Date(String(book.dateRead));
-    book.id = book.isbn || book.asin || window.crypto.randomUUID();
+    book.id = book.isbn || book.asin || isomorphicCrypto.randomUUID();
   }
 
   // Optionally filter the books
@@ -75,7 +76,7 @@ const fetchPage = async (page: number, props: Props): Promise<FetchResults> => {
   // Get the books from Goodreads
   const url = getUrl(props, page);
   url.searchParams.append("page", String(page));
-  const response = await window.fetch(url.toString());
+  const response = await fetch(url.toString());
 
   return await response.json();
 };
