@@ -3,7 +3,7 @@ import { Book as BookType, Props } from "../../types";
 import Book from "../book/Book";
 import styles from "./BookList.module.css";
 
-const shelfStyle = (options?: Props): CSSProperties => {
+const shelfStyle = (options?: Pick<Props, "width" | "displayOptions">): CSSProperties => {
   let { width } = options || {};
 
   if (typeof width === "number") {
