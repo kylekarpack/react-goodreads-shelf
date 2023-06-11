@@ -56,6 +56,11 @@ Please feel free to open issues or pull request and I will review as promptly as
 
 ### Contributors
 
-<a href="https://github.com/kylekarpack/react-goodreads-shelf/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=kylekarpack/react-goodreads-shelf" />
-</a>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
