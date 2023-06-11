@@ -15,6 +15,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "thedaviddias",
+      "name": "David Dias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/237229?v=4",
+      "profile": "https://thedaviddias.dev",
+      "contributions": [
+        "a11y"
+      ]
     }
   ],
   "contributorsPerLine": 7,
