@@ -2,4 +2,6 @@
   display: grid;
   justify-content: space-around;
   align-items: top;
+  list-style: none;
+  padding: 0;
 }
