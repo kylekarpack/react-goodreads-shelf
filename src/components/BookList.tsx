@@ -23,7 +23,7 @@ const shelfStyle = (options?: Props): CSSProperties => {
 
 const BookList: FunctionComponent<{ books: BookType[]; options?: Props }> = ({ books, options }) => {
   return (
-    <ul className={`rgs-shelf ${styles.shelf}`} style={shelfStyle(options)}>
+    <ul className={`rgs-shelf ${styles.shelf}`} style={shelfStyle(options)} data-testid="book-list">
       {books.map((book) => {
         return (
           <li key={book.id}>
