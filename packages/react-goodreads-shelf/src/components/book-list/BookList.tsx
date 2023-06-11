@@ -23,11 +23,15 @@ const shelfStyle = (options?: Pick<Props, "width" | "displayOptions">): CSSPrope
 
 const BookList: FunctionComponent<{ books: BookType[]; options?: Props }> = ({ books, options }) => {
   return (
-    <div className={`rgs-shelf ${styles.shelf}`} style={shelfStyle(options)} role="grid">
+    <ul className={`rgs-shelf ${styles.shelf}`} style={shelfStyle(options)} data-testid="book-list">
       {books.map((book) => {
-        return <Book key={book.id} book={book} options={options} />;
+        return (
+          <li key={book.id}>
+            <Book book={book} options={options} />
+          </li>
+        );
       })}
-    </div>
+    </ul>
   );
 };
 

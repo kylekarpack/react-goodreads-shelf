@@ -18,7 +18,7 @@ describe("book list component", () => {
   it("handles widths", () => {
     const books = [{ id: "1" }, { id: "2" }];
     const list = render(<BookList books={books} options={{ userId: "", width: 100 }} />);
-    const elements = list.getByRole("grid");
+    const elements = list.getByTestId("book-list");
     expect(elements.childElementCount).toBe(2);
   });
 });
