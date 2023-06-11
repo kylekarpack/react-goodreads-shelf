@@ -80,6 +80,12 @@
     "github": {
       "release": true,
       "web": true
+    },
+    "hooks": {
+      "before:init": [
+        "npm run test"
+      ],
+      "after:bump": "npm run build"
     }
   }
 }
