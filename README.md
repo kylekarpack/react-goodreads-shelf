@@ -63,6 +63,7 @@ Please feel free to open issues or pull request and I will review as promptly as
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://www.kylekarpack.com"><img src="https://avatars.githubusercontent.com/u/2429580?v=4?s=100" width="100px;" alt="Kyle"/><br /><sub><b>Kyle</b></sub></a><br /><a href="https://github.com/kylekarpack/react-goodreads-shelf/commits?author=kylekarpack" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://thedaviddias.dev"><img src="https://avatars.githubusercontent.com/u/237229?v=4?s=100" width="100px;" alt="David Dias"/><br /><sub><b>David Dias</b></sub></a><br /><a href="#a11y-thedaviddias" title="Accessibility">️️️️♿️</a></td>
     </tr>
   </tbody>
 </table>
