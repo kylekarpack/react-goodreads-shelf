@@ -49,3 +49,13 @@ You can also set some options as supported by the Goodreads list page:
 ## Development
 - `npm run start` to watch changes and build
 - `npm run storybook` to launch storybook for testing
+
+## Contribution
+
+Please feel free to open issues or pull request and I will review as promptly as I am able.
+
+### Contributors
+
+<a href="https://github.com/kylekarpack/react-goodreads-shelf/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=kylekarpack/react-goodreads-shelf" />
+</a>
