@@ -52,7 +52,7 @@ You can also set some options as supported by the Goodreads list page:
 
 ## Contribution
 
-Please feel free to open issues or pull request and I will review as promptly as I am able.
+Please feel free to open issues or pull requests and I will review as promptly as I am able.
 
 ### Contributors
 
