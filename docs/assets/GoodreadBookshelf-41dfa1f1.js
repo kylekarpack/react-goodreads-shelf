@@ -1,5 +1,0 @@
-import{j as o,a as s,F as i}from"./jsx-runtime-6ad60c64.js";import{M as r,C as c,b as m}from"./index-5cea518c.js";import{G as l,M as d}from"./0-GoodreadsBookshelf.stories-24c687cf.js";import{u as n}from"./index-e4c7205b.js";import"./iframe-31920c40.js";import"../sb-preview/runtime.js";import"./chunk-4NMOSTKD-052c8761.js";import"./index-d475d2ea.js";import"./index-4f334347.js";import"./index-d37d4223.js";import"./index-356e4a49.js";function a(t){const e=Object.assign({h1:"h1",p:"p"},n(),t.components);return s(i,{children:[o(r,{of:l,name:"Documentation"}),`
-`,o(e.h1,{id:"react-goodreads-shelf",children:"react-goodreads-shelf"}),`
-`,o(e.p,{children:"This React component allows you to display a public Goodreads shelf in a React application. It's a lot like the Goodreads JavaScript widget, but allows for more customization, better async loading, and React-like usage."}),`
-`,o(c,{children:o(m,{of:d})})]})}function x(t={}){const{wrapper:e}=Object.assign({},n(),t.components);return e?o(e,Object.assign({},t,{children:o(a,t)})):a(t)}export{x as default};
-//# sourceMappingURL=GoodreadBookshelf-41dfa1f1.js.map
