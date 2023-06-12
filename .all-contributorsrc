@@ -24,6 +24,23 @@
       "contributions": [
         "a11y"
       ]
+    },
+    {
+      "login": "eligundry",
+      "name": "Eli Gundry",
+      "avatar_url": "https://avatars.githubusercontent.com/u/439936?v=4",
+      "profile": "https://eligundry.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "BassemMohamed",
+      "name": "Bassem Ibrahim",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17043634?v=4",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
