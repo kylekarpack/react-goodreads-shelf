@@ -79,3 +79,5 @@ dist/
 __snapshots__/
 test-report.xml
 docs-build/
+
+.DS_Store
