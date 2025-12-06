@@ -11,7 +11,7 @@ export default defineConfig({
     coverage: {
       reporter: ["lcov", "text", "html"],
       exclude: ["vitest.setup.ts", "**/*.test.{ts,tsx}"],
-      provider: "c8"
+      provider: "v8"
     }
   },
   plugins: [react(), dts({ entryRoot: "src", include: ["src"] }), cssInjectedByJsPlugin()],

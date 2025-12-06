@@ -1,6 +1,7 @@
 {
   "include": ["src/index.ts", "src/globals.d.ts"],
   "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
     "jsx": "react-jsx",
     "target": "es5",
     "module": "commonjs",
