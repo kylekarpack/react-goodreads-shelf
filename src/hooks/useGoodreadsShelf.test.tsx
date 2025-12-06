@@ -1,13 +1,14 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
 import useGoodreadsShelf from "./useGoodreadsShelf";
 
 describe("use shelf hook", () => {
   it("handles loading state", async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useGoodreadsShelf({ userId: "kyle" }));
+    const { result } = renderHook(() => useGoodreadsShelf({ userId: "kyle" }));
     expect(result.current.loading).toBe(true);
-    await waitForNextUpdate();
-    expect(result.current.loading).toBe(false);
+    await waitFor(() => {
+      expect(result.current.loading).toBe(false);
+    });
   });
 
   it("handles errors", async () => {
@@ -15,10 +16,11 @@ describe("use shelf hook", () => {
     const spy = vi.spyOn(window, "fetch");
     spy.mockImplementationOnce(() => Promise.reject(message));
 
-    const { result, waitForNextUpdate } = renderHook(() => useGoodreadsShelf({ userId: "kyle" }));
+    const { result } = renderHook(() => useGoodreadsShelf({ userId: "kyle" }));
     expect(result.current.error).toBeNull();
-    await waitForNextUpdate();
-    expect(result.current.error).toBe(message);
-    expect(spy).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      expect(result.current.error).toBe(message);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
   });
 });
