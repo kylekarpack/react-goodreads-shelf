@@ -26,11 +26,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Packages
-        run: npm ci
+        run: pnpm ci
       - name: Build
-        run: npm run build
+        run: pnpm run build
       - name: Run Tests
-        run: npm run test -- --coverage --update
+        run: pnpm run test -- --coverage --update
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
