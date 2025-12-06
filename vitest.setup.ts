@@ -11,18 +11,20 @@ const fetch = vi.fn(() =>
 vi.stubGlobal("fetch", fetch);
 
 // Mock IntersectionObserver
-const IntersectionObserverMock = vi.fn(() => ({
-  disconnect: vi.fn(),
-  observe: vi.fn(),
-  takeRecords: vi.fn(),
-  unobserve: vi.fn()
-}));
+const IntersectionObserverMock = vi.fn(
+  class {
+    disconnect = vi.fn();
+    observe = vi.fn();
+    takeRecords = vi.fn();
+    unobserve = vi.fn();
+  }
+);
 
 vi.stubGlobal("IntersectionObserver", IntersectionObserverMock);
 
 // Mock crypto
 const crypto = {
-  randomUUID: vi.fn()
+  randomUUID: vi.fn(() => expect.anything())
 };
 
 vi.stubGlobal("crypto", crypto);

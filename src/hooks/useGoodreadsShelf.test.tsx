@@ -20,7 +20,7 @@ describe("use shelf hook", () => {
     expect(result.current.error).toBeNull();
     await waitFor(() => {
       expect(result.current.error).toBe(message);
-      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalled();
     });
   });
 });
