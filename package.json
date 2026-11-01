@@ -21,7 +21,10 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/kylekarpack/react-goodreads-shelf",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylekarpack/react-goodreads-shelf.git"
+  },
   "author": "Kyle Karpack <kylekarpack+rgg@gmail.com>",
   "license": "MIT",
   "private": false,
