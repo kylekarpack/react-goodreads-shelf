@@ -1,7 +1,7 @@
 {
   "name": "react-goodreads-shelf",
   "type": "module",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "A deprecated React widget for displaying a user's Goodreads shelf (no longer functional — see README)",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
