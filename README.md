@@ -2,11 +2,11 @@
 
 [![build](https://github.com/kylekarpack/react-goodreads-shelf/actions/workflows/node.js.yml/badge.svg)](https://github.com/kylekarpack/react-goodreads-shelf/actions/workflows/node.js.yml) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=kylekarpack_react-goodreads-shelf&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=kylekarpack_react-goodreads-shelf) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kylekarpack_react-goodreads-shelf&metric=coverage)](https://sonarcloud.io/dashboard?id=kylekarpack_react-goodreads-shelf)
 
-This React component allows you to display a public Goodreads shelf in a React application. It's a lot like the Goodreads JavaScript widget, but allows for more customization, better async loading, and React-like usage.
+## ⚠️ Deprecated
 
-## Demo
+**This package is deprecated as of v5.0.0 and no longer fetches book data.** The component renders a deprecation notice instead of the shelf.
 
-[Live Demo](https://kylekarpack.github.io/react-goodreads-shelf)
+**Why:** Goodreads removed anonymous public access to shelf data. The `/review/list` shelf page this component scraped now redirects unauthenticated visitors to sign in, the shelf RSS feeds (`/review/list_rss`) have been removed (404 across all users), individual review pages are login-walled, and the old developer API was shut down in 2020. The only remaining public surface is a 5-book embed widget (`/review/grid_widget`), which does not support pagination, ratings, authors, or dates, which is not enough to power this component.
 
 Preview
 

@@ -1,40 +1,24 @@
-import { FunctionComponent } from "react";
-import useGoodreadsShelf from "../hooks/useGoodreadsShelf";
+import { FunctionComponent, useEffect } from "react";
 import { Props } from "../types";
-import { ALL_GROUP_TITLE } from "../util";
-import BookList from "./BookList";
-import styles from "./GoodreadsBookshelf.module.css";
-import Loader from "./Loader";
+import { DEPRECATION_REASON, warnDeprecated } from "../util";
 
 /** Display a Goodreads bookshelf component */
-const GoodreadsBookshelf: FunctionComponent<Props> = (props) => {
-  const { books, loading, error } = useGoodreadsShelf(props);
+const GoodreadsBookshelf: FunctionComponent<Props> = () => {
+  useEffect(() => {
+    warnDeprecated();
+  }, []);
 
   return (
-    <div className="rgs-shelf">
-      {loading ? (
-        <Loader />
-      ) : (
-        <div>
-          {books.map((el) => {
-            return (
-              <div key={el.title} className={`rgs-group ${styles.group}`}>
-                {el.title !== ALL_GROUP_TITLE && (
-                  <div className={`rgs-group-title ${styles.groupTitle}`}>
-                    {el.title}{" "}
-                    <small>
-                      ({el.books.length} {el.books.length === 1 ? "book" : "books"})
-                    </small>
-                  </div>
-                )}
-                <BookList books={el.books} options={props} />
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {error && <div>Sorry, we couldn't load books right now</div>}
+    <div className="rgs-shelf rgs-deprecated" role="status" aria-live="polite">
+      <p>
+        <strong>react-goodreads-shelf is deprecated and no longer fetches data.</strong>
+      </p>
+      <p>{DEPRECATION_REASON}</p>
+      <p>
+        <a href="https://github.com/kylekarpack/react-goodreads-shelf#deprecation">
+          Read the deprecation notice
+        </a>
+      </p>
     </div>
   );
 };
